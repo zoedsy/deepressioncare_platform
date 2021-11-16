@@ -1,2 +1,18 @@
-<!--pages/doctor/doctor.wxml-->
-<text>pages/doctor/doctor.wxml</text>
+<scroll-view scroll-y="false">
+  <view class="doctor_floor"
+        wx:for="{{doctor_list}}"
+        wx:item="item"
+        wx:key="id"
+        bindtap=""
+        hidden="{{second}}">
+        <view class="avatar">
+            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+        </view>   
+        <view class="info"> 
+          <text class="name">{{item.name}}</text>
+          <text class="title">{{item.title}}</text>
+          <view class="hospital">{{item.hospital}}</view>
+          <view class="excel">擅长：{{item.excel}}</view>
+        </view>   
+  </view>
+</scroll-view>

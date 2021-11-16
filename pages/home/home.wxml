@@ -29,18 +29,18 @@ autoplay current="0" interval="5000" duration="1000" circular >
     </view>
     <text class="name">名医介绍</text>
   </view>
-  <view class="tab" bindtap="changeNav" id="3"> 
+  <!-- <view class="tab" bindtap="changeNav" id="3"> 
     <view class="icon-container" style="background-color: #bbaffa;">
       <text class="iconfont icon-xingzhuang"></text>
     </view>
     <text class="name">精华帖子</text>
-  </view> 
+  </view>  -->
 </view>
 
 <view class="title">
   <text class="name" hidden="{{first}}">—— 知识贴士 ——</text>
   <text class="name" hidden="{{second}}">—— 名医介绍 ——</text>
-  <text class="name" hidden="{{third}}">—— 精华帖子 ——</text>
+  <!-- <text class="name" hidden="{{third}}">—— 精华帖子 ——</text>-->
   <view class="more" bindtap="more">
     <text class="gengduo">更多</text>
     <text class="iconfont icon-youjiantou"></text>
@@ -62,19 +62,26 @@ autoplay current="0" interval="5000" duration="1000" circular >
             <view class="like">赞{{item.like}}</view>
         </view>  
   </view> 
-  <!-- <view class="doctor_floor"
+  <view class="doctor_floor"
         wx:for="{{doctor_list}}"
+        wx:item="item"
         wx:key="id"
-        bindtap="">
-        <!-- hidden="{{second}}"></view> 
+        bindtap=""
+        hidden="{{second}}">
         <view class="avatar">
-            <!--<image class="img" src="{{item.picsource}}" mode="scaleToFill" />
-        </view>      
+            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+        </view>   
+        <view class="info"> 
+          <text class="name">{{item.name}}</text>
+          <text class="title">{{item.title}}</text>
+          <view class="hospital">{{item.hospital}}</view>
+          <view class="excel">擅长：{{item.excel}}</view>
+        </view>   
   </view>
-  <view class="post_floor"
+  <!-- <view class="post_floor"
         wx:for="{{post_list}}"
         wx:key="id"
         bindtap=""
         hidden="{{third}}">
-  </view> -->
+  </view>  -->
 </scroll-view>
