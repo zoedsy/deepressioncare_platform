@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -15,6 +16,29 @@
           "name": "pages/home/home",
           "pathName": "pages/home/home",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/luntan/goods-info/goods-info",
+          "pathName": "pages/luntan/goods-info/goods-info",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/luntan/searchbar/searchbar",
+          "pathName": "pages/luntan/searchbar/searchbar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/luntan/luntan",
+          "pathName": "pages/luntan/luntan",
           "scene": null
         }
       ]
