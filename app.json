@@ -9,7 +9,9 @@
     "pages/me/me",
     "pages/tips/tips",
     "pages/doctor/doctor",
-    "pages/posts/posts"
+    "pages/posts/posts",
+    "pages/luntan/goods-info/goods-info",
+    "pages/luntan/searchbar/searchbar"
   ],
   "window": {
     "backgroundTextStyle": "light",

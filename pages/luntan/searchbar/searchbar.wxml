@@ -1,0 +1,40 @@
+<view class="search">
+    <view class="header">
+        <view class="header-top">    
+        <view class="nav-search">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <input type="text" placeholder="请输入您要搜索的内容" class="text-search" bindinput="changeSearch"  bindconfirm="bindconfirm" value="{{searchContext}}"/>
+        </view>
+        </view>
+    </view>
+    <view class="container">
+        <view class="content" wx:if="{{!haveSerachLike}}">
+            <view class="search-history">
+                <text class="history-record">历史记录</text>
+                <view class="search-history-item" wx:for="{{historyRecord}}" wx:key="{{index}}">
+                    <text>{{item.recordItem}}</text>
+                </view>
+            </view>
+            <view class="hot-search">
+                <text class="search-hot">热门搜索</text>
+                <view class="search-item">
+                    <view class="hot-search-item" wx:for="{{hots}}" wx:key="{{item.id}}">
+                    <view class="hot-item">
+                        <view class="text">
+                            <image class="hot-img" src="{{item.hotImg}}" wx:if="{{item.hotImg}}"></image>
+                            <text>{{item.text}}</text>
+                        </view>
+                        <view class="hot-status" >{{hotStatus}}</view>
+                    </view>
+                    </view>         
+                </view>
+            </view>
+        </view>
+        <view wx:else class="search-like">
+        <view class="search-like-item" data-param="{{item.text}}" wx:for="{{searchLikeList}}" wx:key="{{index}}">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <text>{{item.text}}</text>
+        </view>
+        </view>
+    </view>
+</view>
