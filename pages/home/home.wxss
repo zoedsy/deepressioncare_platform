@@ -1,0 +1,170 @@
+/* pages/home/home.wxss */
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+}
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+          flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09BB07;
+  white-space: nowrap;
+}
+
+swiper swiper-item .pic {
+  width: 100%;
+  height: 100%;
+}
+.tabbar{
+  margin: 20rpx 0;
+  display: flex;
+  width: 100%;
+  height: 150rpx;
+}
+.tabbar .tab{
+  width:33%;
+  height: 150rpx;
+  text-align: center;
+}
+.tabbar .tab .icon-container{
+  margin: 0 auto;
+  width:100rpx;
+  height: 100rpx;
+  border-radius: 50rpx; 
+  text-align: center;
+  line-height: 100rpx;
+}
+.tabbar .tab .icon-container text{
+  font-size: 60rpx;
+  color: white;
+}
+
+.tabbar .tab .name{
+  font-size: 25rpx;
+}
+
+.title{
+  border-top: solid #e9e9e9;
+  height: 100rpx;
+  border-bottom: solid #e9e9e9;
+  text-align: center;
+}
+
+.title .name{
+  color: #fccc9f;
+  font-size: 40rpx;
+  font-weight: 600;
+  line-height: 100rpx;
+}
+
+.title .more{
+  height: 100rpx;
+  float: right;
+  margin-right: 10rpx;
+}
+
+.title .more .gengduo{
+  line-height: 100rpx;
+  color:#b4afae;
+  font-size: 28rpx;
+}
+
+.title .more .icon-youjiantou{
+  color: #fccc9f;
+  font-size: 35rpx;
+}
+
+.floor{
+  border-bottom: solid #e9e9e9;
+  display: flex;
+  width: 100%;
+  height: 250rpx;
+}
+.floor .picture{
+  margin: 25rpx;
+  width: 30%;
+  height: 200rpx;
+}
+
+.floor .picture .img{
+  width: 100%;
+  height: 100%;
+}
+
+.floor .info{
+  width: 60%;
+  position: relative;
+}
+
+.floor .info .info_title{
+   font-weight: 500; 
+   margin: 25rpx 0;
+   overflow: hidden;
+  /*超出隐藏*/
+  text-overflow: ellipsis;
+  /*超出显示为省略号*/
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.floor .info .date{
+  position: absolute;
+  bottom: 8%;
+  color: #b4afae;
+}
+
+.floor .info .read{
+  position: absolute;
+  left:40%;
+  bottom: 8%;
+  color: #b4afae;
+}
+
+.floor .info .like{
+  position: absolute;
+  left:80%;
+  bottom: 8%;
+  color: #b4afae;
+}
+
+.doctor_floor .avatar{
+  width: 50rpx;
+  height:50rpx;
+  background-color: #fccc9f;
+  border-radius: 25rpx;
+}
+

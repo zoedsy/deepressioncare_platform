@@ -1,0 +1,62 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/home/home",
+    "pages/diagnose/diagnose",
+    "pages/chat/chat",
+    "pages/luntan/luntan",
+    "pages/me/me",
+    "pages/tips/tips",
+    "pages/doctor/doctor",
+    "pages/posts/posts"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "color": "#bbbbbb",
+    "selectedColor": "#6ec2aa",
+    "backgroundColor": "",
+    "position": "bottom",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/首页.png",
+        "selectedIconPath": "images/首页.png"
+      },
+      {
+        "pagePath": "pages/diagnose/diagnose",
+        "text": "诊断",
+        "iconPath": "images/诊断.png",
+        "selectedIconPath": "images/诊断.png"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "text": "聊天室",
+        "iconPath": "images/聊天.png",
+        "selectedIconPath": "images/聊天.png"
+      },
+      {
+        "pagePath": "pages/luntan/luntan",
+        "text": "论坛",
+        "iconPath": "images/论坛.png",
+        "selectedIconPath": "images/论坛.png"
+      }, 
+      {
+        "pagePath": "pages/me/me",
+        "text": "个人中心",
+        "iconPath": "images/个人.png",
+        "selectedIconPath": "images/个人.png"
+      }
+    ]
+  }
+}

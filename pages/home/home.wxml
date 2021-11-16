@@ -1,0 +1,80 @@
+<view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+            <!-- 搜索框 -->
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+                </view>
+            </view>
+            <!-- 搜索按钮,调用搜索查询方法 -->
+            <view class="weui-search-bar__cancel-btn" bindtap='search'>搜索</view>
+</view>
+
+<swiper class="banners" indicator-dots indicator-color="rgb(254,247,251)" indicator-active-color="rgb(36,147,240)"
+autoplay current="0" interval="5000" duration="1000" circular >
+    <swiper-item wx:for="{{bannerList}}" wx:key="bannerID">
+        <image class="pic" src="{{item.pic}}" mode="scaleToFill"/>
+    </swiper-item>
+</swiper>
+<view class="tabbar">
+  <view class="tab" bindtap="changeNav" id="1">
+    <view class="icon-container" style="background-color: #f5674e;">
+      <text class="iconfont icon-richeng"></text>
+    </view>
+    <text class="name">知识贴士</text>
+  </view>
+  <view class="tab" bindtap="changeNav" id="2">
+    <view class="icon-container" style="background-color: #17c4f7;">
+      <text class="iconfont icon-yiyaoxiang"></text>
+    </view>
+    <text class="name">名医介绍</text>
+  </view>
+  <view class="tab" bindtap="changeNav" id="3"> 
+    <view class="icon-container" style="background-color: #bbaffa;">
+      <text class="iconfont icon-xingzhuang"></text>
+    </view>
+    <text class="name">精华帖子</text>
+  </view> 
+</view>
+
+<view class="title">
+  <text class="name" hidden="{{first}}">—— 知识贴士 ——</text>
+  <text class="name" hidden="{{second}}">—— 名医介绍 ——</text>
+  <text class="name" hidden="{{third}}">—— 精华帖子 ——</text>
+  <view class="more" bindtap="more">
+    <text class="gengduo">更多</text>
+    <text class="iconfont icon-youjiantou"></text>
+  </view>
+</view>
+
+<scroll-view scroll-y="false">
+  <view class="floor"
+        wx:for="{{article_list}}"
+        wx:key="id"
+        bindtap=""
+        hidden="{{first}}">
+        <view class="picture">
+            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+        </view>  
+        <view class="info">
+            <view class="info_title">{{item.address}}</view>
+            <view class="read">阅读{{item.read}}万</view>
+            <view class="like">赞{{item.like}}</view>
+        </view>  
+  </view> 
+  <!-- <view class="doctor_floor"
+        wx:for="{{doctor_list}}"
+        wx:key="id"
+        bindtap="">
+        <!-- hidden="{{second}}"></view> 
+        <view class="avatar">
+            <!--<image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+        </view>      
+  </view>
+  <view class="post_floor"
+        wx:for="{{post_list}}"
+        wx:key="id"
+        bindtap=""
+        hidden="{{third}}">
+  </view> -->
+</scroll-view>
