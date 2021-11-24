@@ -55,7 +55,7 @@ swiper swiper-item .pic {
   height: 150rpx;
 }
 .tabbar .tab{
-  width:33%;
+  width:50%;
   height: 150rpx;
   text-align: center;
 }
@@ -161,10 +161,48 @@ swiper swiper-item .pic {
   color: #b4afae;
 }
 
-.doctor_floor .avatar{
-  width: 50rpx;
-  height:50rpx;
-  background-color: #fccc9f;
-  border-radius: 25rpx;
+.doctor_floor{
+  border-bottom: solid #e9e9e9;
+  display: flex;
+  width: 100%;
+  height: 250rpx;
 }
 
+.doctor_floor .avatar{
+  width: 100rpx;
+  height:100rpx;
+  margin:10rpx
+}
+
+.doctor_floor .avatar .img{
+  height: 100%;
+  width:100%;
+  border-radius: 50rpx;
+}
+
+.doctor_floor .info{
+  width: 600rpx;
+  height:230rpx;
+  margin:10rpx
+}
+
+.doctor_floor .info .name{
+  font-size: large;
+  font-weight: bold;
+}
+
+.doctor_floor .info .title{
+  border: none;
+  margin-left: 10rpx;
+}
+
+.doctor_floor .info .excel{
+  color:#b4afae;
+  overflow: hidden;
+  /*超出隐藏*/
+  text-overflow: ellipsis;
+  /*超出显示为省略号*/
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
