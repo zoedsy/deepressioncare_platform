@@ -1,4 +1,4 @@
-// pages/mall/mall.js
+// pages/luntan/luntan.js
 const app = getApp()
 
 Page({
@@ -62,7 +62,7 @@ Page({
   
   entrySearch(e) {
     wx.navigateTo({
-      url: '../luntan/searchbar/searchbar',
+      url: './searchbar/searchbar',
     })
   },
 
@@ -131,5 +131,13 @@ Page({
    */
   onShareAppMessage: function () {
   
+  },
+  addPosts:function(){
+    wx.navigateTo({
+      url: '../luntan/release/release',
+      success:function(res){},
+      fail:function(res){},
+      complete:function(res){}
+    })
   }
 })

@@ -1,0 +1,37 @@
+/* pages/luntan/release/title/title.wxss */
+
+page 
+{
+  background-color: white;
+}
+.evaluate{
+  margin-top: 50rpx;
+  margin-left: 40rpx;
+  border: 2rpx solid #f4f4f4;
+  border-radius: 10rpx;
+  height: 300rpx;
+  padding: 20rpx;
+  width: 630rpx;
+  font-size: 28rpx;
+}
+.bottom-v {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  height: 160rpx;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.ds-v {
+  margin-left: 40rpx;
+  width: 670rpx;
+  background-color: #e97d6b;
+  border-radius: 5rpx;
+  color: white;
+  font-size: 28rpx;
+  line-height: 80rpx;
+  height: 80rpx;
+  text-align: center;
+  margin-top: 20rpx;
+}

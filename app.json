@@ -11,7 +11,12 @@
     "pages/doctor/doctor",
     "pages/posts/posts",
     "pages/luntan/goods-info/goods-info",
-    "pages/luntan/searchbar/searchbar"
+    "pages/luntan/searchbar/searchbar",
+    "pages/luntan/release/release",
+    "pages/luntan/release/selectCity/selectCity",
+    "pages/luntan/release/title/title",
+    "pages/luntan/release/vote/vote",
+    "pages/luntan/release/zhichi/zhichi"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -52,7 +57,7 @@
         "text": "论坛",
         "iconPath": "images/论坛.png",
         "selectedIconPath": "images/论坛.png"
-      }, 
+      },
       {
         "pagePath": "pages/me/me",
         "text": "个人中心",

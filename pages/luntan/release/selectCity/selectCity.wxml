@@ -1,0 +1,64 @@
+<!--pages/luntan/release/selectCity/selectCity.wxml-->
+<block wx:if="{{isAuthorization}}">
+  <template data="{{isAuthorization}}" is="alert_location"></template>
+</block>
+<view class='page-column'>
+  <view class='head-view' hidden='{{search}}'>
+    <view class='tab-view' bindtap='goToSeach'>城市名称</view>
+  </view>
+  <view class='page-row temp-view' hidden='{{search}}'>
+    <scroll-view class='page-column scroll-view' style='width:{{width}}px;' scroll-y="true" scroll-into-view="{{toView}}">
+      <view id="current" class='scoll-head-view page-column'>
+        <text class='title-text'>当前</text>
+        <view class='content-view page-row'>
+          <view class='current-view' style='min-width:{{cityItemWidth - 20}}px' bindtap='currentClick'>{{currentCity}}</view>
+            <view class='current-view' style='min-width:{{cityItemWidth - 20}}px' bindtap='allCityClick'>全国</view>
+        </view>
+      </view>
+      <view id="host" class='scoll-head-view page-column'>
+        <text class='title-text'>热门城市</text>
+        <view class='content-view page-row'>
+          <block wx:for="{{hostCityList}}" wx:for-item="dic">
+            <view id="host_{{index}}" class='city-view' style='width:{{cityItemWidth}}px' bindtap='hostCityClick'>{{dic.name}}</view>
+          </block>
+        </view>
+      </view>
+      <block wx:for="{{dataList}}">
+        <view id="to_{{item.subFix}}" class='scoll-head-view page-column'>
+          <text class='title-text'>{{item.subFix}}</text>
+          <view class='content-view page-row'>
+            <block wx:for="{{item.citys}}" wx:for-item="dic" wx:for-index="indexL">
+              <view id="{{item.subFix}}_{{indexL}}" class='commn-city-view' bindtap='listCityClick'>{{dic}}</view>
+            </block>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+    <view class='right-view page-column'>
+      <block wx:for="{{indexList}}">
+        <text id="{{index}}" style='height:{{subFixHeight}}px' bindtap='indexClick'>{{item}}</text>
+      </block>
+    </view>
+  </view>
+  <view class='search-back-view page-column' hidden='{{!search}}'>
+    <view class='search-view page-row'>
+      <view class='input-view page-row'>
+        <view class='search-left-view page-row'>
+          <icon class='icon-class' type='search' size='15'></icon>
+          <input bindinput='searchInput' class='serch-input' value='{{seachInputValue}}' placeholder='请输入城市名称'></input>
+        </view>
+        <view class='seach-right-view page-row-r' bindtap='clearSearchInput'>
+          <icon hidden='{{clearButtonHidden}}' class='icon-class' type='clear' size='15'></icon>
+        </view>
+      </view>
+      <text class='cancel-text base-color' bindtap='cancelClick'>取消</text>
+    </view>
+    <scroll-view class='search-scroll page-column'>
+      <block wx:for="{{searchDataList}}">
+        <view id="search_{{index}}" bindtap='searchViewClick' class='city-item-view'>
+          <text>{{item}}</text>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

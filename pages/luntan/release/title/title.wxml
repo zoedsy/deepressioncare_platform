@@ -1,0 +1,7 @@
+<!--pages/luntan/release/title/title.wxml-->
+<view class="pageView">
+  <textarea value="{{title}}" bindinput="titleInput" class="evaluate" placeholder="请输入您的标题"></textarea>
+  <view class="bottom-v page-row">
+    <view class="ds-v" catchtap="comfirClick">确定</view>
+  </view>
+</view>

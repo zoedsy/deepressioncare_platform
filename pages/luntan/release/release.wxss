@@ -1,0 +1,429 @@
+/* pages/luntan/release/release.wxss */
+page{
+  background-color: white;
+}
+.yl-text {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.85);
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  width: 670rpx;
+  line-height: 40rpx;
+  min-height: 120rpx;
+  background-color: white;
+}
+.input-text{
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  width: 670rpx;
+  background-color: white;
+  min-height: 120rpx;
+  flex-wrap: wrap;
+}
+.input-text text{
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 40rpx;
+  
+}
+.input-text .ht-text{
+  font-size: 22rpx;
+  color: white;
+  background-color: #E97D6B;
+  border-radius: 20rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  height: 40rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+.images-view{
+  justify-content: space-between;
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  width: 670rpx;
+  background-color: white;
+  flex-wrap: wrap;
+}
+.images-view .image-item{
+  margin-top: 20rpx;
+  width: 200rpx;
+  height: 200rpx;
+}
+.images-view .image-item .img{
+  width: 200rpx;
+  height: 200rpx;
+}
+.images-view .image-item .close{
+  z-index: 10;
+  position: absolute;
+  margin-left: 160rpx;
+  height: 40rpx;
+  width: 40rpx;
+}
+.video{
+  margin-left: 40rpx;
+  width: 670rpx;
+}
+.tool-view{
+  margin-top: 80rpx;
+  width: 750rpx;
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  background-color: white;
+}
+.tool-top-v {
+ padding-left: 40rpx;
+ padding-right: 40rpx;
+ width: 670rpx;
+ justify-content: space-between;
+ border-bottom: 2rpx solid #f4f4f4;
+ padding-bottom: 30rpx;
+ padding-top: 30rpx;
+}
+.tool-top-v .top-item{
+  align-items: center;
+}
+.tool-top-v .top-item image{
+  width: 78rpx;
+  height: 78rpx;
+  background-color: #f4f4f4;
+  border-radius: 50%;
+}
+.tool-top-v .top-item text{
+  font-size: 21rpx;
+  color: rgba(0, 0, 0, 0.85);
+  margin-top: 10rpx;
+}
+.tool-fl-v {
+  padding-left: 40rpx;
+ padding-right: 40rpx;
+ width: 670rpx;
+ border-bottom: 2rpx solid #f4f4f4;
+ padding-bottom: 30rpx;
+ padding-top: 30rpx;
+}
+.tool-fl-v .title{
+ font-size: 24rpx;
+ color: rgba(0, 0, 0, 0.85);
+}
+.tool-fl-v .item-v{
+  width: 100%;
+  padding-top: 30rpx;
+  justify-content: space-between;
+}
+.item-v view{
+  padding: 5rpx 28rpx 5rpx 28rpx;
+  border: 2rpx solid #E97D6B;
+  font-size: 22rpx;
+  border-radius: 5rpx;
+}
+.item-s{
+  background-color: #E97D6B;
+  color: white;
+}
+.item-un-s{
+  background-color: white;
+  color: #E97D6B;
+}
+.select-view {
+  padding: 30rpx 40rpx 30rpx 40rpx;
+  border-bottom: 2rpx solid #f4f4f4;
+  justify-content: space-between;
+  align-items: center;
+}
+.select-view .l-v{
+  align-items: center;
+  width: 600rpx;
+}
+.select-view .l-v image{
+  height: 35rpx;
+  width: 35rpx;
+}
+.select-view .l-v text{
+  font-size: 24rpx;
+  color: #9B9292;
+  margin-left: 10rpx;
+  max-width: 540rpx;
+}
+.select-view  .jt{
+  width: 14rpx;
+  height: 24rpx;
+}
+.save-view {
+  width: 750rpx;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 12;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.float-view {
+  width: 750rpx;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 200;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.float-view .f-b-view{
+  width: 100%;
+  background-color: white;
+  border-top-left-radius: 24rpx;
+  border-top-right-radius: 24rpx;
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+}
+.f-item-view {
+  background-color: white;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #28282A;
+  border-bottom: 2rpx solid #f4f4f4;
+}
+.float-view .f-b-view .cancel {
+  border-style: none;
+  border-top: 10rpx solid #f4f4f4;
+}
+.share-view {
+  height: 100%;
+  width: 750rpx;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 40;
+  top: 0;
+  bottom: 0;
+}
+.share-view .b-view{
+  height: 320rpx;
+  width: 750rpx;
+  background-color: white;
+  position: absolute;
+  bottom: 0;
+  border-top-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+}
+.share-view .b-view .item {
+  width: 50%;
+  height: 320rpx;
+  justify-content: center;
+  align-items: center;
+}
+.share-view .b-view .item image{
+  width: 70rpx;
+  height: 70rpx;
+}
+ .share-view .b-view .item text{
+   color: #262626;
+   font-size: 28rpx;
+   margin-top: 30rpx;
+}
+
+
+
+.zhongcao-view {
+  margin-left: 40rpx;
+  background-color: white;
+  width: 650rpx;
+  padding-right: 20rpx;
+  height: 123rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 2rpx 13rpx rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  justify-content: space-between;
+  align-items: center;
+
+}
+.zhongcao-view .skuImage{
+  height: 123rpx;
+  width: 123rpx;
+}
+.zhongcao-view .n-view{
+  margin-left: 20rpx;
+  height: 123rpx;
+  width: 367rpx;
+}
+.zhongcao-view .n-view .top-view{
+  width: 100%;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.zhongcao-view .n-view .top-view .love{
+  height: 20rpx;
+  width: 20rpx;
+}
+.zhongcao-view .n-view .top-view  text{
+  color: #E97D6B;
+  font-size: 28rpx;
+  margin-left: 5rpx;
+}
+.zhongcao-view .n-view .name-text {
+  color: #4A4242;
+  font-size: 24rpx;
+  max-width: 60%;
+}
+.zhongcao-view .n-view .bot-view{
+  width: 100%;
+  margin-top: 15rpx;
+  align-items: center;
+}
+.zhongcao-view .n-view .bot-view .price-text{
+  margin-left: 20rpx;
+  color: #E97D6B;
+  font-size: 24rpx;
+}
+.zhongcao-view .n-view .bot-view .price-text text{
+  font-size: 30rpx;
+}
+.zhongcao-view .buy-view{
+  height: 53rpx;
+  width: 120rpx;
+  border-radius: 4rpx;
+  color: white;
+  background-color: #E97D6B;
+  font-size: 25rpx;
+  text-align: center;
+  line-height: 53rpx;
+}
+.bf-view {
+  margin-left: 40rpx;
+  background-color: white;
+  width: 650rpx;
+  padding-right: 20rpx;
+  height: 180rpx;
+  border-radius: 15rpx;
+  box-shadow: 0 2rpx 13rpx rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  justify-content: space-between;
+}
+.bf-view  .logo-image{
+  height: 180rpx;
+  width: 180rpx;
+}
+.bf-view  .r-view{
+  margin-left: 25rpx;
+  width: 445rpx;
+}
+
+.bf-view  .r-view  .top-view{
+  width: 100%;
+  align-items: center;
+  margin-top: 25rpx;
+}
+.bf-view  .r-view  .top-view .love{
+  height: 20rpx;
+  width: 20rpx;
+}
+.bf-view  .r-view .top-view  text{
+  color: #E97D6B;
+  font-size: 28rpx;
+  margin-left: 5rpx;
+}
+.bf-view  .r-view  .name-text {
+  margin-top: 10rpx;
+  color: rgba(74, 66, 66, 1);
+  font-size: 24rpx;
+  max-width: 100%;
+}
+.bf-view  .r-view .b-view{
+  width: 100%;
+}
+.bf-view  .r-view .b-view .buy-view{
+  height: 32rpx;
+  width: 73rpx;
+  border: 2rpx solid #E97D6B;
+  font-size: 21rpx;
+  color: #E97D6B;
+  text-align: center;
+  line-height: 32rpx;
+  border-radius: 4rpx;
+  margin-top: 21rpx;
+}
+
+.vote-view {
+  background-color: #F6F6F6;
+  border-radius: 5rpx;
+  margin-left: 40rpx;
+  padding: 25rpx;
+  width: 600rpx;
+  
+}
+.vote-view .title{
+  color: #262626;
+  font-size: 26rpx;
+  line-height: 32rpx;
+}
+.vote-view  .option {
+  margin-top: 15rpx;
+  font-size: 22rpx;
+  line-height: 28rpx;
+  color: #262626;
+  border: 1rpx solid #DDDDDD;
+  padding: 15rpx;
+  width: 570rpx;
+  background-color: white;
+  border-radius: 2rpx;
+}
+.vote-view .endTime{
+  margin-top: 25rpx;
+  color: #8F8F8F;
+  font-size: 22rpx;
+}
+.send-view {
+  width:670rpx;
+  padding: 25rpx 40rpx 30rpx 40rpx;
+  border-color: white;
+  border-bottom: 10rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.send-view view{
+  width: 100rpx;
+  height: 50rx;
+  border-radius: 25rpx;
+  text-align: center;
+  line-height: 50rpx;
+  font-size: 28rpx;
+}
+.send-view  .send{
+  background-color: #E97D6B;
+  color: white;
+}
+.send-view  .save{
+  background-color: white;
+  color: #E97D6B;
+  border: 2rpx solid #E97D6B;
+  margin-right: 30rpx;
+}
+.nav-bar-view{
+  width: 750rpx;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  background-color: white;
+}
+.nav-bar-view .head-title-view{
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  width: 670rpx;
+  justify-content: center;
+  align-items: center;
+}
+.nav-bar-view .head-title-view .jt-view{
+  align-items: center;
+  padding-right: 60rpx;
+}
+.nav-bar-view .head-title-view text{
+  font-size: 30rpx;
+  color: #262626;
+}
+.nav-bar-view .head-title-view .jt-view image{
+  height: 30rpx;
+  width: 30rpx;
+  transform: rotate(180deg);
+}
+.nav-bar-view .head-title-view .t-view{
+  width: 670rpx;
+  position: absolute;
+  z-index: 30;
+}

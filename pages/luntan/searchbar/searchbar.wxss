@@ -32,7 +32,7 @@
 .search-history, .search-like{
   width: 90%;
   display: inline-block;
-  overflow: hidden;
+  overflow: auto;
 }
 .search-like{
   position: absolute;

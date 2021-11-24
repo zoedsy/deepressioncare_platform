@@ -1,0 +1,155 @@
+<!--pages/luntan/release/release.wxml-->
+
+<!--利用wxs里面的tools -->
+<wxs src="../../../wxs/tool.wxs" module="tool"/>
+<!--第一行发布+箭头  -->
+<view style="height:{{navBarHeight}}px;" class="nav-bar-view page-row">
+    <view class="head-title-view page-row" style="height:{{headHeigt}}px;margin-top:{{headTop}}px;">
+      <!-- 头顶的发布文字 -->
+      <text>发布</text>
+      <!-- 这个是头顶一行左边的切换页面箭头 -->
+      <view class="t-view page-row">
+        <!-- 点击切换，catchtap会阻止冒泡事件发生，bindtap不会阻止冒泡事件发生 冒泡事件会触发父节点-->
+        <!-- height:{{headHeigt}}px这个的画style是动态绑定 -->
+         <view catchtap="beginBack" style="height:{{headHeigt}}px;" class="page-row jt-view">
+           <!-- 箭头图片 -->
+          <image src="../../../images/blod_jt.png"></image>
+      </view>
+      </view>
+    </view>
+ </view>
+
+<view  class="pageView">
+  <!-- 第二行，保存+发送 -->
+<view style="margin-top:{{navBarHeight}}px" class="send-view page-row-r">
+  <view catchtap="beginSave" class="send">发送</view>
+  <view catchtap="saveDraft" class="save">保存</view>
+</view>
+  <!-- 发帖文本区域 -->
+  <textarea maxlength="-1" auto-height="1" hidden="{{textareaHide}}" class="yl-text" placeholder="分享你的有料(限500字内)..." value="{{textareaText}}" bindinput="textareaClick"></textarea>
+
+
+  <view hidden="{{!textareaHide}}" class="input-text page-row" catchtap="inputTextClick">
+    <text>{{textList[0]}}<text wx:if="{{textList[1].length > 0}}" class="ht-text">#{{textList[1]}}#</text>{{textList[2]}}</text>
+  </view>
+
+  <!-- <view class="images-view page-row">
+    <block wx:for="{{imageList}}">
+      <view class="image-item page-column">
+        <image class="img" src="{{item}}" data-key="{{index}}" catchtap="previewImages" mode="aspectFill"></image>
+        <image src="/images/release/delete.png" data-key="{{index}}" catchtap="deleteImage" class="close"></image>
+      </view>
+    </block>
+  </view> -->
+
+<!-- 
+  <block wx:if="{{videoUrl.length}}">
+    <video class="video" src="{{videoUrl}}"></video>
+  </block>
+
+
+
+  <view wx:if="{{zcDict}}" class="zhongcao-view page-row">
+    <image mode="aspectFill" class="skuImage" src="{{zcDict.skuImg}}"></image>
+    <view class="n-view page-column">
+      <view class="page-row top-view">
+        <image src="/images/home/follow.png" class="love"></image>
+        <text>种草给你</text>
+      </view>
+      <view class="bot-view page-row">
+        <text class="name-text only-one">{{zcDict.skuName}}</text>
+        <text class="price-text">¥<text>{{zcDict.salePrice}}</text></text>
+      </view>
+    </view>
+    <view class="buy-view">购买</view>
+  </view> -->
+
+
+  <!-- <view wx:if="{{bfDict}}" class="bf-view page-row">
+    <image mode="aspectFill" class="logo-image" src="{{bfDict.logoImg}}"></image>
+    <view class="r-view page-column">
+      <view class="page-row top-view">
+        <image class="love" src="/images/home/follow.png"></image>
+        <text>爱心帮扶</text>
+      </view>
+      <text class="name-text only-one">{{bfDict.name}}</text>
+      <view class="page-row-r b-view">
+        <view class="buy-view">帮扶</view>
+      </view>
+    </view>
+  </view>
+ -->
+
+<!-- 
+  <view class="vote-view page-column" wx:if="{{voteDict}}">
+    <text class="title">{{voteDict.title}}</text>
+    <block wx:for="{{voteDict.options}}">
+      <text class="option">{{item}}</text>
+    </block>
+    <text class="endTime">投票截止时间：{{voteDict.endDate}}</text>
+  </view> -->
+
+
+<!-- 添加图片，发起投票，帮扶，添加种草等 -->
+  <view class="tool-view page-column">
+    <view class="tool-top-v page-row">
+      <block wx:for="{{toolList}}">
+        <view data-key="{{index}}" class="top-item page-column" catchtap="toolClick">
+          <image class="img" src="{{item.img}}"></image>
+          <text>{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+
+
+<!-- 选择文章类型行
+    <view class="page-column tool-fl-v">
+      <text class="title">选择文章类型</text>
+      <view class="page-row item-v">
+        <block wx:for="{{typeList}}">
+          <view data-key="{{index}}" class="{{typeSelectIndex == index?'item-s':'item-un-s'}}" catchtap="typeClick">{{item}}</view>
+        </block>
+      </view>
+    </view> -->
+    <!-- 添加标题 -->
+    <view class="select-view page-row" catchtap="goToAddTitle">
+      <view class="l-v page-row">
+        <image src="../../../images/release/addTitle.png"></image>
+        <text class="only-one">{{title}}</text>
+      </view>
+      <image class="jt" src="../../../images/left_jt.png"></image>
+    </view>
+    <!-- 选择地点 -->
+    <view class="select-view page-row" catchtap="goToSelectCity">
+      <view class="l-v page-row">
+        <image src="../../../images/release/diFang.png"></image>
+        <text>{{cityName}}</text>
+      </view>
+      <image class="jt" src="../../../images/left_jt.png"></image>
+    </view>
+  </view>
+
+  <view wx:if="{{isShowSave}}" class="float-view page-column" catchtap="floatClick">
+    <view class="f-b-view page-column">
+      <view data-key="0" class="f-item-view" catchtap="saveClick">保存草稿</view>
+      <view data-key="1" class="f-item-view" catchtap="saveClick">不保存</view>
+      <view data-key="2" class="f-item-view cancel" catchtap="saveClick">取消</view>
+    </view>
+  </view>
+
+  <view catchtap="hideShareClickView" wx:if="{{showMedia}}" class="share-view page-row">
+    <view class="b-view page-row">
+      <view class="item page-column" catchtap="chooseImages">
+        <image src="../../../images/release/addImag.png"></image>
+        <text>图片</text>
+      </view>
+      <view class="item page-column" catchtap="chooseVideo">
+        <image src="../../../images/release/addImag.png"></image>
+        <text>视频</text>
+      </view>
+    </view>
+  </view>
+
+  
+</view>
+

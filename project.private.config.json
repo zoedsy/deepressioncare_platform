@@ -39,6 +39,24 @@
         {
           "name": "pages/luntan/luntan",
           "pathName": "pages/luntan/luntan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/luntan",
+          "pathName": "pages/luntan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/index/index",
+          "pathName": "pages/index/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/home/home",
+          "pathName": "pages/home/home",
           "scene": null
         }
       ]

@@ -1,3 +1,4 @@
+/* pages/luntan/luntan.wxss */
 .page{
   height:100%;
   display:flex;
@@ -10,7 +11,7 @@
   right:0;
   background-color:#f5f8fa;
 }
-  
+
 .search{
   background: #fff;
 }
@@ -24,7 +25,15 @@
   margin-left: 15rpx;
   float: left;
 }
-
+.posts{
+  position:fixed;
+  width:10%;
+  height:10%;
+  bottom:0%;
+  right: 45%;
+  /* 使得图标悬浮 */
+  z-index: 101;
+}
   .list-block{
     height:100%;
     display:flex;
@@ -32,9 +41,10 @@
     flex-direction:column;
     align-items:center;
     justify-content:center;
+    flex-wrap: wrap;
   }
   .goods-block{
-    width: 145px;
+    width:47%;
     height: 20%;
     margin: 6px;
     background: #fff;
@@ -93,5 +103,6 @@
     height: 20px;
     float: right;
   }
+
 
   
