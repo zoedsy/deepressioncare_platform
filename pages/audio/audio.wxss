@@ -1,0 +1,4 @@
+button{
+    margin: 20rpx;
+    font-size: 30rpx;
+  }
