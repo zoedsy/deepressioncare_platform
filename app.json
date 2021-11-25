@@ -3,7 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/home/home",
-    "pages/diagnosis/diagnosis",
+    "pages/diagnose/diagnose",
     "pages/audio/audio",
     "pages/chat/chat",
     "pages/luntan/luntan",
