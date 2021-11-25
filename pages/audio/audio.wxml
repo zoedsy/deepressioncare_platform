@@ -1,0 +1,6 @@
+
+<!--录音按钮-->
+<button type="primary" bindtap="btnClick1">开始录音</button>
+<button type="primary" bindtap="btnClick2">录音暂停</button>
+<button type="primary" bindtap="btnClick3">录音继续</button>
+<button type="primary" bindtap="btnClick4">录音停止</button>

@@ -1,18 +1,32 @@
-// pages/diagnose/diagnose.js
+// pages/diagnosis/diagnosis.js
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
 
   },
-
+  Patient:function (name,department,date) {
+    this.setData({
+      Name:name,
+      Deparment:department,
+      Date:date,
+    })
+      
+    },
+    
+  //上传音频事件处理
+  bindViewTap:function(){
+    wx.navigateTo({
+      url: '/pages/audio/audio'
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.Patient('张玉','精神科室','2021-11-20')
   },
 
   /**

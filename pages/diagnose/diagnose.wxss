@@ -1,1 +1,74 @@
-/* pages/diagnose/diagnose.wxss */
+.infomation{
+    position: relative;
+    height: 240px;
+    width: 100%;
+    background-color: #37d27b;   
+} 
+
+.infomation0{
+    display: flex;
+}
+
+.date{
+    margin-left: 80px;
+}
+
+.name{
+    margin-top: 35px;
+    position: absolute;
+    left: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    
+}
+.department, .date{
+    /* margin-top: 25px; */
+    position: absolute;
+    left: 60px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+    
+}
+
+.mask{
+    width: 100%;
+    height: 80px;
+    background-color: rgba(0,0,0,.1);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.icon-jinrujiantouxiao{
+    color: #fff;
+}
+.iconfont{
+    display: flex;
+    margin-top: 30px;
+}
+
+.img{
+    margin: 10px;
+    width: 100%;
+    display:flex;                   
+    vertical-align: middle;           
+}
+.audio:before{
+    content: '';
+    vertical-align:text-bottom;
+    display:inline-block;
+   
+    margin-left: 50px;
+    font:SimHei;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.tip{
+    font-size: 14px;
+    vertical-align: middle;
+    margin-left: 25%;
+    color:rgb(126, 122, 122);
+   
+}
