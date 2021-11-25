@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "navigationBarTitleText": "上传数据",
+  "navigationBarTextStyle": "black"
 }
