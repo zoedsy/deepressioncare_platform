@@ -1,41 +1,43 @@
 <div>
     <!-- 患者信息 -->
     <view class="infomation">
-        
+
         <!-- 姓名 -->
         <view class="iconfont icon-yousanjiaoxing">
-             <view class="name">{{Name}}</view>
+            <view class="name">{{Name}}</view>
         </view>
 
-       <view class="information0" >
+        <view class="information0">
             <!-- 科室/ -->
             <view class="department">{{Deparment}}</view>
-            
+
             <!-- 诊断时间 -->
-            <view class="date">{{Date}}</view>     
-           
-       </view>
-        <view class="mask"><view class="iconfont icon-jiantouyou"></view></view>
-      
+            <view class="date">{{Date}}</view>
+
+        </view>
+        <view class="mask">
+            <view class="iconfont icon-jiantouyou"></view>
+        </view>
+
     </view>
-    
+
 
 
     <!-- 图片 -->
     <view>
-        <image src="baby.png" class="img" mode="aspectFill"></image>
+        <image src="../../images/baby.png" class="img" mode="aspectFill"></image>
     </view>
-      
+
 
     <!-- 上传音频 -->
     <div bindtap="bindViewTap" class="iconfont icon-tianjia">
         <text class="audio">
             添加音频
-        </text>         
+        </text>
     </div>
-        <div class="tip"><!--style="display:flex;justify-content: center;align-items: center;"> -->
-            请上传您的长达1min的音频数据
-        </div>
-    
+    <div class="tip">
+        <!--style="display:flex;justify-content: center;align-items: center;"> -->
+        请上传您的长达1min的音频数据
+    </div>
+
 </div>
-  
