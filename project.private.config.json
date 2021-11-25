@@ -57,6 +57,12 @@
         {
           "name": "pages/home/home",
           "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/luntan/release/selectCity/selectCity",
+          "pathName": "pages/luntan/release/selectCity/selectCity",
           "scene": null
         }
       ]

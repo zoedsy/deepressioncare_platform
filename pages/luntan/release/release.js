@@ -33,7 +33,13 @@ Page({
     post_id:"",
     isChanged:false,
   },
- 
+
+// @title    onLoad
+// @description  点击加载事件
+// @auth      shiyidu            
+// @param     e
+// @return   无
+
   onLoad: function () {
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');
@@ -55,6 +61,12 @@ Page({
     }
 
   },
+
+  // @title    onShow
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   onShow(){
     var zcString = wx.getStorageSync('zcList');
     console.log(zcString);
@@ -89,6 +101,13 @@ Page({
       });
     }
   },
+
+  
+// @title    textareaClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   textareaClick(e){
     var value = e.detail.value;
     if (value.length > 500){
@@ -104,8 +123,13 @@ Page({
     });
     this.data.isChanged = true;
 
-
   },
+
+  // @title    typeClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   typeClick(e){
     var index = e.currentTarget.dataset.key;
     this.setData({
@@ -113,6 +137,11 @@ Page({
     })
   },
 
+// @title    inputTextClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   inputTextClick(){
     this.setData({
       textareaHide:false,
@@ -120,6 +149,12 @@ Page({
 
     });
   },
+
+// @title    toolClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   toolClick(e){
     if (this.data.textareaText.length > 0){
       this.setData({
@@ -141,6 +176,12 @@ Page({
   },
 
   // 跳转到相应的页面
+
+  // @title    goToTouPiao
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   goToTouPiao(){
     wx.navigateTo({
       url: '/pages/release/vote/vote',
@@ -159,12 +200,26 @@ Page({
   //     url: '/pages/index/bfZhongCao/bfZhongCao',
   //   })
   // },
+
   // 选择图像
+  // @title    goToChooseImages
+// @description 选择图像
+// @auth      shiyidu            
+// @param     e
+// @return   无
   goToChooseImages(){
     this.chooseImages();
     // this.chosseMedia();
   },
   // 返回初始页面
+
+
+// 选择图像
+// @title    beginBack
+// @description 返回初始页面
+// @auth      shiyidu            
+// @param     e
+// @return   无
   beginBack(){
     if (this.data.isChanged){
       this.setData({
@@ -173,9 +228,14 @@ Page({
     } else {
       this.backHome();
     }
-   
   },
+
   // 核验是否需要保存
+  // @title    checkNeedSave
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   checkNeedSave(){
     if (this.data.inputText.length > 0){
       return true;
@@ -201,11 +261,27 @@ Page({
     return false;
   },
 
+
+// 选择图像
+// @title    floatClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   floatClick(){
     this.setData({
       isShowSave:false
     });
   },
+
+
+
+// 选择图像
+// @title    saveClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   saveClick(e){
     var index = parseInt(e.currentTarget.dataset.key);
     this.setData({
@@ -221,16 +297,40 @@ Page({
   },
 
   // 保存草稿
+
+  
+
+// 选择图像
+// @title   saveDraft
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   saveDraft(){
     this.data.needToHome = false;
     this.savePostClick(-1);
   },
+
+  
+
+// 选择图像
+// @title    beginSave
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   beginSave(){
     this.data.needToHome = true;
     this.savePostClick(1);
   },
 
-  // 选择城市
+// 选择城市
+// 选择图
+// @title    goToSelectionCity
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   goToSelectCity(){
     wx.navigateTo({
       url: '../release/selectCity/selectCity',

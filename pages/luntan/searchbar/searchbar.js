@@ -68,6 +68,11 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
+    // @title    onLoad
+// @description  加载数据
+// @auth      shiyidu            
+// @param     e
+// @return   无
   onLoad: function (options) {
     //hots变量即为数据中的hots
     var hots = this.data.hots;

@@ -1,28 +1,53 @@
 <!--pages/luntan/release/selectCity/selectCity.wxml-->
-<block wx:if="{{isAuthorization}}">
-  <template data="{{isAuthorization}}" is="alert_location"></template>
-</block>
+
+<!-- <block wx:if="{{isAuthorization}}"> -->
+  <!-- vue里面的东西 -->
+  <!-- <template data="{{isAuthorization}}" is="alert_location"></template> -->
+<!-- </block> -->
+
+
 <view class='page-column'>
+
+  <!-- 城市搜索 -->
+  <!-- 本来head-view这个是没有隐藏的了，但是因为点击了goToSearch所以说隐藏了 -->
+  <!-- search最初为false  -->
+  <!-- 点击搜索后search变为true -->
   <view class='head-view' hidden='{{search}}'>
     <view class='tab-view' bindtap='goToSeach'>城市名称</view>
   </view>
+  <!--  -->
   <view class='page-row temp-view' hidden='{{search}}'>
+
+
+
     <scroll-view class='page-column scroll-view' style='width:{{width}}px;' scroll-y="true" scroll-into-view="{{toView}}">
+
+      <!-- 当前（定位中...   全国） -->
       <view id="current" class='scoll-head-view page-column'>
+        <!-- -->
         <text class='title-text'>当前</text>
         <view class='content-view page-row'>
-          <view class='current-view' style='min-width:{{cityItemWidth - 20}}px' bindtap='currentClick'>{{currentCity}}</view>
-            <view class='current-view' style='min-width:{{cityItemWidth - 20}}px' bindtap='allCityClick'>全国</view>
+          <!-- 这里有做一个定位 -->
+          <view class='current-view' bindtap='currentClick'>{{currentCity}}</view>
+          <!-- 这里有一个全国的按钮 -->
+            <view class='current-view' bindtap='allCityClick'>全国</view>
         </view>
       </view>
+
+      <!-- 热门城市 -->
       <view id="host" class='scoll-head-view page-column'>
         <text class='title-text'>热门城市</text>
+
         <view class='content-view page-row'>
+          <!-- 热门城市list -->
           <block wx:for="{{hostCityList}}" wx:for-item="dic">
             <view id="host_{{index}}" class='city-view' style='width:{{cityItemWidth}}px' bindtap='hostCityClick'>{{dic.name}}</view>
           </block>
+
         </view>
       </view>
+
+
       <block wx:for="{{dataList}}">
         <view id="to_{{item.subFix}}" class='scoll-head-view page-column'>
           <text class='title-text'>{{item.subFix}}</text>
@@ -32,14 +57,20 @@
             </block>
           </view>
         </view>
-      </block>
+      </block> 
+
+   
     </scroll-view>
-    <view class='right-view page-column'>
+
+    <!-- 右侧乱码的来源 -->
+    <!-- <view class='right-view page-column'>
       <block wx:for="{{indexList}}">
         <text id="{{index}}" style='height:{{subFixHeight}}px' bindtap='indexClick'>{{item}}</text>
       </block>
-    </view>
+    </view> -->
   </view>
+
+
   <view class='search-back-view page-column' hidden='{{!search}}'>
     <view class='search-view page-row'>
       <view class='input-view page-row'>
@@ -53,6 +84,8 @@
       </view>
       <text class='cancel-text base-color' bindtap='cancelClick'>取消</text>
     </view>
+
+
     <scroll-view class='search-scroll page-column'>
       <block wx:for="{{searchDataList}}">
         <view id="search_{{index}}" bindtap='searchViewClick' class='city-item-view'>
@@ -60,5 +93,8 @@
         </view>
       </block>
     </scroll-view>
+
+
   </view>
+
 </view>

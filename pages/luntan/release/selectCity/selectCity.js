@@ -2,27 +2,38 @@
 //这一块要注意就是调用的地区的函数
 //获取应用实例
 var app = getApp()
+//获取qq地图的函数
 var QQMapWX = require('../../../../utils/qqmap-wx-jssdk.js');
 import Api from '../../../../api/api.js';
+//导入相应接口
 const api = new Api();
-
-
+//qq地图sdk变量
 var qqmapsdk;
 Page({
   data: {
-   width:300,
+  //宽度
+   width:394,
+   //是否搜索（默认否）
    search:false,
-   isAuthorization: false,
+   //
+  //  isAuthorization: false,
+   //清除按钮隐藏
    clearButtonHidden:true,
+  //搜索的输入变量
    seachInputValue:"",
+   //目前的城市（定位
    currentCity:"定位中...",
    cityItemWidth:80,
+   
+   //
    subFixHeight:20,
    toView:"current",
    searchDataList: [],
    dataList:[],
    allCitysList:[],
    indexList:["当前","热门"],
+
+   //主要的城市
    hostCityList:[
      {"name":"北京市"},
      { "name": "上海市" },
@@ -32,7 +43,7 @@ Page({
      { "name": "苏州市" },
      { "name": "杭州市" }, 
      { "name": "南京市" },
-     { "name": "天津市" },
+     {"name": "天津市" },
      { "name": "成都市" },
      { "name": "合肥市" },
      { "name": "郑州市" },
@@ -44,10 +55,18 @@ Page({
    ],
   },
 
+  
+// @title    onLoad
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   onLoad: function (options) {
+    //创建qqmap 对象
     qqmapsdk = new QQMapWX({
       key: app.qqmapkey
     });
+
     var width = wx.getSystemInfoSync().windowWidth;
     var w = (width - 40 - 40) / 4.0; 
     this.setData({
@@ -57,6 +76,13 @@ Page({
     this.getLocationRole();
     this.getCitylist();
   },
+
+  
+// @title    indexClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   indexClick(e){
     var id = parseInt(e.currentTarget.id+"");
     var that = this;
@@ -72,6 +98,13 @@ Page({
     that.setData({ toView: toView });
 
   },
+
+  
+// @title    searchInput
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   searchInput(e){
     console.log("===" + e.detail.value);
     var value = e.detail.value;
@@ -100,6 +133,13 @@ Page({
     console.log(JSON.stringify(arr));
 
   },
+
+  
+// @title    clearSearchInput
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   clearSearchInput(){
     this.setData({
       allCitysList:[],
@@ -107,16 +147,37 @@ Page({
       clearButtonHidden: true
     });
   },
+
+  
+// @title    goToSearch
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   goToSeach(){
     this.setData({
       search: true,
     });
   },
+
+  
+// @title    cancelClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   cancelClick(){
     this.setData({
       search:false,
     });
   },
+
+  
+// @title    currentClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   currentClick(){
     if (this.data.currentCity == "定位中...") {
 
@@ -124,21 +185,49 @@ Page({
       this.pop(this.data.currentCity);
     }
   },
+
+  
+// @title    allCityClick
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   allCityClick(){
     this.pop("全国");
   },
+
+  
+// @title    hostCityClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   hostCityClick(e){
     var idString = e.currentTarget.id.replace("host_","");
     var index = parseInt(idString);
     var cityName = this.data.hostCityList[index].name;
     this.pop(cityName);
   },
+
+  
+// @title    searchViewClick
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   searchViewClick(e){
     var idString = e.currentTarget.id.replace("search_", "");
     var index = parseInt(idString);
     var cityName = this.data.searchDataList[index];
     this.pop(cityName);
   },
+
+  
+// @title    listCityClick
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   listCityClick(e){
     var that = this;
     var idString = e.currentTarget.id;
@@ -156,6 +245,13 @@ Page({
       }
     }
   },
+
+  
+// @title    getCityList
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   getCitylist: function () {
     var that = this;
     var map = {};
@@ -191,6 +287,13 @@ Page({
       }
     });
   },
+
+  
+// @title    getLocationRole
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
   getLocationRole: function () {
     var that = this;
     wx.getSetting({
@@ -208,6 +311,13 @@ Page({
       }
     })
   },
+
+  
+// @title    openSettinged
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   openSettinged(e) {
     var that = this;
     that.setData({
@@ -228,6 +338,13 @@ Page({
       })
     }
   },
+
+  
+// @title    getCurrentLocation
+// @description
+// @auth      shiyidu            
+// @param     e
+// @return   无
   getCurrentLoaction: function () {
     var that = this;
     wx.showLoading({

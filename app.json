@@ -16,7 +16,8 @@
     "pages/luntan/release/selectCity/selectCity",
     "pages/luntan/release/title/title",
     "pages/luntan/release/vote/vote",
-    "pages/luntan/release/zhichi/zhichi"
+    "pages/luntan/release/zhichi/zhichi",
+    "pages/luntan/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
