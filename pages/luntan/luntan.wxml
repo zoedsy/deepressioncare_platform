@@ -17,7 +17,7 @@
  
   <scroll-view class="list-block" scroll-y="true">
     <block wx:for="{{goods}}" wx:key="{{item.id}}">
-      <navigator class="goods-block" url="./goods-info/goods-info">
+      <navigator class="goods-block" url="./detail/detail">
         <view class="good-info">
           <view class="good-img">
             <image src="{{item.good_img}}"/>

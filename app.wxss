@@ -10,3 +10,31 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+.page-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-row-r {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+.page-column {
+  /* width:100%; */
+  /* 采用flex布局 */
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* 这个没有用到 */
+/* .page-view { */
+  /* width: 750rpx; */
+  /* width: 10%; */
+  /* background-color: white; */
+  /* display: flex; */
+  /* flex-direction: column; */
+/* } */

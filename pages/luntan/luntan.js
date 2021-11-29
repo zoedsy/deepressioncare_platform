@@ -132,6 +132,12 @@ Page({
   onShareAppMessage: function () {
   
   },
+
+// @title    addPosts
+// @description 发帖
+// @auth      shiyidu            
+// @param     e
+// @return   无
   addPosts:function(){
     wx.navigateTo({
       url: '../luntan/release/release',
@@ -139,5 +145,7 @@ Page({
       fail:function(res){},
       complete:function(res){}
     })
+
+
   }
 })

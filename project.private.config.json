@@ -83,6 +83,11 @@
           "pathName": "pages/doctor/doctor",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/luntan/release/selectCity/selectCity",
+          "pathName": "pages/luntan/release/selectCity/selectCity",
+          "scene": null
         }
       ]
     }

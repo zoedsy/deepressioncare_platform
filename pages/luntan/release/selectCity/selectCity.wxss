@@ -1,4 +1,5 @@
 /* pages/luntan/release/selectCity/selectCity.wxss */
+/*  */
 .scroll-view{
   width: 100%;
   padding-bottom: 10px;
@@ -9,7 +10,7 @@
   top: 0;
   z-index: 10;
   position: fixed;
-  height: 40px;
+  height: 40rpx;
   width: 100%;
   background-color: #F0F0F0;
   border-bottom-style: solid;
@@ -47,6 +48,8 @@
   font-size: 14px;
   color: rgb(154, 154, 154);
 }
+
+/* 定位中... +全国 分别都有 */
 .content-view{
   padding-left: 10px;
   padding-bottom: 10px;
@@ -54,8 +57,11 @@
   width: 100%;
   flex-wrap: wrap;
 }
+
+
 .current-view{
   height: 30px;
+  width:100%;
   border-style: solid;
   border-color: rgb(222, 222, 222);
   border-radius: 3PX;

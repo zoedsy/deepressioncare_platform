@@ -18,7 +18,8 @@
     "pages/luntan/release/title/title",
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
-    "pages/tipDetail/tipDetail"
+    "pages/tipDetail/tipDetail",
+    "pages/luntan/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
