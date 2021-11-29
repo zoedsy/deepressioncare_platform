@@ -9,6 +9,8 @@
   background-color: #EFEFF4;
   border-top: 1rpx solid #D7D6DC;
   border-bottom: 1rpx solid #D7D6DC;
+  /*height: 50rpx;*/
+  margin-top: 100rpx;
 }
 .weui-icon-search_in-box {
   position: absolute;
@@ -43,6 +45,51 @@
   color: #09BB07;
   white-space: nowrap;
 }
+
+/* 导航栏布局相关 */
+.navbar {
+  width: 100%;
+  height: 90rpx;
+  /* 文本不换行 */
+  white-space: nowrap;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+  align-items: center;
+  /* 固定在顶部 */
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.nav-item {
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  height: 100%;
+  display: inline-block;
+  /* 普通文字大小 */
+  font-size: 28rpx;
+}
+
+.nav-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 4rpx;
+  box-sizing: border-box;
+}
+
+.tab-on {
+  color: #000080;
+  /* 选中放大 */
+  font-size: 38rpx !important;
+  font-weight: 600;
+  border-bottom: 4rpx solid #000080 !important;
+}
+
 .floor{
   border-bottom: solid #e9e9e9;
   display: flex;
@@ -75,6 +122,13 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.floor .info .category{
+  position: absolute;
+  left:1%;
+  bottom: 8%;
+  color: #b4afae;
 }
 
 .floor .info .read{

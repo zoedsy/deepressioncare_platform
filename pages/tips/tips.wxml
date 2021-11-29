@@ -9,19 +9,27 @@
             <!-- 搜索按钮,调用搜索查询方法 -->
             <view class="weui-search-bar__cancel-btn" bindtap='search'>搜索</view>
 </view>
-
-<scroll-view scroll-y="false">
+<!-- 导航栏 -->
+<scroll-view scroll-x class="navbar" scroll-with-animation scroll-left="{{scrollLeft}}rpx">
+  <view class="nav-item" wx:for="{{tabs}}" wx:key="id" bindtap="tabSelect" data-id="{{index}}">
+    <view class="nav-text {{index==tabCur?'tab-on':''}}">{{item.name}}</view>
+  </view>
+</scroll-view>
+<!-- 列表 -->
+<scroll-view scroll-y="true">
   <view class="floor"
         wx:for="{{article_list}}"
-        wx:key="id"
-        bindtap="">
+        wx:key="knowledgeId"
+        data-index="{{item.knowledgeId}}"
+        bindtap="toDetail">
         <view class="picture">
-            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+            <image class="img" src="{{item.coverImageUrl}}" mode="scaleToFill" />
         </view>  
         <view class="info">
-            <view class="info_title">{{item.address}}</view>
-            <view class="read">阅读{{item.read}}万</view>
-            <view class="like">赞{{item.like}}</view>
+            <view class="info_title">{{item.title}}</view>
+            <view class="category">{{item.category}}</view>
+            <view class="read">阅读{{item.readAmount}}</view>
+            <view class="like">赞{{item.likes}}</view>
         </view>  
     </view>
 </scroll-view>

@@ -46,7 +46,7 @@ autoplay current="0" interval="5000" duration="1000" circular >
     <text class="iconfont icon-youjiantou"></text>
   </view>
 </view>
-
+ 
 <scroll-view scroll-y="false">
   <view class="floor"
         wx:for="{{article_list}}"
@@ -54,12 +54,13 @@ autoplay current="0" interval="5000" duration="1000" circular >
         bindtap=""
         hidden="{{first}}">
         <view class="picture">
-            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+            <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
         </view>  
         <view class="info">
-            <view class="info_title">{{item.address}}</view>
-            <view class="read">阅读{{item.read}}万</view>
-            <view class="like">赞{{item.like}}</view>
+            <view class="info_title">{{item.knoCardTitle}}</view>
+            <view class="category">{{item.categoryName}}</view>
+            <view class="read">阅读{{item.knoCardRead}}</view>
+            <view class="like">赞{{item.knoCardLikes}}</view>
         </view>  
   </view> 
   <view class="doctor_floor"

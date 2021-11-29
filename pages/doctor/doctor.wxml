@@ -3,8 +3,8 @@
         wx:for="{{doctor_list}}"
         wx:item="item"
         wx:key="id"
-        bindtap=""
-        hidden="{{second}}">
+        bindtap="toDetail"
+        bindscrolltolower="scrolltolower">
         <view class="avatar">
             <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
         </view>   

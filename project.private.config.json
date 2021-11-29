@@ -57,6 +57,31 @@
         {
           "name": "pages/home/home",
           "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tips/tips",
+          "pathName": "pages/tips/tips",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tipDetail/tipDetail",
+          "pathName": "pages/tipDetail/tipDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tipDetail/tipDetail",
+          "pathName": "pages/tipDetail/tipDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/doctor/doctor",
+          "pathName": "pages/doctor/doctor",
+          "query": "",
           "scene": null
         }
       ]

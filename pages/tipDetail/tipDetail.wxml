@@ -1,0 +1,25 @@
+<view class="main">
+<view class="header">
+  <view class="title">{{article.articletitle}}</view>
+  <view class="note">
+      <view class="from">{{article.cat_name}}</view>
+      <view class="time">{{article.add_time}}</view>
+      <view class="like" bindtap="changeCollect">
+        <text wx:if="{{!is_liked}}" class="iconfont icon-dianzan_kuai"></text> 
+        <text wx:else class="iconfont icon-dianzan_kuai-copy"></text> 
+      </view>
+  </view>
+  <view class="divLine"></view>
+</view>
+
+<scroll-view class="scroll-block" scroll-y>
+<view class="scroll">
+    <view class="scrbox">
+        <view class="txt">{{article.content}}</view>
+        <video src="{{article.video_url}}"></video>
+    </view>
+</view>
+</scroll-view>
+</view>
+
+
