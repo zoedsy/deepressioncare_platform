@@ -33,8 +33,29 @@ Page({
   btnClick3: function () {
     this.recorderManager.resume()
   },
-  //录音停止
+  //录音提交
   btnClick4: function () {
-    this.recorderManager.stop()
+    this.recorderManager.stop()  
+    wx.showModal({
+      // 音频上传成功
+      title: "您的音频已上传成功！",
+      // 提示信息
+      content: '点击"确定"查看详细流程',
+      
+      success: function (res) {
+        // 点击确定查看详细信息
+        if (res.confirm) {
+  
+          wx.reLaunch({
+            url: '../check/check'
+          })
+          // 其他取消
+        } else {
+        }
+  
+      }
+  
+    })
   }
+
 })
