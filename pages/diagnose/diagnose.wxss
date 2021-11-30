@@ -1,6 +1,6 @@
-.infomation{
+.infomation{    
     position: relative;
-    height: 240px;
+    height: 200px;
     width: 100%;
     background-color: #37d27b;   
 } 
@@ -31,7 +31,7 @@
     color: #fff;
     
 }
-
+/* 
 .mask{
     width: 100%;
     height: 80px;
@@ -42,10 +42,10 @@
 }
 .icon-jinrujiantouxiao{
     color: #fff;
-}
+} */
 .iconfont{
     display: flex;
-    margin-top: 30px;
+    margin-top: 80px;
 }
 
 .img{
