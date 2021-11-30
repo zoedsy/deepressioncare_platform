@@ -109,7 +109,7 @@ page {
     background-color: #fff;
     padding: 30rpx ;
     font-size: 40rpx;
-  }
+  } 
   .user_content .user_aboutus .us_arrow{
     width: 15px;   
     height: 15px;   

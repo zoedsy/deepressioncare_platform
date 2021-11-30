@@ -1,6 +1,6 @@
 // pages/person/index.js
 Page({
-
+ 
 
 
   data:{

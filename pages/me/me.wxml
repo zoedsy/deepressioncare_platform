@@ -21,7 +21,7 @@
         <view class="coupon">优惠券（张）</view>
         <!-- <text >优惠券（张）</text> -->
     </view>
-</view> 
+</view>  
 
 <view class="user_content" >
     <navigator url="/pages/file/index" >
