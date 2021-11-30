@@ -1,13 +1,8 @@
-
-
-
-
-
 @font-face {
   font-family: "iconfont"; /* Project id 2912633 */
-  src: url('//at.alicdn.com/t/font_2912633_g7r33jx6lb.woff2?t=1637410017555') format('woff2'),
-       url('//at.alicdn.com/t/font_2912633_g7r33jx6lb.woff?t=1637410017555') format('woff'),
-       url('//at.alicdn.com/t/font_2912633_g7r33jx6lb.ttf?t=1637410017555') format('truetype');
+  src: url('//at.alicdn.com/t/font_2912633_9c8e4yv7eta.woff2?t=1638182745735') format('woff2'),
+       url('//at.alicdn.com/t/font_2912633_9c8e4yv7eta.woff?t=1638182745735') format('woff'),
+       url('//at.alicdn.com/t/font_2912633_9c8e4yv7eta.ttf?t=1638182745735') format('truetype');
 }
 
 .iconfont {
@@ -18,12 +13,25 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-yiwancheng:before {
+  content: "\e612";
+  font-size: 35px;
+  color:cornflowerblue;
+}
+
+.icon-daibanshixiang:before {
+  content: "\e641";
+  font-size: 35px;
+  color: coral;
+}
+
 .icon-jiantouyou:before {
   content: "\e62d";
   color: #fff;
   margin-top: -3px;
   margin-left: 350px;
 }
+
 
 .icon-yousanjiaoxing:before {
   content: "\e644";
@@ -33,6 +41,7 @@
   margin-bottom: 25px;
   color: #f0db52;
 }
+
 .icon-tianjia:before {
   content: "\e64f";
   margin-right: 20px;
@@ -43,3 +52,18 @@
   vertical-align:text-bottom;
   color: rgb(197, 191, 191);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
