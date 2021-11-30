@@ -19,6 +19,7 @@
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
