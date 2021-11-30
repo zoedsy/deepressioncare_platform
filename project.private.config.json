@@ -61,6 +61,30 @@
           "scene": null
         },
         {
+          "name": "pages/tips/tips",
+          "pathName": "pages/tips/tips",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tipDetail/tipDetail",
+          "pathName": "pages/tipDetail/tipDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/tipDetail/tipDetail",
+          "pathName": "pages/tipDetail/tipDetail",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/doctor/doctor",
+          "pathName": "pages/doctor/doctor",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "pages/luntan/release/selectCity/selectCity",
           "pathName": "pages/luntan/release/selectCity/selectCity",
           "scene": null
