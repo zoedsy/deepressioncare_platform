@@ -1,4 +1,4 @@
-// pages/tips/tips.js
+// pages/home/tips/tips.js
 Page({
 
   /**
@@ -58,7 +58,7 @@ Page({
 toDetail:function(e){
   let index=e.currentTarget.dataset.index;
   wx.navigateTo({
-    url: '/pages/tipDetail/tipDetail?index='+index,
+    url: '/pages/home/tipDetail/tipDetail?index='+index,
   })
 },
 

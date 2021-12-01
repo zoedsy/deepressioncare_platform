@@ -1,3 +1,3 @@
-<navigator class="newFile" url="/pages/information/index">
+<navigator class="newFile" url="/pages/me/information/index">
     <button  type="primary"> 新建档案 </button>
 </navigator>

@@ -1,4 +1,4 @@
-/* pages/tipDetail/tipDetail.wxss */
+/* pages/home/tipDetail/tipDetail.wxss */
 .main{
   position: absolute;
   width: 100%;

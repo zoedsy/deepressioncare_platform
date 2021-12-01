@@ -4,33 +4,33 @@
 
         <!-- 姓名 -->
         <view class="iconfont icon-yousanjiaoxing">
-            <view class="name">{{Name}}</view>
+            <view class="name" bindtap='goToPerson'>{{Name}}</view>
         </view>
 
         <view class="information0">
             <!-- 科室/ -->
-            <view class="department">{{Deparment}}</view>
+            <view class="department" bindtap='goToPerson'>{{Deparment}}</view>
 
             <!-- 诊断时间 -->
-            <view class="date">{{Date}}</view>
+            <view class="date" bindtap='goToPerson'>{{Date}}</view>
 
         </view>
-        <view class="mask">
+        <!-- <view class="mask">
             <view class="iconfont icon-jiantouyou"></view>
-        </view>
+        </view> -->
 
     </view>
 
 
 
     <!-- 图片 -->
-    <view>
+    <!-- <view>
         <image src="../../images/baby.png" class="img" mode="aspectFill"></image>
-    </view>
+    </view> -->
 
 
     <!-- 上传音频 -->
-    <div bindtap="bindViewTap" class="iconfont icon-tianjia">
+    <div bindtap='bindViewTap' class="iconfont icon-tianjia">
         <text class="audio">
             添加音频
         </text>

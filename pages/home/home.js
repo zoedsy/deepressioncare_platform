@@ -124,7 +124,7 @@ Page({
   more:function(){
     if(this.data.navID==1){
       wx.navigateTo({
-        url: '/pages/tips/tips',
+        url: '/pages/home/tips/tips',
       })
     }
     else if(this.data.navID==2){

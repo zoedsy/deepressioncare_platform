@@ -1,0 +1,26 @@
+<view class="box">
+    <!-- 医生信息 -->
+    <view class="doctor_info">
+        <view class="profile">
+            <view class="pic" style="background-image: url('../../images/profile.png'); background-size: 110%;"></view>
+        </view>
+        <view class="intro">
+            <view class="Name" style="font-size: 20px;">{{Name}}</view>
+            <view class="admin"style="font-size: 16px;" >{{Admin + Position}}</view>
+            <!-- <view class="position"></view> -->
+        </view>
+    </view>
+    <!-- 医生擅长 -->
+    <view class="good_at">
+        <view class="title">医生擅长</view>
+        <view class="content">子宫颈病变及子宫颈HPV感染、反复发作阴道炎及盆腔炎、发福流产保胎、孕前保健咨询、不宁症、月经不调子宫颈病变及子宫颈HPV感染、反复发作阴道炎及盆腔炎、发福流产保胎、孕前保健咨询、不宁症、月经不调</view>
+    </view>
+    <!-- 医生建议 -->
+    <view class="suggest_box">
+        <view class="suggest_title">医生建议</view>
+        <view class="suggest">
+            <view class="suggest_content"><text class="col-4 font-break">××××××××××××××××××××××××××××××××××××××××××××××××××××××××××××</text></view>
+        </view>
+        <button bindtap='goToAsk'>快速提问</button>
+    </view>
+</view>
