@@ -6,6 +6,7 @@
     "pages/home/home",
     "pages/home/tips/tips",
     "pages/home/tipDetail/tipDetail",
+    "pages/home/doctor/doctor",
 
     "pages/diagnose/diagnose",
     "pages/diagnose/eva_result/eva_result",
@@ -14,9 +15,7 @@
     
     "pages/chat/chat",
    
-    
-
-    "pages/doctor/doctor",
+  
 
     "pages/luntan/luntan",
     "pages/luntan/searchbar/searchbar",
