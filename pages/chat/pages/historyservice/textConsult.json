@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "历史记录",
+  "usingComponents": {
+    "Tabs":"../../component/tabs/Tabs"
+    
+  }
+}
