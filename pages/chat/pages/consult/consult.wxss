@@ -1,0 +1,28 @@
+/* pages/zixun/zixun.wxss */
+page{
+    background: #F5F5F5;
+    text-align: center;
+}
+.button1{
+    background: #fff !important;
+    border-radius: 5rpx !important;
+}
+.button2{
+    background: #fff !important;
+    border-radius: 5rpx !important;
+}
+.lighttext{
+    color: #5a5a5a;
+    margin-top: 10px;
+    margin-bottom: 40px;
+}
+.greentext{
+    color: 	#32CD32;
+    margin-top: 10px;
+  	
+}
+.img1{
+    margin-top: 20px;
+    width: 240px;
+    height: 180px;
+}

@@ -1,0 +1,19 @@
+{
+    "pages": [
+        "pages/consult/consult",
+        "pages/quickquestion/quickquestion",
+        "pages/doctor_list/doctor_list",
+        "pages/logs/logs",
+        "pages/historyservice/textConsult",
+        
+        "pages/doctor_list/doctor1/doctor1"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}
