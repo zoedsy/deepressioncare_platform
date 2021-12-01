@@ -18,7 +18,7 @@ Page({
   //上传音频事件处理
   bindViewTap:function(){
     wx.navigateTo({
-      url: '/pages/audio/audio'
+      url: '/pages/diagnose/audio/audio'
     })
   },
 // 跳转到个人页面
@@ -27,7 +27,7 @@ Page({
       // 跳转个人页面
       // url: '../Person/person',
       // 测试案例
-      url: '/pages/check/check'
+      url: '/pages/diagnose/check/check'
     })
   },
   

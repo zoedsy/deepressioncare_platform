@@ -2,26 +2,38 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
+
     "pages/home/home",
+    "pages/home/tips/tips",
+    "pages/home/tipDetail/tipDetail",
+
     "pages/diagnose/diagnose",
-    "pages/eva_result/eva_result",
-    "pages/check/check", 
-    "pages/audio/audio"  
+    "pages/diagnose/eva_result/eva_result",
+    "pages/diagnose/check/check", 
+    "pages/diagnose/audio/audio" ,
+    
     "pages/chat/chat",
-    "pages/luntan/luntan",
-    "pages/me/me",
-    "pages/tips/tips",
+   
+    
+
     "pages/doctor/doctor",
-    "pages/posts/posts",
-    "pages/luntan/goods-info/goods-info",
+
+    "pages/luntan/luntan",
     "pages/luntan/searchbar/searchbar",
     "pages/luntan/release/release",
     "pages/luntan/release/selectCity/selectCity",
     "pages/luntan/release/title/title",
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
-    "pages/tipDetail/tipDetail",
-    "pages/luntan/detail/detail"
+    "pages/luntan/detail/detail",
+
+ 
+    "pages/me/me",
+    "pages/me/file/index",
+    "pages/me/help/index",
+    "pages/me/record/index",
+    "pages/me/information/index"
+
 
   ],
   "window": {

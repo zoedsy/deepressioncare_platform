@@ -87,6 +87,13 @@
         {
           "name": "pages/luntan/release/selectCity/selectCity",
           "pathName": "pages/luntan/release/selectCity/selectCity",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/chat",
+          "pathName": "pages/chat/chat",
+          "query": "",
           "scene": null
         }
       ]

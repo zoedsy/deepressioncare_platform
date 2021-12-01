@@ -1,4 +1,4 @@
-/* pages/tips/tips.wxss */
+/* pages/home/tips/tips.wxss */
 .weui-search-bar {
   position: relative;
   padding: 8px 10px;

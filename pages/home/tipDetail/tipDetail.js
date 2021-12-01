@@ -1,4 +1,4 @@
-// pages/tipDetail/tipDetail.js
+// pages/home/tipDetail/tipDetail.js
 Page({
 
   /**
