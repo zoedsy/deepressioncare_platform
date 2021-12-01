@@ -1,42 +1,37 @@
-// pages/diagnosis/diagnosis.js
+// pages/eva_result/eva_result.js
 Page({
-  /** 
+
+  /**
    * 页面的初始数据
    */
   data: {
 
   },
-  Patient:function (name,department,date) {
-    this.setData({
-      Name:name,
-      Deparment:department,
-      Date:date,
-    })
-      
-    },
-    
-  //上传音频事件处理
   bindViewTap:function(){
     wx.navigateTo({
-      url: '/pages/audio/audio'
+      url: '../../check/check',
     })
   },
-// 跳转到个人页面
-  goToPerson:function(){
+  goToAsk:function(param){
     wx.navigateTo({
-      // 跳转个人页面
-      // url: '../Person/person',
-      // 测试案例
-      url: '/pages/check/check'
+      // 测试，合并时直接跳转到聊天框
+      url: '../check/check',
     })
   },
-  
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    this.Patient('张玉','精神科室','2021-11-20')
-  },
+   Doctor:function (name,admin,position) {
+    this.setData({
+      Name:name,
+      Admin:admin,
+      Position:position,
+    })
+      
+    },
+    onLoad: function (options) {
+      this.Doctor('杨新华','妇科 ',' 副主任医师')
+    },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

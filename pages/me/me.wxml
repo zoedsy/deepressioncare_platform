@@ -1,2 +1,57 @@
-<!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="user_info_wrap" >
+<!-- <navigator url="/pages/login/index">登陆</navigator> -->
+
+    <view wx:if="{{userInfo.avatarUrl}}" class="user_info" > 
+        <image class="user_icon" src="{{userInfo.avatarUrl}}" > </image>
+        <view class="user_name" >{{userInfo.nickName}}</view>
+    </view>
+
+    <view wx:else class="userBtn">
+        <button  plain style="border:0" bindtap="getUserProfile"> 
+            <image class="btnImg" src="../../icons/log.png"></image>
+            <!-- <view ></view> -->
+        </button>
+    </view>
+    <view class="user_money">
+        <view class="money">账户余额（元）</view>
+        <!-- <text >账户余额（元）</text> -->
+    </view>
+
+    <view class="user_coupon"> 
+        <view class="coupon">优惠券（张）</view>
+        <!-- <text >优惠券（张）</text> -->
+    </view>
+</view>  
+
+<view class="user_content" >
+    <navigator url="/pages/file/index" >
+        <view class="user_information">
+            <view class="iconfont icon-geren" >健康档案</view>
+            <view class="info_arrow"> </view>
+        </view>   
+        
+    </navigator>
+ 
+    <navigator url="/pages/record/index" >
+        <view class="user_record">
+            <view class="iconfont icon-jilu1" >诊断记录</view>
+            <view class="re_arrow"> </view>
+        </view>       
+    </navigator>
+    
+    <navigator url="/pages/aboutus/index" >
+        <view class="user_aboutus">
+            <view class="iconfont icon-guanyu" >关于我们</view>
+            <view class="us_arrow"> </view>
+        </view>       
+    </navigator>
+
+    <navigator url="/pages/help/index" >
+        <view class="user_help">
+            <view class="iconfont icon-bangzhu" >帮助与反馈</view>
+            <view class="help_arrow"> </view>
+        </view>       
+    </navigator>
+
+
+</view>

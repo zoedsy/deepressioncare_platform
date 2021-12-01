@@ -1,0 +1,73 @@
+/* pages/tipDetail/tipDetail.wxss */
+.main{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.header{
+  padding: 5%;
+}
+
+.title{
+  font-weight: 700;
+  font-size: larger;
+}
+
+.note{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+.from{
+  margin-top: 36rpx;
+  color: #2967FF;
+}
+
+.time{
+  margin-top: 36rpx;
+  color: #777777;
+  margin-left: 36rpx;
+}
+
+.like{
+  margin-top: 36rpx;
+  margin-left: 36rpx;
+}
+
+.img{
+  width: 50rpx;
+  height: 50rpx;
+  margin-top: 33rpx;
+  margin-left: 170rpx;
+}
+
+.divLine{
+  margin-top: 20rpx;
+  background: #c7c7c7;
+  width: 100%;
+  height: 2rpx;
+ }
+
+.scroll{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.scrbox{
+  width: 640rpx;
+  height: 640rpx;
+  background: white;
+  padding: 7%;
+}
+
+.txt{
+  color:#4B4B4B;
+}
+
+video{
+  justify-content: center;
+  /* margin: 10rpx auto; */
+}

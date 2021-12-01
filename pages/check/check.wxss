@@ -1,0 +1,120 @@
+.box{
+  width: 414px;
+  height: 207px;
+  background-color: #37d27b;
+  border-radius: 0px 0px 414px 414px;
+}
+.step_box{
+  width: 500rpx;
+  height: 580rpx;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  border: 1rpx  solid #DCDCDC;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-left: 30px;
+  padding-top: 20px;
+  box-shadow: 0 0 10px #888888;
+  /* padding: 10px; */
+  border-radius:5px 5px 5px 5px;
+
+}
+.date{
+  margin-right: 10px;
+}
+.time_branch{
+  display: flex;
+  margin-left: -93px;
+}
+.time{
+  margin: 10px;
+  margin-top: -10px;
+
+}
+.branch{
+  width: 3px;
+  height: 45px;
+  background-color:	#C0C0C0;
+  transform: translateX(15px);
+}
+.branched{
+  width: 3px;
+  height: 40px;
+  background-color: cornflowerblue;
+  transform: translateX(15px);
+}
+.node{
+  display: flex;
+}
+
+.title{
+  margin-left: 20px;
+}
+
+/* 病人个人信息 */
+.info_box{
+  width: 600rpx;
+  height: 200rpx;
+  /* color: rgb(61, 46, 46); */
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #888888;
+  padding: 2px;
+  border-radius:5px 5px 5px 5px;
+
+
+}
+.info{
+  display: flex;
+  padding: 7px;
+  position: relative;
+}
+.Name,.Type,.Date{
+  position: absolute;
+  right: 15px;
+  color: #888888;
+}
+
+/* 机器分析 */
+.analyze_box{
+  width: 600rpx;
+  height: 200rpx;
+  /* color: rgb(61, 46, 46); */
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #888888;
+  padding: 2px; 
+  display: flex;
+  border-radius:5px 5px 5px 5px;
+
+}
+
+.analyze0{
+  flex:5;
+  background-color: #37d27b;
+  text-align: center;
+  line-height: 100px;
+}
+.analyze1{
+  flex:6;
+  text-align: center;
+  line-height: 100px;
+  font-size: 24px;
+}
+
+/* 结果查看 */
+.result_box{
+  width: 600rpx;
+  height: 200rpx;
+  /* color: rgb(61, 46, 46); */
+  background-color: #37d27b;
+  margin: 0 auto;
+  margin-top: 20px;
+  box-shadow: 0 0 10px #888888;
+  text-align: center;
+  line-height: 100px;
+  border-radius:5px 5px 5px 5px;
+}

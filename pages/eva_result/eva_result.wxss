@@ -1,0 +1,97 @@
+/* 医生信息 */
+.doctor_info{
+    width: 100%;
+    height: 160px;
+    background-color: #37d27b;
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+.profile{
+    flex:3;
+}
+.profile .pic{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    /* background-color: red; */
+    /* 小程序wxss里面不支持 background-image格式，直接在内联里面设置即可*/
+    /* background-image:url('../../images/baby.png'); */
+    margin: 30px;
+}
+.intro{
+    flex:7;
+    justify-content: center;
+    padding: 50px 0;
+    color: #fff;
+    /* font-family: 'microsoft yahei'; */
+    font-weight: 700;
+    box-sizing: border-box;
+}
+.admin{
+    margin-top: 20px;
+    color: #e5e5e5;
+}
+/* 医生擅长 */
+.good_at{
+    width: 100%;
+    height: 120px;
+    background-color: #fff;
+    margin: 20px;
+}
+.good_at .title{
+    color: #6e6e6e;
+}
+.good_at .content{
+    margin: 20px 0;
+    margin-right: 20px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+
+/* 医生建议 */
+
+.suggest_box{
+    width: 96%;
+    height: 400px;
+    /* background-color: #a2a2a2; */
+    box-sizing: border-box;
+    margin: 0 auto;
+    border: 1px solid #a2a2a2;
+    border-radius: 5px 5px 5px 5px;
+}
+
+.suggest_title{
+    height: 70px;
+    background-color: #37d27b;
+    text-align:center;
+    align-items:center;
+    justify-content: center;
+    line-height: 70px;
+    color: #fff;
+    /* font-weight: 700; */
+    font-size: 18px;
+}
+
+.suggest_content{
+    width: 80%;
+    height: 180px;
+    border: 1px solid #a2a2a2;
+    margin:  0 auto;
+    margin: 25px 33px;
+    padding: 5px;
+    border-radius: 5px 5px 5px 5px;
+    box-shadow: 0 0 10px #000;
+}
+
+.font-break{
+    word-break:break-all;
+}
+
+/* 快速提问按钮 */
+button{
+    border: 1px solid #a2a2a2;
+    border-radius: 5px 5px 5px 5px;
+}

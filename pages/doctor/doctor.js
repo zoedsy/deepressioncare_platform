@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    page:1,
     doctor_list:[
       {
         id: "1", 
@@ -61,7 +62,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -75,7 +76,68 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //请求医生数据
+    wx.request({               
+      url:'http://127.0.0.1/get/consult/doctor_list?page='+this.data.page,
+      data:{
+        //categoryType:this.data.tabCur+1
+      },
+      success: (res) => {
+        this.setData({ 
+          doctor_list:res.data.data
+        })
+      }
+    })  
+  },
 
+  // 跳转详细对话框
+  toDetail:function(){
+    let index=e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: '/pages/chat/chat?index='+index,
+    })
+  },
+
+  // 上拉刷新
+  scrolltolower() {
+    if (this.lock) {
+      wx.showToast({
+        title: '已经到底了！',
+        icon: 'none'
+      })
+      return
+    }
+    this.data.page++
+      wx.showLoading({
+        title: '正在加载中...',
+      })
+      wx.request({               
+        url:'http://127.0.0.1/get/consult/doctor_list?page='+this.data.page,
+        data:{
+          //categoryType:this.data.tabCur+1
+        },
+        success: (res) => {
+          var goodsList = this.data.doctor_list;
+          const newGoods = res.data.data
+          if (newGoods.length <= 0) {
+            this.lock = true
+            wx.hideLoading()
+            wx.showToast({
+              title: '已经到底了！',
+              icon: 'none'
+            })
+            this.setData({
+              hasMore: false
+            })
+            return
+          }
+          wx.hideLoading()
+          goodsList = [...goodsList, ...newGoods]    //取数组里的一个值，然后再赋值到一个新数组里
+          this.setData({
+            doctor_list: goodsList
+          }) 
+      }
+    })  
   },
 
   /**

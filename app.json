@@ -4,7 +4,9 @@
     "pages/logs/logs",
     "pages/home/home",
     "pages/diagnose/diagnose",
-    "pages/audio/audio",
+    "pages/eva_result/eva_result",
+    "pages/check/check", 
+    "pages/audio/audio"  
     "pages/chat/chat",
     "pages/luntan/luntan",
     "pages/me/me",
@@ -18,6 +20,7 @@
     "pages/luntan/release/title/title",
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
+    "pages/tipDetail/tipDetail",
     "pages/luntan/detail/detail"
 
   ],

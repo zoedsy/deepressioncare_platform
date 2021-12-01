@@ -8,7 +8,6 @@ Page({
     navID:1,
     first:false,
     second:true,
-    third:true,
     bannerList:[
       {
         bannerID: "1",
@@ -24,55 +23,16 @@ Page({
       },
     ],
     article_list: [
-      {
-        id: "1",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      },
-      {
-        id: "2",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      },
-      {
-        id: "3",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      },
-      {
-        id: "4",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      },
-      {
-        id: "5",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      },
-      {
-        id: "6",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        date:"2019-8-21",
-        address: "Nature子刊：重大发现，抑郁症是与生俱来的",
-        read:"7",
-        like:"156"
-      }
-    ],
+    //   {
+		// 	"categoryName": "生活",
+		// 	"knoCardIcon": "https://s.cyol.com/shuzibao/cmsfile/paper/2021/1105/20211105060022796.jpg",
+		// 	"knoCardId": 1,
+		// 	"knoCardLikes": 105,
+		// 	"knoCardRead": 9999,
+		// 	"knoCardReleaseDate": "20211101 00:00:000",
+		// 	"knoCardTitle": "抑郁中的年轻人：我们如何冲出阴霾"
+    // },
+  ],
     doctor_list:[
       {
         id: "1", 
@@ -100,13 +60,21 @@ Page({
       }
     ]
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    //请求文章数据
+    // wx.request({               
+    //   url:'http://127.0.0.1/Knowledge/get_list/first_page',
+    //   success: (res) => {
+    //     this.setData({ 
+    //       article_list:res.data.data
+    //     })
+    //   }
+    // })  
   },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -128,27 +96,29 @@ Page({
       navID:navID*1
     })
     if(navID=="1"){
-      this.setData({
-        first:false,
-        second:true,
-        third:true
-      })
+        wx.request({               
+          url:'http://127.0.0.1/Knowledge/get_list/first_page',
+          success: (res) => {
+            this.setData({ 
+              article_list:res.data.data,
+              first:false,
+              second:true,
+            })
+          }
+        })  
     }
     else if(navID=="2"){
-      this.setData({
-        first:true,
-        second:false,
-        third:true
-      })
+      wx.request({               
+        url:'http://127.0.0.1/get/consult/doctor_list?page=1',
+        success: (res) => {
+          this.setData({ 
+            doctor_list:res.data.data,
+            first:true,
+            second:false,
+          })
+        }
+      })  
     }
-    // else if(navID=="3"){
-    //   this.setData({
-    //     first:true,
-    //     second:true,
-    //     third:false
-    //   })
-    // }
-    //this.getItemList(this.data.navID);
   },
 
   more:function(){
@@ -162,11 +132,6 @@ Page({
         url: '/pages/doctor/doctor',
       })
     }
-    // if(this.data.navID==3){
-    //   wx.navigateTo({
-    //     url: '/pages/posts/posts',
-    //   })
-    // }
   },
   /**
    * 生命周期函数--监听页面隐藏

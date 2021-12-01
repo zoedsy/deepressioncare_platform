@@ -141,11 +141,18 @@ swiper swiper-item .pic {
   -webkit-box-orient: vertical;
 }
 
-.floor .info .date{
+.floor .info .category{
   position: absolute;
+  left:1%;
   bottom: 8%;
   color: #b4afae;
 }
+
+/* .floor .info .date{
+  position: absolute;
+  bottom: 8%;
+  color: #b4afae;
+} */
 
 .floor .info .read{
   position: absolute;
