@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2913101 */
-  src: url('//at.alicdn.com/t/font_2913101_phfo2cjq4jh.woff2?t=1638370351138') format('woff2'),
-       url('//at.alicdn.com/t/font_2913101_phfo2cjq4jh.woff?t=1638370351138') format('woff'),
-       url('//at.alicdn.com/t/font_2913101_phfo2cjq4jh.ttf?t=1638370351138') format('truetype');
+  src: url('//at.alicdn.com/t/font_2913101_byi0i0uhu76.woff2?t=1638431867614') format('woff2'),
+       url('//at.alicdn.com/t/font_2913101_byi0i0uhu76.woff?t=1638431867614') format('woff'),
+       url('//at.alicdn.com/t/font_2913101_byi0i0uhu76.ttf?t=1638431867614') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-tianjia:before {
+  content: "\e64f";
+}
+
+.icon-yousanjiaoxing:before {
+  content: "\e644";
+}
+
+.icon-jiantouyou:before {
+  content: "\e62d";
+}
+
+.icon-daibanshixiang:before {
+  content: "\e642";
+}
+
+.icon-yiwancheng:before {
+  content: "\e612";
 }
 
 .icon-jilu:before {
