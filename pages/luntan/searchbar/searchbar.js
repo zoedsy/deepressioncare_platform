@@ -63,6 +63,7 @@ Page({
     },{
       text:'...'
     }]
+    
   },
 
   /**
@@ -74,6 +75,11 @@ Page({
 // @param     e
 // @return   无
   onLoad: function (options) {
+    //navigationBarTitle
+    wx.setNavigationBarTitle({
+      title: '论坛搜索',
+    }) 
+
     //hots变量即为数据中的hots
     var hots = this.data.hots;
     //这个是做的状态码的分类码,从大到小的顺序
@@ -244,6 +250,20 @@ Page({
     })
     this.setData({
       historyRecord: arr
+    })
+  },
+  deleteHistory (param) {
+    // let arr = this.data.historyRecord
+    // arr.unshift(param)
+    // wx.setStorage({
+    //   key: 'historyRecord',
+    //   data: arr
+    // })
+    this.setData({
+      historyRecord: [{
+        id: '0',
+        recordItem:' '
+      }]
     })
   }
 })

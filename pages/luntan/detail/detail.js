@@ -13,6 +13,9 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '帖子',
+    })
     this.fetchData(options.id);
   },
 
@@ -37,72 +40,72 @@ Page({
     })
   },
 
-  // 收藏文章
-  collect: function(e) {
-    var that = this;
-    var ApiUrl = Api.collect;
-    var accesstoken = wx.getStorageSync('CuserInfo').accesstoken;
-    var id = e.currentTarget.id;
-    if(!id) return;
-    if(!accesstoken){
-      that.setData({ modalHidden: false });
-      return;
-    }
+  // // 收藏文章
+  // collect: function(e) {
+  //   var that = this;
+  //   var ApiUrl = Api.collect;
+  //   var accesstoken = wx.getStorageSync('CuserInfo').accesstoken;
+  //   var id = e.currentTarget.id;
+  //   if(!id) return;
+  //   if(!accesstoken){
+  //     that.setData({ modalHidden: false });
+  //     return;
+  //   }
 
-    Api.fetchPost(ApiUrl, { accesstoken:accesstoken, topic_id:id }, (err, res) => {
-      if(res.success){
-          var detail = that.data.detail;
-          detail.is_collect = true;
-          that.setData({
-            collectText: "取消收藏",
-            detail: detail
-          });
-      }
-    })
-  },
+  //   Api.fetchPost(ApiUrl, { accesstoken:accesstoken, topic_id:id }, (err, res) => {
+  //     if(res.success){
+  //         var detail = that.data.detail;
+  //         detail.is_collect = true;
+  //         that.setData({
+  //           collectText: "取消收藏",
+  //           detail: detail
+  //         });
+  //     }
+  //   })
+  // },
 
-  // 点赞
-  reply: function(e) {
-    console.log(e);
-    var that = this;
-    var accesstoken = wx.getStorageSync('CuserInfo').accesstoken;
-    var id = e.currentTarget.id;
-    var index = e.currentTarget.dataset.index;
-    var ApiUrl = Api.reply(id);
-    if(!id) return;
-    if(!accesstoken){
-      that.setData({ modalHidden: false });
-      return;
-    }
+  // // 点赞
+  // reply: function(e) {
+  //   console.log(e);
+  //   var that = this;
+  //   var accesstoken = wx.getStorageSync('CuserInfo').accesstoken;
+  //   var id = e.currentTarget.id;
+  //   var index = e.currentTarget.dataset.index;
+  //   var ApiUrl = Api.reply(id);
+  //   if(!id) return;
+  //   if(!accesstoken){
+  //     that.setData({ modalHidden: false });
+  //     return;
+  //   }
 
-    Api.fetchPost(ApiUrl, { accesstoken:accesstoken }, (err, res) => {
-      if(res.success){
-        var detail = that.data.detail;
-        var replies = detail.replies[index];
+  //   Api.fetchPost(ApiUrl, { accesstoken:accesstoken }, (err, res) => {
+  //     if(res.success){
+  //       var detail = that.data.detail;
+  //       var replies = detail.replies[index];
 
-        if(res.action === "up"){
-          replies.zanNum = replies.zanNum + 1;
-        }else{
-          replies.zanNum = replies.zanNum - 1;
-        }
+  //       if(res.action === "up"){
+  //         replies.zanNum = replies.zanNum + 1;
+  //       }else{
+  //         replies.zanNum = replies.zanNum - 1;
+  //       }
 
-        that.setData({ detail: detail });
+  //       that.setData({ detail: detail });
 
-      }
-    })
+  //     }
+  //   })
 
-  },
+  // },
 
-  // 关闭--模态弹窗
-  cancelChange: function() {
-    this.setData({ modalHidden: true });
-  },
-  // 确认--模态弹窗
-  confirmChange: function() {
-    this.setData({ modalHidden: true });
-    wx.navigateTo({
-      url: '/pages/logs/logs'
-    });
-  }
+  // // 关闭--模态弹窗
+  // cancelChange: function() {
+  //   this.setData({ modalHidden: true });
+  // },
+  // // 确认--模态弹窗
+  // confirmChange: function() {
+  //   this.setData({ modalHidden: true });
+  //   wx.navigateTo({
+  //     url: '/pages/logs/logs'
+  //   });
+  // }
 
 })

@@ -7,6 +7,7 @@
         </view>
         </view>
     </view>
+
     <view class="container">
         <view class="content" wx:if="{{!haveSerachLike}}">
             <view class="search-history">
@@ -15,6 +16,7 @@
                     <text>{{item.recordItem}}</text>
                 </view>
             </view>
+            <!-- <button class="deleteHistory" bindtap="deleteHistory">清空历史</button> -->
             <view class="hot-search">
                 <text class="search-hot">热门搜索</text>
                 <view class="search-item">
@@ -31,10 +33,12 @@
             </view>
         </view>
         <view wx:else class="search-like">
+
         <view class="search-like-item" data-param="{{item.text}}" wx:for="{{searchLikeList}}" wx:key="{{index}}">
             <icon class="weui-icon-search" type="search" size="14"></icon>
             <text>{{item.text}}</text>
         </view>
+
         </view>
     </view>
 </view>

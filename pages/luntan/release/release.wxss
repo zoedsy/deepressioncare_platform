@@ -386,13 +386,13 @@ page{
   font-size: 28rpx;
 }
 .send-view  .send{
-  background-color: #E97D6B;
+  background-color: #37d27b;
   color: white;
 }
 .send-view  .save{
   background-color: white;
-  color: #E97D6B;
-  border: 2rpx solid #E97D6B;
+  color: #37d27b;
+  border: 2rpx solid #37d27b;
   margin-right: 30rpx;
 }
 .nav-bar-view{
