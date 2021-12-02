@@ -5,9 +5,7 @@ import Api from '../../../api/api.js';
 const api = new Api();
 Page({
   data: {
-    // toolList:[{"title":"添加图片","img":"/images/release/addImag.png"},{"title":"发起投票","img":"/images/release/touPiao.png"},{"title":"帮扶","img":"/images/release/bangFu.png"},{"title":"添加种草","img":"/images/release/zhongCao.png"}],
     toolList:[{"title":"添加图片","img":"/images/release/addImag.png"}],
-    // typeList: ["晒晒", "救助", "领养", "帮扶","种草"],
     typeSelectIndex:0,
     isShowSave:false,
     textareaHide:false,
@@ -39,7 +37,6 @@ Page({
 // @auth      shiyidu            
 // @param     e
 // @return   无
-
   onLoad: function () {
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');

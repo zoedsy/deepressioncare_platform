@@ -26,7 +26,7 @@ page
 .ds-v {
   margin-left: 40rpx;
   width: 670rpx;
-  background-color: #e97d6b;
+  background-color: #37d27b;
   border-radius: 5rpx;
   color: white;
   font-size: 28rpx;
