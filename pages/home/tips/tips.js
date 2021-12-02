@@ -33,15 +33,15 @@ Page({
     ],
     tabCur: 0, //默认选中
     article_list: [
-       {
-         "knowledgeId": 1,
-         "title":'抑郁中的年轻人：我们如何冲出阴霾',
-         "category":'生活',
-         "releaseDate":'2021-11-05',
-         "coverImageUrl":"https://s.cyol.com/shuzibao/cmsfile/paper/2021/1105/20211105060022796.jpg",
-         "readAmount":9999,
-         "likes":105
-       },
+      //  {
+      //    "knowledgeId": 1,
+      //    "title":'抑郁中的年轻人：我们如何冲出阴霾',
+      //    "category":'生活',
+      //    "releaseDate":'2021-11-05',
+      //    "coverImageUrl":"https://s.cyol.com/shuzibao/cmsfile/paper/2021/1105/20211105060022796.jpg",
+      //    "readAmount":9999,
+      //    "likes":105
+      //  },
     ],
   },
 
@@ -67,17 +67,18 @@ toDetail:function(e){
    */
   onLoad: function (options) {
     //请求文章数据
-    // wx.request({               
-    //   url:'http://127.0.0.1/Knowledge/get_list/findByCategoryType',
-    //   data:{
-    //     categoryType:this.data.tabCur+1
-    //   },
-    //   success: (res) => {
-    //     this.setData({ 
-    //       article_list:res.data.data
-    //     })
-    //   }
-    // })  
+    wx.request({               
+      // url:'http://127.0.0.1/Knowledge/get_list/findByCategoryType',
+      url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
+      data:{
+        categoryType:this.data.tabCur+1
+      },
+      success: (res) => {
+        this.setData({ 
+          article_list:res.data.data
+        })
+      }
+    })  
   },
 
   /**

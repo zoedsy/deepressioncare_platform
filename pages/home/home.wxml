@@ -19,13 +19,13 @@ autoplay current="0" interval="5000" duration="1000" circular >
 <view class="tabbar">
   <view class="tab" bindtap="changeNav" id="1">
     <view class="icon-container" style="background-color: #f5674e;">
-      <text class="iconfont icon-richeng"></text>
+      <text class="iconfonl icon-richeng"></text>
     </view>
     <text class="name">知识贴士</text>
   </view>
   <view class="tab" bindtap="changeNav" id="2">
     <view class="icon-container" style="background-color: #17c4f7;">
-      <text class="iconfont icon-yiyaoxiang"></text>
+      <text class="iconfonl icon-yiyaoxiang"></text>
     </view>
     <text class="name">名医介绍</text>
   </view>
