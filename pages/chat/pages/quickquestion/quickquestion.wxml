@@ -1,0 +1,51 @@
+
+<view class="reminder">  重要：急症不适合网上咨询，请立即前往当地医院就诊 </view>>
+
+<form bindsubmit="submitForm">
+    <div class="weui-cells__title ">问题标题</div>
+<div class="weui-cells">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <input class="weui-input" maxlength="45" type="text" bindinput="title" placeholder="描述不得超过45字"/><div class="weui-textarea-counter"><span>{{titlenum}}</span>/45</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="weui-cells__title">问题详细描述</div>
+<div class="weui-cells weui-cells_form">
+    <div class="weui-cell">
+        <div class="weui-cell__bd">
+            <textarea class="weui-textarea" placeholder="请用不超过200字详细描述您的症状，疾病和身体情况，否则可能无法获得医生的详细解答" maxlength="200" rows="3" bindinput="descrip"></textarea>
+            <div class="weui-textarea-counter"><span>{{descripnum}}</span>/200</div>
+        </div>
+    </div>
+</div>
+   
+
+<view class="fb_content">
+      <textarea value="{{textVal}}" bindinput="handleTextInput" placeholder="点击+号可以上传图片"> </textarea>
+        <view class="fb_tool">
+          <button bindtap="handleChooseImg">+</button>
+          
+          
+          <view class="up_img_item"
+          wx:for="{{chooseImgs}}"
+          wx:key="*this"
+          bindtap="handleRemoveImg"
+          data-index="{{index}}"
+          >
+          <UpImg src="{{item}}" ></UpImg>
+        </view>
+ 
+        </view>
+    </view>
+
+
+    <view class="button-sp-area">
+        <button class="weui-btn weui-btn_mini weui-btn_default"  formType="submit">发布</button>
+    </view>
+</form>
+
+
+
