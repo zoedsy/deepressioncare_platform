@@ -1,8 +1,0 @@
-<!--pages/zixun/zixun.wxml-->
-<button size="mini"  type="primary" plain class="button1">当前咨询 </button>
-<button size="mini"  bindtap="goto_doctorlist" type="primary" plain class="button1" >我的医生 </button>
-<navigator url="/pages/historyservice/textConsult" class="greentext">历史</navigator>
-<image src="../../img/chat.jpg" mode="aspectFit" class="img1"></image>
-<view class="lighttext">暂无进行中的服务</view>
-
-<button  bindtap="goto_question" type="primary" >快速提问 </button>
