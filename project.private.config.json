@@ -25,12 +25,6 @@
           "scene": null
         },
         {
-          "name": "pages/luntan/goods-info/goods-info",
-          "pathName": "pages/luntan/goods-info/goods-info",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "pages/luntan/searchbar/searchbar",
           "pathName": "pages/luntan/searchbar/searchbar",
           "query": "",
@@ -43,32 +37,14 @@
           "scene": null
         },
         {
-          "name": "pages/luntan",
-          "pathName": "pages/luntan",
+          "name": "pages/home/tips/tips",
+          "pathName": "pages/home/tips/tips",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tips/tips",
-          "pathName": "pages/tips/tips",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tipDetail/tipDetail",
-          "pathName": "pages/tipDetail/tipDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tipDetail/tipDetail",
-          "pathName": "pages/tipDetail/tipDetail",
+          "name": "pages/home/tipDetail/tipDetail",
+          "pathName": "pages/home/tipDetail/tipDetail",
           "query": "",
           "scene": null
         },

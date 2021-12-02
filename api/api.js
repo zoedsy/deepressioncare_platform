@@ -88,7 +88,7 @@ class Api {
   }
 
   // 获取请求到的数据
-  getRequestData(url,params,isNeedPullFresh,methond) {
+  getRequestData(url,params,methond,isNeedPullFresh) {
     console.log("params =====", JSON.stringify(params));
     if (!url) {
       throw new Error('缺请求地址参数:url');
@@ -102,13 +102,14 @@ class Api {
         methond = "POST";
       }
       var token = wx.getStorageSync("token");
-      params.appId = `${appid}`;
+      var openId = wx.getStorageSync("openId");
+      params.openId = openId;
       wx.request({
         url: `${APIURL}/`+url,
         method: methond,
         header: {
           'content-type': 'application/json',
-          'autoken': token
+          'token': token
         },
         data: params,
         success: (res) => {

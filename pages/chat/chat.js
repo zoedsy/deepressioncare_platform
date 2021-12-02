@@ -44,7 +44,7 @@ Page({
        
     }
     //获取历史消息
-    
+
 
 
     this.socketStart();
