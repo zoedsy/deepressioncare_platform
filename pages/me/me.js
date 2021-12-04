@@ -1,4 +1,7 @@
 // pages/person/index.js
+import Api from '../../api/api';
+const api = new Api();
+const app = getApp();
 Page({
  
 
@@ -6,24 +9,90 @@ Page({
   data:{
     userInfo: {},
     hasUserInfo: false,
-  
+    code:""
   },
   
   getUserProfile(e) {
+    // 如果有本地缓存的openid，就直接登录
+    if(wx.getStorageSync('openId')){
+      app.globalData.openid = wx.getStorageSync('openId')
+      app.globalData.token = wx.getStorageSync('token')
+      this.setData({
+        userInfo:wx.getStorageSync('userInfo')
+      })
+    }
+
+    //登录
+    wx.checkSession({
+      success: (res) => {
+        console.log("session",res)
+      },
+      fail:(err)=>{
+        console.log("session err",err)
+        //过期重新登陆？
+        wx.login({
+          success: (res) => {
+            console.log("code",res.code)
+            this.setData({
+              code:res.code
+            })
+          }
+        })
+      }
+    })
+    
+    wx.getUserProfile({
+      desc: '用户登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (file) => {
+        console.log(file)
+        this.setData({
+          userInfo: file.userInfo,
+          hasUserInfo: true
+        })
+        // 请求 openid,token
+        wx.request({
+          url: 'http://106.13.28.21:8081/api/wx/wx_login',
+          data: {
+            code: this.data.code,
+            rawData: file.rawData,
+            signature: file.signature,
+            encrypteData: file.encryptedData, //用户敏感信息
+            iv: file.iv //解密算法的向量
+          },
+          method: 'POST',
+          header: {
+            'content-type': 'application/json'
+          },
+          success:(res)=>{  
+            console.log(res.data)
+            app.globalData.openId = res.data.data.openId,
+            app.globalData.token = res.data.data.token,
+            wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
+            wx.setStorageSync('token', res.data.data.token) //缓存token
+          },fail:(err)=>{
+            console.log("request err",err)
+          }
+        })
+      },
+      fail:(err)=>{
+        console.log("userprofile err",err)
+      }
+    })
+
     
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        // console.log(res),
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
+    // wx.getUserProfile({
+    //   desc: '用于完善会员资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+    //   success: (res) => {
+    //     // console.log(res),
+    //     this.setData({
+    //       userInfo: res.userInfo,
+    //       hasUserInfo: true
+    //     })
+    //   }
       
-    })
+    // })
     // wx.setStorageSync('userinfo', 'userInfo'),
     
     // wx.navigateBack({
@@ -54,7 +123,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // wx.login({
+    //   success: (res) => {
+    //     this.setData({
+    //       code:res.code
+    //     })
+    //   }
+    // })
   },
 
   /**

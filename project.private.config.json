@@ -89,6 +89,12 @@
           "pathName": "pages/me/help/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/me/me",
+          "query": "",
+          "scene": null
         }
       ]
     }
