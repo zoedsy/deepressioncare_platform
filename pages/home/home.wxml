@@ -47,11 +47,12 @@ autoplay current="0" interval="5000" duration="1000" circular >
   </view>
 </view>
  
-<scroll-view scroll-y="false">
+<scroll-view scroll-y style="height: 700rpx;" >
   <view class="floor"
         wx:for="{{article_list}}"
-        wx:key="id"
-        bindtap=""
+        wx:key="knoCardId"
+        data-index="{{item.knoCardId}}"
+        bindtap="toDetail"
         hidden="{{first}}">
         <view class="picture">
             <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />

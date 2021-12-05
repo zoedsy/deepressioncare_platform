@@ -124,6 +124,14 @@ Page({
     }
   },
 
+  toDetail:function(e){
+    console.log(e)
+    let index=e.currentTarget.dataset.index;
+    wx.navigateTo({
+      url: '/pages/home/tipDetail/tipDetail?index='+index,
+    })
+  },
+
   more:function(){
     if(this.data.navID==1){
       wx.navigateTo({

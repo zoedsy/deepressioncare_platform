@@ -45,9 +45,9 @@ Page({
           },
           success:(res)=>{  
             console.log(res.data)
-            app.globalData.openId = res.data.data.openId,
+            app.globalData.openId = res.data.data.id,
             app.globalData.token = res.data.data.token,
-            wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
+            wx.setStorageSync('openId', res.data.data.id) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
             wx.setStorageSync('userInfo', res.data.data.usefInfo)
           },fail:(err)=>{
