@@ -1,7 +1,5 @@
 // pages/person/index.js
-import Api from '../../api/api';
-const api = new Api();
-const app = getApp();
+const app = getApp()
 Page({
  
 
@@ -13,16 +11,7 @@ Page({
   },
   
   getUserProfile(e) {
-    // 如果有本地缓存的openid，就直接登录
-    if(wx.getStorageSync('openId')){
-      app.globalData.openid = wx.getStorageSync('openId')
-      app.globalData.token = wx.getStorageSync('token')
-      this.setData({
-        userInfo:wx.getStorageSync('userInfo')
-      })
-    }
-
-    //登录
+      //登录
     wx.checkSession({
       success: (res) => {
         console.log("session",res)
@@ -69,6 +58,7 @@ Page({
             app.globalData.token = res.data.data.token,
             wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
+            wx.setStorageSync('userInfo', res.data.data.usefInfo)
           },fail:(err)=>{
             console.log("request err",err)
           }
@@ -79,6 +69,7 @@ Page({
       }
     })
 
+    
     
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
     // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -123,13 +114,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // wx.login({
-    //   success: (res) => {
-    //     this.setData({
-    //       code:res.code
-    //     })
-    //   }
-    // })
+    // 如果有本地缓存的openid，就直接登录
+    if(wx.getStorageSync('token')){
+      app.globalData.openid = wx.getStorageSync('openId')
+      app.globalData.token = wx.getStorageSync('token')
+      this.setData({
+        userInfo:wx.getStorageSync('userInfo')
+      })
+    }
   },
 
   /**

@@ -15,8 +15,9 @@
 <scroll-view class="scroll-block" scroll-y>
 <view class="scroll">
     <view class="scrbox">
-        <view class="txt">{{article.content}}</view>
-        <video src="{{article.video_url}}"></video>
+        <!-- <view class="txt">{{article.content}}</view>
+        <video src="{{article.video_url}}"></video> -->
+        <rich-text nodes="{{nodes}}"></rich-text>
     </view>
 </view>
 </scroll-view>
