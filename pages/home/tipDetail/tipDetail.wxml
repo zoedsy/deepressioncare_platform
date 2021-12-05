@@ -1,3 +1,6 @@
+<!-- 引入模板 -->
+<import src="../../../utils/wxParse/wxParse.wxml"/>
+
 <view class="main">
 <view class="header">
   <view class="title">{{article.articletitle}}</view>
@@ -12,14 +15,9 @@
   <view class="divLine"></view>
 </view>
 
-<scroll-view class="scroll-block" scroll-y>
-<view class="scroll">
-    <view class="scrbox">
-        <!-- <view class="txt">{{article.content}}</view>
-        <video src="{{article.video_url}}"></video> -->
-        <rich-text nodes="{{nodes}}"></rich-text>
-    </view>
-</view>
+<scroll-view class="scroll-block" style="height:1150rpx;width:700rpx" scroll-y >
+  <!-- 这里data中article为bindName -->
+  <template is="wxParse" data="{{wxParseData:content.nodes}}"/>
 </scroll-view>
 </view>
 

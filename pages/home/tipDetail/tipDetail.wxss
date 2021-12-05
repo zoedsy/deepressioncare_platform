@@ -1,4 +1,7 @@
 /* pages/home/tipDetail/tipDetail.wxss */
+/*在使用的Wxss中引入WxParse.css,可以在app.wxss*/
+@import "../../../utils/wxParse/wxParse.wxss";
+
 .main{
   position: absolute;
   width: 100%;
@@ -21,17 +24,23 @@
 }
 
 .from{
+  width: 100rpx;
+  display: inline-block !important;
   margin-top: 36rpx;
   color: #2967FF;
 }
 
 .time{
+  width: 200rpx;
+  display: inline-block !important;
   margin-top: 36rpx;
   color: #777777;
   margin-left: 36rpx;
 }
 
 .like{
+  width: 100rpx;
+  display: inline-block !important;
   margin-top: 36rpx;
   margin-left: 36rpx;
 }
@@ -50,24 +59,10 @@
   height: 2rpx;
  }
 
-.scroll{
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: column;
+.scroll-block{
+  margin: 10rpx auto;
 }
 
-.scrbox{
-  width: 640rpx;
-  height: 640rpx;
-  background: white;
-  padding: 7%;
-}
-
-.txt{
-  color:#4B4B4B;
-}
-
-video{
-  justify-content: center;
-  /* margin: 10rpx auto; */
+.icon-dianzan_kuai-copy{
+  color: rgb(253, 4, 4);
 }
