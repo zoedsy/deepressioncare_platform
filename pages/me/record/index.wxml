@@ -12,7 +12,7 @@
 <!-- 档案 -->
 
 <!-- 列表 -->
-<scroll-view scroll-y="true">
+<scroll-view style="height:500rpx" scroll-y="true">
   <view class="floor"
         wx:for="{{article_list}}"
         wx:key="knoCardId"

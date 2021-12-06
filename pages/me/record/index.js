@@ -9,15 +9,7 @@ Page({
   data: {
     
     article_list: [
-       {
-         "knowledgeId": 1,
-         "title":'抑郁中的年轻人：我们如何冲出阴霾',
-         "category":'生活',
-         "releaseDate":'2021-11-05',
-         "coverImageUrl":"https://s.cyol.com/shuzibao/cmsfile/paper/2021/1105/20211105060022796.jpg",
-         "readAmount":9999,
-         "likes":105
-       },
+      
     ],
   },
 
@@ -33,24 +25,14 @@ toDetail:function(e){
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //请求文章数据
+    //请求诊断记录
     api.getRequestData('api/user/diagnose_history_retrieve',{},'GET',false).then((res)=>{
       console.log(res)
       this.setData({ 
         article_list:res.data.data
       })
     })
-    // wx.request({               
-    //   url:'http://106.13.28.21:8081/api/user/diagnose_history_retrieve?openId='+ wx.getStorageSync('openId'),
-    //   data:{
-    //     categoryType:this.data.tabCur+1
-    //   },
-    //   success: (res) => {
-    //     this.setData({ 
-    //       article_list:res.data.data
-    //     })
-    //   }
-    // })  
+    
   },
 
   /**

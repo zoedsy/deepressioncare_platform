@@ -18,13 +18,14 @@
 }
 
 .note{
-  display: flex;
+  display: flex !important;
   flex-wrap: nowrap;
   flex-direction: row;
+  justify-content: space-between;
 }
 
 .from{
-  width: 100rpx;
+  width: 400rpx;
   display: inline-block !important;
   margin-top: 36rpx;
   color: #2967FF;

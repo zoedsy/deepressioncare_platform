@@ -9,12 +9,12 @@ Page({
     hasUserInfo: false,
     code:""
   },
-  
+
   getUserProfile(e) {
     //先login，再getUserProfile
     wx.login({
       success: (res) => {
-        console.log("code",res.code)
+        console.log("code",res)
         this.setData({
           code:res.code
         })
@@ -28,16 +28,17 @@ Page({
           userInfo: file.userInfo,
           hasUserInfo: true
         })
-        
+
         // 请求 openid,token
         wx.request({
-          url: 'http://106.13.28.21:8081/api/wx/wx_login',
+          // url: 'http://106.13.28.21:8081/api/wx/wx_login',
+          url: 'http://192.168.195.202:8080/api/wx/wx_login',
           data: {
-            code: this.data.code,
-            rawData: file.rawData,
-            signature: file.signature,
-            encrypteData: file.encryptedData, //用户敏感信息
-            iv: file.iv //解密算法的向量
+            "code": this.data.code,
+            "rawData": file.rawData,
+            "signature": file.signature,
+            "encrypteData": file.encryptedData, //用户敏感信息
+            "iv": file.iv //解密算法的向量
           },
           method: 'POST',
           header: {
@@ -45,9 +46,9 @@ Page({
           },
           success:(res)=>{  
             console.log(res.data)
-            app.globalData.openId = res.data.data.id,
+            app.globalData.openId = res.data.data.openId,
             app.globalData.token = res.data.data.token,
-            wx.setStorageSync('openId', res.data.data.id) // 缓存openid
+            wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
             wx.setStorageSync('userInfo', res.data.data.usefInfo)
           },fail:(err)=>{

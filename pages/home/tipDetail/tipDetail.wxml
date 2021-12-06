@@ -3,10 +3,10 @@
 
 <view class="main">
 <view class="header">
-  <view class="title">{{article.articletitle}}</view>
+  <view class="title">{{article.knoCardTitle}}</view>
   <view class="note">
-      <view class="from">{{article.cat_name}}</view>
-      <view class="time">{{article.add_time}}</view>
+      <view class="from">{{article.knoCardAuthor}}</view>
+      <!-- <view class="time">{{article.knoCardReleaseDate}}</view> -->
       <view class="like" bindtap="changeCollect">
         <text wx:if="{{!is_liked}}" class="iconfont icon-dianzan_kuai"></text> 
         <text wx:else class="iconfont icon-dianzan_kuai-copy"></text> 

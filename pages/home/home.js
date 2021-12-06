@@ -25,41 +25,10 @@ Page({
       },
     ],
     article_list: [
-    //   {
-		// 	"categoryName": "生活",
-		// 	"knoCardIcon": "https://s.cyol.com/shuzibao/cmsfile/paper/2021/1105/20211105060022796.jpg",
-		// 	"knoCardId": 1,
-		// 	"knoCardLikes": 105,
-		// 	"knoCardRead": 9999,
-		// 	"knoCardReleaseDate": "20211101 00:00:000",
-		// 	"knoCardTitle": "抑郁中的年轻人：我们如何冲出阴霾"
-    // },
+   
   ],
     doctor_list:[
-      {
-        id: "1", 
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      {
-        id: "2",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      { 
-        id: "3",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"新华",
-        title:"副主任医师", 
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍,运用心理学、发展心理学"
-      }
+      
     ]
   },
   /**
@@ -67,22 +36,14 @@ Page({
    */
   onLoad: function (options) {
     //请求文章数据
-    api.getRequestData('knowledge/get_list',{},'GET',false).then((res)=>{
+    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
       console.log(res)
       this.setData({ 
         article_list:res.data.data
       })
       console.log(this.data.article_list)
     })
-    // wx.request({    
-    //   //url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
-    //   success: (res) => {
-    //     this.setData({ 
-    //       article_list:res.data.data
-    //     })
-    //     console.log(this.data.article_list)
-    //   }
-    // })  
+   
   },
 
 
@@ -105,32 +66,32 @@ Page({
     this.setData({
       navID:navID*1
     })
-    if(navID=="1"){
-        wx.request({               
-          // url:'http://127.0.0.1/Knowledge/get_list/first_page',
+    console.log(this.data.navID)
+    if(navID==1){
+      //请求文章数据
+    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
+      console.log(res)
+      this.setData({ 
+        article_list:res.data.data,
+        first:false,
+        second:true,
+      })
+      console.log(this.data.article_list)
+    })
+   
+    }
+    else if(navID==2){
+      api.getRequestData('doctor_first_page/list',{},'GET',false).then((res)=>{
+        console.log(res)
+        this.setData({ 
+          doctor_list:res.data.data,
+          first:true,
+          second:false,
+        })
+        console.log(this.data.doctor_list)
+      })
+    }
 
-          //url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
-          success: (res) => {
-            this.setData({ 
-              article_list:res.data.data,
-              first:false,
-              second:true,
-            })
-          }
-        })  
-    }
-    else if(navID=="2"){
-      // wx.request({               
-      //   url:'http://127.0.0.1/get/consult/doctor_list?page=1',
-      //   success: (res) => {
-      //     this.setData({ 
-      //       doctor_list:res.data.data,
-      //       first:true,
-      //       second:false,
-      //     })
-      //   }
-      // })  
-    }
   },
 
   toDetail:function(e){
