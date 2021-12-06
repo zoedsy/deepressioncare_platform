@@ -12,15 +12,7 @@
             <!-- <view ></view> -->
         </button>
     </view>
-    <view class="user_money">
-        <view class="money">账户余额（元）</view>
-        <!-- <text >账户余额（元）</text> -->
-    </view>
-
-    <view class="user_coupon"> 
-        <view class="coupon">优惠券（张）</view>
-        <!-- <text >优惠券（张）</text> -->
-    </view>
+    
 </view>  
 
 <view class="user_content" >
