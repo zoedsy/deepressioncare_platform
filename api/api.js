@@ -119,7 +119,9 @@ class Api {
           'token': token
         }
       }
+      // params是请求的具体参数
       console.log(params)
+      // header请求头主要是token以及content-type
       console.log(header)
       wx.request({
         url: `${APIURL}/`+url,

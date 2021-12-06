@@ -372,6 +372,9 @@ Page({
     } 
     this.postDidWorkSave(draft);
   },
+
+
+  // 可以进行请求了，就是有了标题内容这些
   postDidWorkSave(draft){
     if (this.data.inputText.length == 0) {
       console.log("请输入正文~")
@@ -402,22 +405,23 @@ Page({
     var _this = this;
     var map = {};
     map.address = "";
-    if (this.data.bfDict) {
-      if (this.data.bfDict.id) {
-        map.baseId = this.data.bfDict.id;
-      } else {
-        map.baseId = this.data.bfDict.basesId;
-      }
-    }
-    if (this.data.zcDict) {
-      map.productId = this.data.zcDict.productId;
-      map.skuId = this.data.zcDict.skuId;
-    }
-    if (this.data.voteDict) {
-      map.votes = this.data.voteDict.options;
-      map.voteTitle = this.data.voteDict.title;
-      map.endTime = this.data.voteDict.endTime + "";
-    }
+    // if (this.data.bfDict) {
+    //   if (this.data.bfDict.id) {
+    //     map.baseId = this.data.bfDict.id;
+    //   } else {
+    //     map.baseId = this.data.bfDict.basesId;
+    //   }
+    // }
+    // if (this.data.zcDict) {
+    //   map.productId = this.data.zcDict.productId;
+    //   map.skuId = this.data.zcDict.skuId;
+    // }
+    // if (this.data.voteDict) {
+    //   map.votes = this.data.voteDict.options;
+    //   map.voteTitle = this.data.voteDict.title;
+    //   map.endTime = this.data.voteDict.endTime + "";
+    // }
+
     map.city = cityName;
     map.content = this.data.inputText;
     map.draft = draft;
@@ -430,6 +434,12 @@ Page({
     map.videoUrl = this.data.videoUrl;
 
     console.log(JSON.stringify(map));
+    map={
+      "ownerId":app.globalData.openId,
+      "path":"pages/luntan/luntan",
+      "title":"title",
+      "SubmitPostForm":"fjdskflsdjf"
+    },
     api.getRequestData(app.globalData.url_post, map, false, "POST").then(res => {
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
