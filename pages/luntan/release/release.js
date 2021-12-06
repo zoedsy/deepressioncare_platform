@@ -51,7 +51,10 @@ Page({
     });
     var post_id = wx.getStorageSync('POST_ID');
     console.log("======",post_id);
+
+    // 基本上没有缓存数据，所以直接跳到onshow
     if (post_id && post_id.length > 0){
+      console.log("zero----------")
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
       this.getDetailData();
@@ -65,38 +68,38 @@ Page({
 // @param     e
 // @return   无
   onShow(){
-    var zcString = wx.getStorageSync('zcList');
-    console.log(zcString);
-    if (zcString && zcString.length > 0){
-      var zcDict = JSON.parse(zcString);
-      this.data.isChanged = true;
-      this.setData({
-        bfDict:null,
-        voteDict:null,
-        typeSelectIndex:4,
-        zcDict:zcDict
-      });
-    }
-    var bfString = wx.getStorageSync('bfList');
-    if (bfString && bfString.length > 0){
-      var bfDict = JSON.parse(bfString);
-      this.data.isChanged = true;
-      this.setData({
-        zcDict:null,
-        voteDict:null,
-        typeSelectIndex:3,
-        bfDict:bfDict
-      });
-    }
-    if (this.data.voteDict){
-      this.data.isChanged = true;
-      this.setData({
-        zcDict:null,
-        voteDict:this.data.voteDict,
-        typeSelectIndex:0,
-        bfDict:null
-      });
-    }
+    // var zcString = wx.getStorageSync('zcList');
+    // console.log(zcString);
+    // if (zcString && zcString.length > 0){
+    //   var zcDict = JSON.parse(zcString);
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     bfDict:null,
+    //     voteDict:null,
+    //     typeSelectIndex:4,
+    //     zcDict:zcDict
+    //   });
+    // }
+    // var bfString = wx.getStorageSync('bfList');
+    // if (bfString && bfString.length > 0){
+    //   var bfDict = JSON.parse(bfString);
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     zcDict:null,
+    //     voteDict:null,
+    //     typeSelectIndex:3,
+    //     bfDict:bfDict
+    //   });
+    // }
+    // if (this.data.voteDict){
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     zcDict:null,
+    //     voteDict:this.data.voteDict,
+    //     typeSelectIndex:0,
+    //     bfDict:null
+    //   });
+    // }
   },
 
   
@@ -360,6 +363,8 @@ Page({
     this.postDidWorkSave(draft);
 
   },
+
+  // 点击发送，draft=1
   savePostClick(draft){
     if (draft != -1){
       this.beginSavePost(draft);
@@ -381,6 +386,7 @@ Page({
     if (cityName == "添加地点") {
       cityName = "";
     }
+    // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
     var type = 1;
     if (this.data.zcDict) {
       type = 4;
@@ -424,7 +430,7 @@ Page({
     map.videoUrl = this.data.videoUrl;
 
     console.log(JSON.stringify(map));
-    api.getRequestData(app.postSaveUrl, map, false, "POST").then(res => {
+    api.getRequestData(app.globalData.url_post, map, false, "POST").then(res => {
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       if (res.data.errorCode == 0) {
@@ -609,7 +615,7 @@ Page({
     // map.userId = app.openid;
     map.userId = app.globalData.openid;
     console.log(app.globalData.url_post)
-    api.getRequestData(app.globalData.url_post, map, false, "GET").then(res => {
+    api.getRequestData(app.globalData.url_post, map,"GET",false).then(res => {
       if (res.data.errorCode == 0) {
         _this.formatData(res.data.model);
       } else {
