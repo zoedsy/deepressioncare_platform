@@ -189,19 +189,7 @@ Page({
     })
   },
   
-  //没有帮扶点了所以这个可以删除 
-  // goToBangFuJiDi(){
-  //   wx.navigateTo({
-  //     url: '/pages/index/bangfu/bangfu',
-  //   })
-  // },
-  // 没有种草的东西了，这个可以删除
-  // goToZhongCao(){
-  //   wx.navigateTo({
-  //     url: '/pages/index/bfZhongCao/bfZhongCao',
-  //   })
-  // },
-
+  
   // 选择图像
   // @title    goToChooseImages
 // @description 选择图像
@@ -406,22 +394,7 @@ Page({
     var _this = this;
     var map = {};
     // map.address = "";
-    // if (this.data.bfDict) {
-    //   if (this.data.bfDict.id) {
-    //     map.baseId = this.data.bfDict.id;
-    //   } else {
-    //     map.baseId = this.data.bfDict.basesId;
-    //   }
-    // }
-    // if (this.data.zcDict) {
-    //   map.productId = this.data.zcDict.productId;
-    //   map.skuId = this.data.zcDict.skuId;
-    // }
-    // if (this.data.voteDict) {
-    //   map.votes = this.data.voteDict.options;
-    //   map.voteTitle = this.data.voteDict.title;
-    //   map.endTime = this.data.voteDict.endTime + "";
-    // }
+
 
     // map.location = cityName;
     // map.content = this.data.inputText;
@@ -473,19 +446,25 @@ Page({
       // if (res.data.errorCode == "") {
       if (draft == -1) {
         // var data = res.data.model;
-        wx.setStorageSync('POST_ID', data.id + '');
-        _this.data.isChanged = false;
+        // wx.setStorageSync('POST_ID', data.id + '');
+        // _this.data.isChanged = false;
         // app.showToasts("保存成功～");
         wx.showToast({
           title: '发送成功',
         })
         console.log("baocunchenggong");
+        wx.navigateTo({
+          url: '../../luntan/luntan',
+        })
       } else {
-        _this.data.isChanged = false;
-        wx.removeStorageSync('POST_ID');
-        // app.showToasts("发布成功～");
+        // _this.data.isChanged = false;
+        // wx.removeStorageSync('POST_ID');
+        // // app.showToasts("发布成功～");
         wx.showToast({
           title: '发送成功',
+        })
+        wx.navigateTo({
+          url: '../../luntan/luntan',
         })
         console.log("fabuchenggong");
       }

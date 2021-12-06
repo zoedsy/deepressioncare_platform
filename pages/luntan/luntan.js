@@ -1,5 +1,7 @@
 // pages/luntan/luntan.js
-const app = getApp()
+import Api from "../../api/api.js"
+const api = new Api();
+const app = getApp();
 
 Page({
 
@@ -73,6 +75,12 @@ Page({
     wx.setNavigationBarTitle({
       title: '论坛',
     })
+    api.getRequestData(app.globalData.url_post_list,map,"Get",false).then(res=>{
+      console.log("look_posts_res",res);
+    }).catch(err=>{
+      console.log("catch error")
+    })
+
     wx.request({               //请求数据
       // url: 'https://www.easy-mock.com/mock/5b1e17a0d4a14a3247a6cd6b/data',
       success: (res) => {
