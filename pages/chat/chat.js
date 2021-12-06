@@ -13,7 +13,21 @@ Page({
 
   data: {
  
-    newslist:[],
+    newslist:[{
+      date:"20:00:00",
+      nickName:"yes",
+      faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+    },
+    {        
+      date:"20:00:00",
+      nickName:"yes",
+      faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+    },
+    {
+      date:"20:00:00",
+      nickName:"yes",
+      faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+    }],
      
     userInfo: {},
      

@@ -1,9 +1,10 @@
-<view class="news" bindtap='outbtn'>J
+<view class="news" bindtap='outbtn'>
   <view class="historycon">
       <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
       <block wx:for="{{newslist}}" wx:key>
           <!-- 历史消息 -->
-          <view>{{item.date}}</view>
+          <!-- <view>{{item.date}}</view> -->
+          <view>20:00:00</view>
           <!--自己的消息 -->
           <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
               <view style="text-align: right;padding-right: 20rpx;">
@@ -57,18 +58,18 @@
   
  </view>
 
- <view id="flag"></view>
+ <!-- <view id="flag"></view> -->
   
 
 
  <!-- 头像和yes -->
- <block wx:for="{{userList}}">
+ <!-- <block wx:for="{{userList}}">
 <view class="user-list">
   <image class="faceImage" src="{{item.faceImage}}"></image>
   <view class="nick-name">{{item.nickName}}</view>
 </view>
 
-</block>
+</block> -->
  
  <!-- 聊天输入 -->
 
@@ -76,9 +77,11 @@
   
  <view class="message">
     <form bindreset="cleanInput" class="sendMessage"> 
-        <input type="text" placeholder="请输入聊天内容.." value="{{massage}}" bindinput='bindChange'></input>   
+        <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
+        <input type="text" placeholder="请输入聊天内容.." value="{{message}}" bindinput='bindChange'></input>   
+        <!-- 加入图片等操作要做 -->
         <view class="add" bindtap='increase'>+</view>    
-        <!-- send的操作要做 -->
+        <!-- send的操作要做 将上面的message和socket的image相联系-->
         <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
     </form>
 
