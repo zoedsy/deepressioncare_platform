@@ -1,4 +1,6 @@
 // pages/home/home.js
+import Api from '../../api/api';
+const api = new Api();
 Page({
 
   /**
@@ -65,16 +67,22 @@ Page({
    */
   onLoad: function (options) {
     //请求文章数据
-    wx.request({               
-      // url:'http://127.0.0.1/Knowledge/get_list/first_page',
-      url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
-      success: (res) => {
-        this.setData({ 
-          article_list:res.data.data
-        })
-        console.log(this.data.article_list)
-      }
-    })  
+    api.getRequestData('knowledge/get_list',{},'GET',false).then((res)=>{
+      console.log(res)
+      this.setData({ 
+        article_list:res.data.data
+      })
+      console.log(this.data.article_list)
+    })
+    // wx.request({    
+    //   //url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
+    //   success: (res) => {
+    //     this.setData({ 
+    //       article_list:res.data.data
+    //     })
+    //     console.log(this.data.article_list)
+    //   }
+    // })  
   },
 
 
@@ -100,7 +108,8 @@ Page({
     if(navID=="1"){
         wx.request({               
           // url:'http://127.0.0.1/Knowledge/get_list/first_page',
-          url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
+
+          //url:'https://www.fastmock.site/mock/2df30e9559935cce6e75510d380b27bd/api/knowledge/get_list',
           success: (res) => {
             this.setData({ 
               article_list:res.data.data,

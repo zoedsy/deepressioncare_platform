@@ -104,13 +104,27 @@ class Api {
       var token = wx.getStorageSync("token");
       var openId = wx.getStorageSync("openId");
       params.openId = openId;
+      var header;
+      console.log(methond)
+      if(methond=='GET'){
+        //params.token = token
+        header={
+          //'content-type': 'application/json',
+          'token': token
+        }
+      }
+      else{
+        header={
+          'content-type': 'application/x-www-form-urlencoded',
+          'token': token
+        }
+      }
+      console.log(params)
+      console.log(header)
       wx.request({
         url: `${APIURL}/`+url,
         method: methond,
-        header: {
-          'content-type': 'application/json',
-          'token': token
-        },
+        header: header,
         data: params,
         success: (res) => {
           wx.hideLoading();

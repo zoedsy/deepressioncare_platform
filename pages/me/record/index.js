@@ -34,11 +34,12 @@ toDetail:function(e){
    */
   onLoad: function (options) {
     //请求文章数据
-    // api.getRequestData('api/user/diagnose_history_retrieve',{openId: wx.getStorageSync('openId')},'GET',false).then((res)=>{
-    //   this.setData({ 
-    //     article_list:res.data.data
-    //   })
-    // })
+    api.getRequestData('api/user/diagnose_history_retrieve',{},'GET',false).then((res)=>{
+      console.log(res)
+      this.setData({ 
+        article_list:res.data.data
+      })
+    })
     // wx.request({               
     //   url:'http://106.13.28.21:8081/api/user/diagnose_history_retrieve?openId='+ wx.getStorageSync('openId'),
     //   data:{
