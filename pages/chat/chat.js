@@ -61,7 +61,7 @@ Page({
 
 
     // 这里把this改成了that
-    that.socketStart();
+    this.socketStart();
   },
 
   /**
@@ -148,4 +148,11 @@ Page({
     this.setData({ socketMessage: socketMessage += '服务器返回数据 → ' + receivedStr + '\n\n'})
     this.socketStop();
   },
-})
+  bindChange:function(){
+
+  },
+  send:function(){
+    socketMessage="49283402384"
+  }
+},
+)
