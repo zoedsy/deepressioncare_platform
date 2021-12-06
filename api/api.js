@@ -322,6 +322,16 @@ class Api {
       })
     })
   }
+  getDateTime (){
+    let d = new Date();
+    var year = d.getFullYear()
+    var month = d.getMonth()
+    var day = d.getDate()
+    var date = year+"-"+month+"-"+day
+    console.log("date",date)
+    return date
+  }
+
   
 }
 module.exports = Api

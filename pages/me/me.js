@@ -32,7 +32,7 @@ Page({
         // 请求 openid,token
         wx.request({
           // url: 'http://106.13.28.21:8081/api/wx/wx_login',
-          url: 'http://192.168.195.202:8080/api/wx/wx_login',
+          url: 'http://192.168.43.202:8080/api/wx/wx_login',
           data: {
             "code": this.data.code,
             "rawData": file.rawData,

@@ -2,6 +2,7 @@
 //获取应用实例
 var app = getApp();
 import Api from '../../../api/api.js';
+// import getDateTime from '../../../wxs/tool.wxs';
 const api = new Api();
 Page({
   data: {
@@ -422,24 +423,42 @@ Page({
     //   map.endTime = this.data.voteDict.endTime + "";
     // }
 
-    map.city = cityName;
+    map.location = cityName;
     map.content = this.data.inputText;
-    map.draft = draft;
-    map.imgs = JSON.stringify(this.data.imageList);
-    map.kind = this.data.typeSelectIndex + 1;
+    // map.draft = draft;
+    // map.imgs = JSON.stringify(this.data.imageList);
+    // map.kind = this.data.typeSelectIndex + 1;
     map.title = title;
-    map.type = type;
+    // map.type = type;
     // map.userId = app.USER_ID();
-    map.userId = app.globalData.openId;
-    map.videoUrl = this.data.videoUrl;
+    map.ownerId = app.globalData.openId;
+    // var date =new Date();
+    // console.log(date)
+    // var date = api.getDateTime(date.toString());
+    // console.log("date-----------",date)
+
+    // 获取时间，返回时间
+    let d = new Date();
+    var year = d.getFullYear()
+    var month = d.getMonth()
+    var day = d.getDate()
+    var date = year+"-"+month+"-"+day
+    console.log("date",date)
+    map.crateTime = api.getDateTime()
+    
+    
+  
+    // map.crateTime = 
+    // map.videoUrl = this.data.videoUrl;
+
 
     console.log(JSON.stringify(map));
-    map={
-      "ownerId":app.globalData.openId,
-      "path":"pages/luntan/luntan",
-      "title":"title",
-      "SubmitPostForm":"fjdskflsdjf"
-    },
+    // map={
+    //   "ownerId":app.globalData.openId,
+    //   "path":"pages/luntan/luntan",
+    //   "title":"title",
+    //   "SubmitPostForm":"fjdskflsdjf"
+    // },
     api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
