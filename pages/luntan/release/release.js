@@ -58,7 +58,7 @@ Page({
       console.log("zero----------")
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
-      this.getDetailData();
+      // this.getDetailData();
     }
 
   },
@@ -322,7 +322,7 @@ Page({
 // @return   无
   beginSave(){
     this.data.needToHome = true;
-    this.savePostClick(1);
+    this.savePostClick(-1);
   },
 
 // 选择城市
@@ -392,20 +392,20 @@ Page({
     }
     // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
     var type = 1;
-    if (this.data.zcDict) {
-      type = 4;
-    }
-    if (this.data.voteDict) {
-      type = 2;
-    }
-    if (this.data.bfDict) {
-      type = 3;
-    }
+    // if (this.data.zcDict) {
+    //   type = 4;
+    // }
+    // if (this.data.voteDict) {
+    //   type = 2;
+    // }
+    // if (this.data.bfDict) {
+    //   type = 3;
+    // }
     if (!this.data.canSave) return;
     this.data.canSave = false;
     var _this = this;
     var map = {};
-    map.address = "";
+    // map.address = "";
     // if (this.data.bfDict) {
     //   if (this.data.bfDict.id) {
     //     map.baseId = this.data.bfDict.id;
@@ -423,30 +423,35 @@ Page({
     //   map.endTime = this.data.voteDict.endTime + "";
     // }
 
-    map.location = cityName;
-    map.content = this.data.inputText;
+    // map.location = cityName;
+    // map.content = this.data.inputText;
     // map.draft = draft;
     // map.imgs = JSON.stringify(this.data.imageList);
     // map.kind = this.data.typeSelectIndex + 1;
-    map.title = title;
+    // map.title = title;
     // map.type = type;
     // map.userId = app.USER_ID();
-    map.ownerId = app.globalData.openId;
+    var ownerId = app.globalData.openId;
+    
+    if(!map.ownerId){
+      ownerId=wx.getStorageSync('openId')
+    }
+
     // var date =new Date();
     // console.log(date)
     // var date = api.getDateTime(date.toString());
     // console.log("date-----------",date)
-
     // 获取时间，返回时间
-    let d = new Date();
-    var year = d.getFullYear()
-    var month = d.getMonth()
-    var day = d.getDate()
-    var date = year+"-"+month+"-"+day
-    console.log("date",date)
-    map.crateTime = api.getDateTime()
+    // console.log("date",date)
+    var crateTime = api.getDateTime()
     
-    
+    map={
+      "location":cityName,
+      "content":this.data.inputText,
+      "title":title,
+      "ownerId":ownerId,
+      "createTime":crateTime,
+    }
   
     // map.crateTime = 
     // map.videoUrl = this.data.videoUrl;
@@ -460,34 +465,49 @@ Page({
     //   "SubmitPostForm":"fjdskflsdjf"
     // },
     api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
+      console.log("chenggong")
+      console.log("draft",draft)
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
-      if (res.data.errorCode == 0) {
-        if (draft == -1) {
-          var data = res.data.model;
-          wx.setStorageSync('POST_ID', data.id + '');
-          _this.data.isChanged = false;
-          app.showToasts("保存成功～");
-        } else {
-          _this.data.isChanged = false;
-          wx.removeStorageSync('POST_ID');
-          app.showToasts("发布成功～");
-        }
-        setTimeout(function () {
-          if (_this.data.needToHome) {
-            _this.backHome();
-          }
-        }, 1400);
-      } else {
+      console.log("errorCode",res.data.errorCode)
+      // if (res.data.errorCode == "") {
+      if (draft == -1) {
+        // var data = res.data.model;
+        wx.setStorageSync('POST_ID', data.id + '');
+        _this.data.isChanged = false;
+        // app.showToasts("保存成功～");
         wx.showToast({
-          title: res.data.errorMsg,
-          icon: 'none',
-          duration: 1500
-        });
+          title: '发送成功',
+        })
+        console.log("baocunchenggong");
+      } else {
+        _this.data.isChanged = false;
+        wx.removeStorageSync('POST_ID');
+        // app.showToasts("发布成功～");
+        wx.showToast({
+          title: '发送成功',
+        })
+        console.log("fabuchenggong");
       }
+      setTimeout(function () {
+        if (_this.data.needToHome) {
+          _this.backHome();
+        }
+      }, 1400);
+      // } else {
+      //   wx.showToast({
+      //     title: res.data.errorMsg,
+      //     icon: 'none',
+      //     duration: 1500
+      //   });
+      // }
+    //  wx.showToast({
+    //    title: '发送成功',
+    //  })
 
     }).catch(err => {
       _this.data.canEvaluate = true;
+      console.log("catch")
     });
   },
   // 返回主页

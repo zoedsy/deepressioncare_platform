@@ -90,6 +90,7 @@ class Api {
   // 获取请求到的数据
   getRequestData(url,params,methond,isNeedPullFresh) {
     console.log("params =====", JSON.stringify(params));
+
     if (!url) {
       throw new Error('缺请求地址参数:url');
     }
@@ -103,22 +104,26 @@ class Api {
       }
       var token = wx.getStorageSync("token");
       var openId = wx.getStorageSync("openId");
-      params.openId = openId;
+      // params.openId = openId;
+      // params=JSON.stringify(params)
+      
       wx.request({
         url: `${APIURL}/`+url,
+        data:params,
         method: methond,
         header: {
-          'content-type': 'application/json',
+          'Content-Type': 'application/json',
           'token': token
         },
-        data: params,
         success: (res) => {
           wx.hideLoading();
+          console.log("params:",params)
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
             wx.hideNavigationBarLoading();
           }
           resolve(res);
+          console.log("res",res)
         },
         fail: function (err) {
           wx.hideLoading();
@@ -137,6 +142,9 @@ class Api {
     })
   }
 
+
+
+  
   // 获取请求数据不加载？
   getRequestDataNoLoading(url, params, isNeedPullFresh,methodName) {
     if (!url) {
@@ -327,6 +335,7 @@ class Api {
     var year = d.getFullYear()
     var month = d.getMonth()
     var day = d.getDate()
+    if(day)
     var date = year+"-"+month+"-"+day
     console.log("date",date)
     return date
