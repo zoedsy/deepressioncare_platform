@@ -1,110 +1,121 @@
-<view class="box">
-  <!-- 流程 -->
-  <view class="step_box">
-    <view class="step">
-      <view class="node node1">
-        <view class="date">2021-11-29</view>
-        <view wx:if="{{percent<25}}">
-          <view class="iconfont icon-daibanshixiang:before"></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branch"></view>
-          </view>
-          </view>
-          <view  wx:if="{{percent>=25}}">
-            <view class="iconfont icon-yiwancheng:before"></view>
+<view class="big_box">
+
+  <view class="box">
+    <!-- 流程 -->
+    <view class="step_box">
+      <view class="title0" style="font-size: 20px; padding-left: 15px;">请等待医生诊断完成...</view>
+      <view class="step">
+        <view class="node node1">
+          <!-- <view class="date">2021-11-29</view> -->
+          <view wx:if="{{percent<25}}">
+            <view class="iconfont icon-daibanshixiang:before"></view>
             <view class="time_branch">
-              <view class="time">09:  35:  45</view>
+              <!-- <view class="time">09:  35:  45</view> -->
+              <view class="branch"></view>
+            </view>
+            </view>
+            <view  wx:if="{{percent>=25}}">
+              <view class="iconfont icon-yiwancheng:before"></view>
+              <view class="time_branch">
+                <!-- <view class="time">09:  35:  45</view> -->
+                <view class="branched"></view>
+              </view>
+            </view>
+          <view class="title">上传数据</view>
+          </view>
+      
+        <view class="node node2">
+          <!-- <view class="date">2021-11-29</view> -->
+          <view wx:if="{{percent<50}}">
+            <view class="node2 iconfont icon-daibanshixiang:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:35:45</view> -->
+              <view class="branch"></view>
+            </view>
+          </view>
+          <view  wx:if="{{percent>=50}}">
+            <view class="node2 iconfont icon-yiwancheng:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:  35:  45</view> -->
               <view class="branched"></view>
             </view>
           </view>
-        <view class="title">上传数据</view>
+          <view class="title">机器分析</view>
         </view>
-    
-      <view class="node node2">
-        <view class="date">2021-11-29</view>
-        <view wx:if="{{percent<50}}">
-          <view class="node2 iconfont icon-daibanshixiang:before"></view>
-          <view class="time_branch">
-            <view class="time">09:35:45</view>
-            <view class="branch"></view>
+  
+        <view class="node node3">
+          <!-- <view class="date">2021-11-29</view> -->
+          <view wx:if="{{percent<75}}">
+            <view class="node3 iconfont icon-daibanshixiang:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:  35:  45</view> -->
+              <view class="branch"></view>
+            </view>
           </view>
-        </view>
-        <view  wx:if="{{percent>=50}}">
-          <view class="node2 iconfont icon-yiwancheng:before" ></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branched"></view>
+          <view  wx:if="{{percent>=75}}">
+            <view class="node3 iconfont icon-yiwancheng:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:  35:  45</view> -->
+              <view class="branched"></view>
+            </view>
           </view>
+          <view class="title" bindtap='goToeva_result'>医生评议</view>
         </view>
-        <view class="title">机器分析</view>
-      </view>
-
-      <view class="node node3">
-        <view class="date">2021-11-29</view>
-        <view wx:if="{{percent<75}}">
-          <view class="node3 iconfont icon-daibanshixiang:before"></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branch"></view>
+          
+        <view class="node node4">
+          <!-- <view class="date">2021-11-29</view> -->
+          <view wx:if="{{percent<100}}">
+            <view class="node4 iconfont icon-daibanshixiang:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:  35:  45</view> -->
+              <view class="branch" style="background-color: #fff;"></view>
+            </view>
           </view>
-        </view>
-        <view  wx:if="{{percent>=75}}">
-          <view class="node3 iconfont icon-yiwancheng:before"></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branched"></view>
+          <view  wx:if="{{percent>=100}}">
+            <view class="node4 iconfont icon-yiwancheng:before"></view>
+            <view class="time_branch">
+              <!-- <view class="time">09:  35:  45</view> -->
+              <view class="branched" style="background-color: #fff;"></view>
+            </view>
           </view>
+          <view class="title" bindtap='goToeva_result'>查看结果</view>
         </view>
-        <view class="title" bindtap='goToeva_result'>医生评议</view>
-      </view>
         
-      <view class="node node4">
-        <view class="date">2021-11-29</view>
-        <view wx:if="{{percent<100}}">
-          <view class="node4 iconfont icon-daibanshixiang:before"></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branch" style="background-color: #fff;"></view>
-          </view>
-        </view>
-        <view  wx:if="{{percent>=100}}">
-          <view class="node4 iconfont icon-yiwancheng:before"></view>
-          <view class="time_branch">
-            <view class="time">09:  35:  45</view>
-            <view class="branched" style="background-color: #fff;"></view>
-          </view>
-        </view>
-        <view class="title" bindtap='goToeva_result'>查看结果</view>
-      </view>
-      
-     
-    </view>
-  </view>
-<!-- 信息 -->
-  <view class="info_box">
-    <view class="info_id">
-      <view class=" info info1">
-        <view class="Name_id">病人姓名：</view>
-        <text class="Name">{{Name}}</text>
-      </view>
-      <view class="info info2">
-        <view class="Type_id">诊断类型：</view>
-        <text class="Type">{{Type}}</text>
-      </view>
-      <view class=" info info3">
-        <view class="Date_id">发起时间：</view>
-        <text class="Date">{{Date}}</text>
+       
       </view>
     </view>
+  <!-- 信息 -->
+    <view class="info_box">
+      <view class="info_id">
+        <view class=" info info1">
+          <view class="Name_id">病人姓名：</view>
+          <text class="Name">{{Name}}</text>
+        </view>
+        <view class="info info2">
+          <view class="Type_id">诊断类型：</view>
+          <text class="Type">{{Type}}</text>
+        </view>
+        <view class=" info info3">
+          <view class="Date_id">发起时间：</view>
+          <text class="Date">{{Date}}</text>
+        </view>
+      </view>
+    </view>
+  
+    <!-- 机器分析 -->
+    <view class="analyze_box">
+      <view class="analyze0">
+        <view class="rob_Result">模型诊断结果</view>
+        <view class="accuracy">(正确率:80%)</view>
+      </view>
+      <view class="analyze1">
+        <view class="rob_Result1">是否患抑郁:</view>
+        <view class="result">是</view>
+      </view>
+    </view>
+  
+    <!-- 结果查看 -->
+    <view class="result_box" bindtap='goToeva_result'>医生评议完成，点击查看结果</view>
   </view>
 
-  <!-- 机器分析 -->
-  <view class="analyze_box">
-    <view class="analyze0">机器分析结果</view>
-    <view class="analyze1">80%概率抑郁</view>
-  </view>
-
-  <!-- 结果查看 -->
-  <view class="result_box" bindtap='goToeva_result'>医生评议完成，点击查看结果</view>
 </view>
