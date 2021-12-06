@@ -95,6 +95,18 @@
           "pathName": "pages/me/me",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/chat/friends/friends",
+          "pathName": "pages/chat/friends/friends",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/chatroom/chatroom",
+          "pathName": "pages/chat/chatroom/chatroom",
+          "query": "",
+          "scene": null
         }
       ]
     }

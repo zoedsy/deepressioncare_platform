@@ -14,6 +14,8 @@
     "pages/diagnose/audio/audio" ,
     
     "pages/chat/chat",
+    "pages/chat/friends/friends",
+    "pages/chat/chatroom/chatroom",
    
   
 
