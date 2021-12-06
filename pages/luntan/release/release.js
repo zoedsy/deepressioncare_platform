@@ -369,7 +369,8 @@ Page({
   },
   postDidWorkSave(draft){
     if (this.data.inputText.length == 0) {
-      app.alert("请输入正文~");
+      console.log("请输入正文~")
+      // app.alert("请输入正文~");
       return;
     }
     var title = this.data.title;
@@ -418,7 +419,8 @@ Page({
     map.kind = this.data.typeSelectIndex + 1;
     map.title = title;
     map.type = type;
-    map.userId = app.USER_ID();
+    // map.userId = app.USER_ID();
+    map.userId = app.globalData.openId;
     map.videoUrl = this.data.videoUrl;
 
     console.log(JSON.stringify(map));
@@ -495,7 +497,8 @@ Page({
     var _this = this;
     var count = 9 - this.data.imageList.length;
     if (count <= 0){
-      app.alert("最多上传9张图片~");
+      // app.alert("最多上传9张图片~");
+      console.log("最多上传9张图片~")
       return;
     }
     wx.chooseImage({
@@ -531,7 +534,8 @@ Page({
           var string = response.data;
           var dict = JSON.parse(string);
           if (dict.errorMsg){
-            app.alert(dict.errorMsg);
+            // app.alert(dict.errorMsg);
+            console.log(dict.errorMsg);
           } else {
             var url = dict.model.fileFullUrl;
             console.log(url);
@@ -596,17 +600,21 @@ Page({
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');
   },
+
+  // 请求数据
   getDetailData() {
     var _this = this;
     var map = {};
     map.id = this.data.post_id;
-    map.userId = app.USER_ID();
-
-    api.getRequestData(app.postDetailtUrl, map, false, "GET").then(res => {
+    // map.userId = app.openid;
+    map.userId = app.globalData.openid;
+    console.log(app.globalData.url_post)
+    api.getRequestData(app.globalData.url_post, map, false, "GET").then(res => {
       if (res.data.errorCode == 0) {
         _this.formatData(res.data.model);
       } else {
-        app.alert(res.data.errorMsg);
+        // app.alert(res.data.errorMsg);
+        console.log(res.data.errorMsg)
       }
     });
   },

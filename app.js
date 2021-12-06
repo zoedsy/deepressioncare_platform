@@ -8,6 +8,7 @@ App({
     openId: "",
     token:"",
     url: "http://106.13.28.21:8081",
+    url_post:"http://106.13.28.21:8081/api/bbs/submit_post"
   },
  
   onShow(){
