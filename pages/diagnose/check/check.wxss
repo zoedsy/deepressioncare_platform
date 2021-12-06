@@ -1,68 +1,93 @@
+.big_box{
+  width: 410px;
+  height: 780px;
+  margin: 0 auto;
+  border: 1px solid #DCDCDC;
+  box-shadow: 0 0 10px #888888;
+  border-radius:5px 5px 5px 5px;
+
+}
+
 .box{
   width: 414px;
   height: 207px;
   background-color: #37d27b;
   border-radius: 0px 0px 414px 414px;
 }
+
+.title0{
+ margin-top: 20px;
+}
 .step_box{
-  width: 500rpx;
-  height: 580rpx;
+  width: 730rpx;
+  height: 300rpx;
   background-color: #fff;
   align-items: center;
   justify-content: center;
   border: 1rpx  solid #DCDCDC;
   margin: 0 auto;
-  margin-top: 10px;
-  padding-left: 30px;
-  padding-top: 20px;
+  /* margin-top: 10px; */
+  /* padding-left: 38px; */
+  
   box-shadow: 0 0 10px #888888;
-  /* padding: 10px; */
   border-radius:5px 5px 5px 5px;
+}
+.step{
+  display: flex;
+  padding-top: 15px;
+}
 
-}
-.date{
+/* .date{
   margin-right: 10px;
-}
-.time_branch{
+} */
+/* .time_branch{
   display: flex;
   margin-left: -93px;
-}
-.time{
+} */
+/* .time{
   margin: 10px;
   margin-top: -10px;
 
-}
+} */
 .branch{
-  width: 3px;
-  height: 45px;
+  width: 55px;
+  height: 3px;
   background-color:	#C0C0C0;
-  transform: translateX(15px);
+  transform: translate(70px,-20px);
 }
 .branched{
-  width: 3px;
-  height: 40px;
+  width: 55px;
+  height: 3px;
   background-color: cornflowerblue;
-  transform: translateX(15px);
+  transform: translate(70px,-20px);
 }
 .node{
-  display: flex;
+  display: inline;
+  margin-right: 40rpx;
+  
+}
+.iconfont{
+  margin-left: 30px;
 }
 
 .title{
-  margin-left: 20px;
+  /* margin-right: 5px; */
+  margin-left: 14px;
 }
 
 /* 病人个人信息 */
 .info_box{
-  width: 600rpx;
-  height: 200rpx;
+  width: 730rpx;
+  height: 260rpx;
   /* color: rgb(61, 46, 46); */
   background-color: #fff;
   margin: 0 auto;
   margin-top: 20px;
   box-shadow: 0 0 10px #888888;
   padding: 2px;
+  padding-top: 15px;
   border-radius:5px 5px 5px 5px;
+  font-size: 20px;
 
 
 }
@@ -79,8 +104,8 @@
 
 /* 机器分析 */
 .analyze_box{
-  width: 600rpx;
-  height: 200rpx;
+  width: 730rpx;
+  height: 260rpx;
   /* color: rgb(61, 46, 46); */
   background-color: #fff;
   margin: 0 auto;
@@ -96,25 +121,43 @@
   flex:5;
   background-color: #37d27b;
   text-align: center;
-  line-height: 100px;
+  border-radius:5px 5px 5px 5px;
+}
+.rob_Result{
+  text-align: center;
+  line-height: 80px;
+  font-size: 20px;
+}
+.accuracy{
+  text-align: center;
+  line-height: 0px;
+  font-size: 24px;
 }
 .analyze1{
   flex:6;
   text-align: center;
-  line-height: 100px;
+}
+.rob_Result1{
+  text-align: center;
+  line-height: 80px;
+  font-size: 20px;
+}
+.result{
+  text-align: center;
+  line-height: 0px;
   font-size: 24px;
 }
-
 /* 结果查看 */
 .result_box{
-  width: 600rpx;
-  height: 200rpx;
+  width: 730rpx;
+  height: 260rpx;
   /* color: rgb(61, 46, 46); */
   background-color: #37d27b;
   margin: 0 auto;
   margin-top: 20px;
   box-shadow: 0 0 10px #888888;
   text-align: center;
-  line-height: 100px;
+  line-height: 130px;
   border-radius:5px 5px 5px 5px;
+  font-size: 20px;
 }
