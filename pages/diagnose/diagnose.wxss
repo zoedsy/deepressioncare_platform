@@ -1,164 +1,84 @@
-.infomation{    
-    position: relative;
-    height: 150px;
-    width: 100%;
-    background-color: #37d27b; 
-    box-sizing: border-box;  
-} 
-.infomation0{
-    display: flex;
-}
-.date{
-    margin-left: 80px;
-}
-.name{
-    margin-top: 35px;
-    position: absolute;
-    left: 60px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff; 
-}
-.department, .date{
-    /* margin-top: 25px; */
-    position: absolute;
-    left: 60px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff;
-}
-/* 
-.mask{
-    width: 100%;
-    height: 80px;
-    background-color: rgba(0,0,0,.1);
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-.icon-jinrujiantouxiao{
-    color: #fff;
-} */
-.iconfont{
-    display: flex;
-    margin-top: 40px;
-}
-/* .img{
-    margin: 10px;
-    width: 100%;
-    display:flex;                   
-    vertical-align: middle;           
-} */
-.audio_box{
-    width: 98%;
-    height: 150px;
-    margin: 0 auto;
-    box-shadow: 0 0 5px #000;
-    border-radius: 5px 5px 5px 5px;
-    border: 1px solid#a2a2a2;
-    margin: 5px 0;
-    margin-left: 3px;
-}
-.audio:before{
-    content: '';
-    vertical-align:text-bottom;
-    display:inline-block;
-    margin-left: 50px;
-    font:SimHei;
-    font-size: 20px;
-    font-weight: 700;
-}
-.tip{
-    font-size: 14px;
-    vertical-align: middle;
-    margin-left: 25%;
-    color:rgb(126, 122, 122);
-}
-.history_box{
-    width: 98%;
-    height: 400px;
-    margin: 0 auto;
-    /* box-shadow: 0 0 2px #000; */
-    border-radius: 5px 5px 5px 5px;
-    /* padding: 3px; */
-    /* background-color: #37d27b;  */
-}
-.history_box .title{
-    width: 100%;
-    height: 40px;
-    margin: 0 auto;
-    background-color:  #37d27b;  
-    /* border-radius: 5px 5px 5px 5px; */
-    border: 1px solid#a2a2a2;
-    line-height: 40px;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 20px;
-    color: #fff;
-}
+// pages/eva_result/eva_result.js
+Page({
 
-.info{
-    display:flex;
-    width: 100%;
-    height: 300px;
-    margin-top: 10rpx;
-    /* justify-content: center;
-    align-items:center;
-    flex-direction: column; */
-    display: flex;
-    flex-direction: row;
-   }
-   .info image { 
-     width:300rpx;
-     height:300rpx;
-   }
-   .info text {
-     /* margin-top: 10rpx; */
-     font-size: 30rpx;
-     color: #908df5;
-     justify-content: center;
-     align-items: center;
-   }
-  .abnormal{
-   display: -webkit-flex;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   border: 1px solid #bbb;
-   margin-top: 5px;
-   /* height: 20%; */
- }
- .abnormal-img{
-   width: 20rpx;
-   height: 20rpx;
-   margin: 5px;
-   border: 1px solid #bbb;
-   flex: 1 1 auto;
- }
- .abnormal-box{
-   height: 90rpx;
-   overflow: hidden;
- }
- .abnormal-name{
-   display: block;
-   height: 40rpx;
-   line-height: 40rpx;
-   overflow: hidden;
-   font-size: 35rpx;
- }
-  .abnormal-detail{
-   display: block;
-   width: 400rpx;
-   height:40rpx;
-   line-height: 40rpx;
-   overflow: hidden;
-   font-size: 30rpx;
-   color: #8f8f94;
-   text-align: left;
-   white-space: nowrap;  /* 所有的文本都显示在这一行*/
-   text-overflow: ellipsis;  /* 多余的文本用省略号显示*/
- }
- .abnormal-left{padding-left: 10px;}
- .abnormal-right{padding-right: 10px;}
+  /**
+   * 页面的初始数据
+   */
+  data: {
+
+  },
+  bindViewTap:function(){
+    wx.navigateTo({
+      url: '../../check/check',
+    })
+  },
+  goToAsk:function(param){
+    wx.navigateTo({
+      // 测试，合并时直接跳转到聊天框
+      url: '../check/check',
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+   Doctor:function (name,admin,position) {
+    this.setData({
+      Name:name,
+      Admin:admin,
+      Position:position,
+    })
+      
+    },
+    onLoad: function (options) {
+      this.Doctor('杨新华','妇科 ',' 副主任医师')
+    },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
+})
