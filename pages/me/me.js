@@ -44,6 +44,7 @@ Page({
             'content-type': 'application/json'
           },
           success:(res)=>{  
+            // 这里请求登录接口这块？
             console.log(res.data)
             app.globalData.openId = res.data.data.id,
             app.globalData.token = res.data.data.token,
