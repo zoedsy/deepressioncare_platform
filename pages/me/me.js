@@ -1,4 +1,3 @@
-// pages/person/index.js
 const app = getApp()
 Page({
  
@@ -11,25 +10,15 @@ Page({
   },
   
   getUserProfile(e) {
-      //登录
-    wx.checkSession({
+    //先login，再getUserProfile
+    wx.login({
       success: (res) => {
-        console.log("session",res)
-      },
-      fail:(err)=>{
-        console.log("session err",err)
-        //过期重新登陆？
-        wx.login({
-          success: (res) => {
-            console.log("code",res.code)
-            this.setData({
-              code:res.code
-            })
-          }
+        console.log("code",res.code)
+        this.setData({
+          code:res.code
         })
       }
     })
-    
     wx.getUserProfile({
       desc: '用户登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (file) => {
@@ -38,6 +27,7 @@ Page({
           userInfo: file.userInfo,
           hasUserInfo: true
         })
+        
         // 请求 openid,token
         wx.request({
           url: 'http://106.13.28.21:8081/api/wx/wx_login',
@@ -54,9 +44,9 @@ Page({
           },
           success:(res)=>{  
             console.log(res.data)
-            app.globalData.openId = res.data.data.openId,
+            app.globalData.openId = res.data.data.id,
             app.globalData.token = res.data.data.token,
-            wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
+            wx.setStorageSync('openId', res.data.data.id) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
             wx.setStorageSync('userInfo', res.data.data.usefInfo)
           },fail:(err)=>{
@@ -114,16 +104,31 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // 如果有本地缓存的openid，就直接登录
-    if(wx.getStorageSync('token')){
-      app.globalData.openid = wx.getStorageSync('openId')
-      app.globalData.token = wx.getStorageSync('token')
-      this.setData({
-        userInfo:wx.getStorageSync('userInfo')
-      })
-    }
+    
+    //session是否过期
+    wx.checkSession({
+      success: (res) => {
+        console.log("session",res)
+        // 本地缓存没过期，就直接登录
+        if(wx.getStorageSync('token')){
+          app.globalData.openid = wx.getStorageSync('openId')
+          app.globalData.token = wx.getStorageSync('token')
+          this.setData({
+            userInfo:wx.getStorageSync('userInfo')
+          })
+        }
+      },
+      fail:(err)=>{
+        console.log("session err",err)
+        //过期重新登陆
+        if(wx.getStorageSync('token')){
+          wx.showToast({
+            title: '用户登录已过期，请重新登录',
+          })
+        }
+      },
+    })
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
