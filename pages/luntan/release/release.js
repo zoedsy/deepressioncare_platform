@@ -440,7 +440,7 @@ Page({
       "title":"title",
       "SubmitPostForm":"fjdskflsdjf"
     },
-    api.getRequestData(app.globalData.url_post, map, false, "POST").then(res => {
+    api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       if (res.data.errorCode == 0) {
