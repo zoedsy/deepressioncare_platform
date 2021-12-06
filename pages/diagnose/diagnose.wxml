@@ -21,23 +21,39 @@
 
     </view>
 
-
-
     <!-- 图片 -->
     <!-- <view>
         <image src="../../images/baby.png" class="img" mode="aspectFill"></image>
     </view> -->
-
-
     <!-- 上传音频 -->
-    <div bindtap='bindViewTap' class="iconfont icon-tianjia">
+ <view class="audio_box">
+    <view bindtap='bindViewTap' class="iconfont icon-tianjia">
         <text class="audio">
-            添加音频
+            添加文件
         </text>
-    </div>
-    <div class="tip">
+    </view>
+    <view class="tip">
         <!--style="display:flex;justify-content: center;align-items: center;"> -->
-        请上传您的长达1min的音频数据
-    </div>
+        请上传您的音频或活动序列数据
+    </view>
+ </view>
+
+    <!-- 历史记录 -->
+    <view class="history_box">
+        <view class="title">历史记录</view>
+        <view class='info'>
+        <view class="tui-list-box">
+            <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goTopage" data-id="{{item.id}}">
+                <view class="pic">
+                    <image class="abnormal-img" src="{{item.images}}" bindtap="goToDetail"></image>
+                </view>
+                <view class="abnormal-box abnormal-left abnormal-right" bindtap="goToDetail">
+                    <div class="abnormal-name">{{item.title}}</div>
+                    <div class="abnormal-detail">{{item.detail}}</div>
+                </view>
+            </view>
+        </view>
+    </view>
+    </view>
 
 </div>

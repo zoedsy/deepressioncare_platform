@@ -52,9 +52,10 @@ Page({
 
   // 跳转详细对话框
   toDetail:function(){
-    let index=e.currentTarget.dataset.index;
+    // let index=e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: '/pages/chat/chat?index='+index,
+      // url: '/pages/chat/chat?index='+index,
+      url:'/pages/chat/chat'
     })
   },
 

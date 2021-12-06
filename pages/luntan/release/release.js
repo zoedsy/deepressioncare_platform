@@ -51,7 +51,10 @@ Page({
     });
     var post_id = wx.getStorageSync('POST_ID');
     console.log("======",post_id);
+
+    // 基本上没有缓存数据，所以直接跳到onshow
     if (post_id && post_id.length > 0){
+      console.log("zero----------")
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
       this.getDetailData();
@@ -65,38 +68,38 @@ Page({
 // @param     e
 // @return   无
   onShow(){
-    var zcString = wx.getStorageSync('zcList');
-    console.log(zcString);
-    if (zcString && zcString.length > 0){
-      var zcDict = JSON.parse(zcString);
-      this.data.isChanged = true;
-      this.setData({
-        bfDict:null,
-        voteDict:null,
-        typeSelectIndex:4,
-        zcDict:zcDict
-      });
-    }
-    var bfString = wx.getStorageSync('bfList');
-    if (bfString && bfString.length > 0){
-      var bfDict = JSON.parse(bfString);
-      this.data.isChanged = true;
-      this.setData({
-        zcDict:null,
-        voteDict:null,
-        typeSelectIndex:3,
-        bfDict:bfDict
-      });
-    }
-    if (this.data.voteDict){
-      this.data.isChanged = true;
-      this.setData({
-        zcDict:null,
-        voteDict:this.data.voteDict,
-        typeSelectIndex:0,
-        bfDict:null
-      });
-    }
+    // var zcString = wx.getStorageSync('zcList');
+    // console.log(zcString);
+    // if (zcString && zcString.length > 0){
+    //   var zcDict = JSON.parse(zcString);
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     bfDict:null,
+    //     voteDict:null,
+    //     typeSelectIndex:4,
+    //     zcDict:zcDict
+    //   });
+    // }
+    // var bfString = wx.getStorageSync('bfList');
+    // if (bfString && bfString.length > 0){
+    //   var bfDict = JSON.parse(bfString);
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     zcDict:null,
+    //     voteDict:null,
+    //     typeSelectIndex:3,
+    //     bfDict:bfDict
+    //   });
+    // }
+    // if (this.data.voteDict){
+    //   this.data.isChanged = true;
+    //   this.setData({
+    //     zcDict:null,
+    //     voteDict:this.data.voteDict,
+    //     typeSelectIndex:0,
+    //     bfDict:null
+    //   });
+    // }
   },
 
   
@@ -360,6 +363,8 @@ Page({
     this.postDidWorkSave(draft);
 
   },
+
+  // 点击发送，draft=1
   savePostClick(draft){
     if (draft != -1){
       this.beginSavePost(draft);
@@ -367,9 +372,13 @@ Page({
     } 
     this.postDidWorkSave(draft);
   },
+
+
+  // 可以进行请求了，就是有了标题内容这些
   postDidWorkSave(draft){
     if (this.data.inputText.length == 0) {
-      app.alert("请输入正文~");
+      console.log("请输入正文~")
+      // app.alert("请输入正文~");
       return;
     }
     var title = this.data.title;
@@ -380,6 +389,7 @@ Page({
     if (cityName == "添加地点") {
       cityName = "";
     }
+    // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
     var type = 1;
     if (this.data.zcDict) {
       type = 4;
@@ -395,22 +405,23 @@ Page({
     var _this = this;
     var map = {};
     map.address = "";
-    if (this.data.bfDict) {
-      if (this.data.bfDict.id) {
-        map.baseId = this.data.bfDict.id;
-      } else {
-        map.baseId = this.data.bfDict.basesId;
-      }
-    }
-    if (this.data.zcDict) {
-      map.productId = this.data.zcDict.productId;
-      map.skuId = this.data.zcDict.skuId;
-    }
-    if (this.data.voteDict) {
-      map.votes = this.data.voteDict.options;
-      map.voteTitle = this.data.voteDict.title;
-      map.endTime = this.data.voteDict.endTime + "";
-    }
+    // if (this.data.bfDict) {
+    //   if (this.data.bfDict.id) {
+    //     map.baseId = this.data.bfDict.id;
+    //   } else {
+    //     map.baseId = this.data.bfDict.basesId;
+    //   }
+    // }
+    // if (this.data.zcDict) {
+    //   map.productId = this.data.zcDict.productId;
+    //   map.skuId = this.data.zcDict.skuId;
+    // }
+    // if (this.data.voteDict) {
+    //   map.votes = this.data.voteDict.options;
+    //   map.voteTitle = this.data.voteDict.title;
+    //   map.endTime = this.data.voteDict.endTime + "";
+    // }
+
     map.city = cityName;
     map.content = this.data.inputText;
     map.draft = draft;
@@ -418,11 +429,18 @@ Page({
     map.kind = this.data.typeSelectIndex + 1;
     map.title = title;
     map.type = type;
-    map.userId = app.USER_ID();
+    // map.userId = app.USER_ID();
+    map.userId = app.globalData.openId;
     map.videoUrl = this.data.videoUrl;
 
     console.log(JSON.stringify(map));
-    api.getRequestData(app.postSaveUrl, map, false, "POST").then(res => {
+    map={
+      "ownerId":app.globalData.openId,
+      "path":"pages/luntan/luntan",
+      "title":"title",
+      "SubmitPostForm":"fjdskflsdjf"
+    },
+    api.getRequestData(app.globalData.url_post, map, false, "POST").then(res => {
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       if (res.data.errorCode == 0) {
@@ -495,7 +513,8 @@ Page({
     var _this = this;
     var count = 9 - this.data.imageList.length;
     if (count <= 0){
-      app.alert("最多上传9张图片~");
+      // app.alert("最多上传9张图片~");
+      console.log("最多上传9张图片~")
       return;
     }
     wx.chooseImage({
@@ -531,7 +550,8 @@ Page({
           var string = response.data;
           var dict = JSON.parse(string);
           if (dict.errorMsg){
-            app.alert(dict.errorMsg);
+            // app.alert(dict.errorMsg);
+            console.log(dict.errorMsg);
           } else {
             var url = dict.model.fileFullUrl;
             console.log(url);
@@ -596,17 +616,21 @@ Page({
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');
   },
+
+  // 请求数据
   getDetailData() {
     var _this = this;
     var map = {};
     map.id = this.data.post_id;
-    map.userId = app.USER_ID();
-
-    api.getRequestData(app.postDetailtUrl, map, false, "GET").then(res => {
+    // map.userId = app.openid;
+    map.userId = app.globalData.openid;
+    console.log(app.globalData.url_post)
+    api.getRequestData(app.globalData.url_post, map,"GET",false).then(res => {
       if (res.data.errorCode == 0) {
         _this.formatData(res.data.model);
       } else {
-        app.alert(res.data.errorMsg);
+        // app.alert(res.data.errorMsg);
+        console.log(res.data.errorMsg)
       }
     });
   },

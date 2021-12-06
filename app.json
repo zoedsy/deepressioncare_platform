@@ -14,6 +14,8 @@
     "pages/diagnose/audio/audio" ,
     
     "pages/chat/chat",
+    "pages/chat/friends/friends",
+    "pages/chat/chatroom/chatroom",
    
   
 
@@ -66,7 +68,8 @@
         "selectedIconPath": "images/诊断.png"
       },
       {
-        "pagePath": "pages/chat/chat",
+
+        "pagePath": "pages/home/doctor/doctor",
         "text": "聊天室",
         "iconPath": "images/聊天.png",
         "selectedIconPath": "images/聊天.png"
