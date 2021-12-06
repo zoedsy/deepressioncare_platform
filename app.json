@@ -26,12 +26,14 @@
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail",
 
- 
+
+
+
     "pages/me/me",
-    "pages/me/file/index",
     "pages/me/help/index",
     "pages/me/record/index",
-    "pages/me/information/index"
+    "pages/me/information/index",
+    "pages/me/aboutus/index"
 
 
   ],
