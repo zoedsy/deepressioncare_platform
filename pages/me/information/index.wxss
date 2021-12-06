@@ -6,22 +6,7 @@ page {
   margin-top: 20rpx;
   margin-left: 20rpx;
 }
-.re {
-  margin-top: 3rpx;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  display: flex;
-  margin-top: 10rpx;
-  background-color: #fff;
-  padding: 20rpx ;
-  font-size: 35rpx;
-}
-.re .relation {
-  margin-left: 15rpx;
-}
-.re .pick {
-  margin-right: 30rpx;
-}
+
 
 .na {
   flex-flow: row nowrap;
@@ -131,7 +116,7 @@ page {
 
 }
 
-.wai{
+.ill{
   flex-flow: row nowrap;
   justify-content: space-between;
   display: flex;
@@ -141,10 +126,10 @@ page {
   padding: 20rpx ;
   font-size: 35rpx;
 }
-.wai .waist {
+.ill .illness {
   margin-left: 15rpx;
 }
-.wai .input {
+.ill .input {
   margin-right: 10rpx;  
 }
 

@@ -1,21 +1,5 @@
 <view class="indexMust" style="color:#b9b8b3; font-size:15px; height:25px"> *以下为必选框 </view>
 <view class="components">
-    <view class="re">
-        <view class="relation">
-            <text >与您的关系：</text>
-            
-        <!-- <input class="input" name="relation" 
-               bindinput="relationInput" style="direction: rtl;" /> -->
-        </view>
-
-        <view class="pick">
-            <picker bindchange="relationInput" value="{{relationIndex}}" range="{{relationList}}">
-                <view class="relationChoose"> {{relationList[relationIndex]}} </view>
-            </picker> 
-        </view>
-
-        
-    </view>
 
     <view class="na">
         <view class="name">姓名：</view>
@@ -78,10 +62,10 @@
             bindinput="bmiInput" style="direction: rtl;" />
 </view>
 
-<view class="wai">
-    <view class="waist">腰围：</view>
-    <input class="input" name="waist" 
-            bindinput="waistInput" style="direction: rtl;" />
+<view class="ill">
+    <view class="illness">病史：</view>
+    <input class="input" name="illness" 
+            bindinput="illnessInput" style="direction: rtl;" />
 </view>
 
 
