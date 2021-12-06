@@ -123,20 +123,25 @@ class Api {
       console.log(params)
       // header请求头主要是token以及content-type
       console.log(header)
+      console.log(`${APIURL}/`+url)
       wx.request({
         url: `${APIURL}/`+url,
+        // console.log(url),
         method: methond,
         header: header,
         data: params,
         success: (res) => {
+          console.log("qingqiu chenggong")
           wx.hideLoading();
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
             wx.hideNavigationBarLoading();
           }
           resolve(res);
+          console.log(res)
         },
         fail: function (err) {
+          console.log("qingqiu shibai")
           wx.hideLoading();
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
