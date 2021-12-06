@@ -95,7 +95,7 @@ Page({
     // let index=e.currentTarget.dataset.index;
     wx.navigateTo({
       // url: '/pages/chat/chat?index='+index,
-      url:'/pages/chat/chatroom/chatroom'
+      url:'/pages/chat/chat'
     })
   },
 

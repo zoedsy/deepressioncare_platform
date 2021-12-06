@@ -25,7 +25,20 @@ Page({
      
     message:"",
      
-    previewImgList:[]
+    previewImgList:[],
+    userList:[
+      {
+        nickName:"yes",
+        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+      },
+      {        
+        nickName:"yes",
+        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+      },
+      {
+        nickName:"yes",
+        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
+      }]
      
   },
     
@@ -47,8 +60,8 @@ Page({
     //获取历史消息
 
 
-
-    this.socketStart();
+    // 这里把this改成了that
+    that.socketStart();
   },
 
   /**
@@ -61,14 +74,18 @@ Page({
       socketUrl,
     ))
 
+    // socket连接成功
     socket.on('connect', () => {
       this.setData({ socketMessage: socketMessage += 'SOCKET连接成功 → \n\n' })
-
+      console.log("socket连接成功！！！！！！！！！")
       // 此处修改为与server约定的数据、格式
-      var sendMessage = '{"token":"v3jsoc8476shNFhxgqPAkkjt678","client":"发送内容"}'
+      var token = wx.getStorageSync("token");
+      // var sendMessage = '{"token":"v3jsoc8476shNFhxgqPAkkjt678","client":"发送内容"}'
+      var sendMessage = '{"token":token,"client":"发送内容"}'
       this.socketSendMessage(sendMessage);
     })
 
+    //各种失败还有重新连接 
     socket.on('connect_error', d => {
       this.setData({ socketMessage: socketMessage += 'SOCKET连接失败 → \n\n' })
     })
@@ -96,7 +113,7 @@ Page({
     socket.on('error', err => {
       this.setData({ socketMessage: socketMessage += 'SOCKET连接错误 → \n\n' })
     })
-
+    // 服务器返回数据
     socket.on('message', function (d) {
       this.setData({ socketMessage: socketMessage += '服务器返回数据 → \n\n' })
       that.socketReceiveMessage(d)

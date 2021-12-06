@@ -1,42 +1,23 @@
 <view class="news" bindtap='outbtn'>J
-  
  <view class="historycon">
-  
  <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
-  
  <block wx:for="{{newslist}}" wx:key>
-  
  <!-- 历史消息 -->
  <view>{{item.date}}</view>
-  
  <!--自己的消息 -->
-  
  <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
-  
  <view style="text-align: right;padding-right: 20rpx;">
-  
  <text class="name">{{ item.nickName }}</text>
-  
  <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
-  
  </view>
-  
  <view class='my_right'>
-  
  <block wx:if="{{item.type=='text'}}">
-  
  <view class='new_txt'>{{item.content}}</view>
-  
  </block>
-  
  <block wx:if="{{item.type=='image'}}">
-  
  <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
-  
  </block>
-  
  </view>
-  
  </view>
   
  <!-- 别人的消息 -->
@@ -76,10 +57,23 @@
  </view>
   
  </view>
-  
+
  <view id="flag"></view>
   
+
+
+ <!-- 头像和yes -->
+ <block wx:for="{{userList}}">
+<view class="user-list">
+  <image class="faceImage" src="{{item.faceImage}}"></image>
+  <view class="nick-name">{{item.nickName}}</view>
+</view>
+
+</block>
+ 
  <!-- 聊天输入 -->
+
+
   
  <view class="message">
   
