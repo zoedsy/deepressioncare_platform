@@ -68,7 +68,8 @@
         "selectedIconPath": "images/诊断.png"
       },
       {
-        "pagePath": "pages/chat/friends/friends",
+
+        "pagePath": "pages/home/doctor/doctor",
         "text": "聊天室",
         "iconPath": "images/聊天.png",
         "selectedIconPath": "images/聊天.png"
