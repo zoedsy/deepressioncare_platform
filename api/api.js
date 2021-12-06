@@ -333,10 +333,14 @@ class Api {
   getDateTime (){
     let d = new Date();
     var year = d.getFullYear()
-    var month = d.getMonth()
+    var month = d.getMonth()+1
     var day = d.getDate()
-    if(day)
-    var date = year+"-"+month+"-"+day
+    var hour = d.getHours()
+    var minute = d.getMinutes()
+    var second = d.getSeconds()
+    // if(day)
+
+    var date = year+"-"+month+"-"+day+" "+hour+":"+minute
     console.log("date",date)
     return date
   }

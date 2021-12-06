@@ -15,7 +15,7 @@
      </cover-view>
   </navigator>
  
-  <scroll-view class="list-block" scroll-y="true">
+  <!-- <scroll-view class="list-block" scroll-y="true">
     <block wx:for="{{goods}}" wx:key="{{item.id}}">
       <navigator class="goods-block" url="./detail/detail">
         <view class="good-info">
@@ -36,6 +36,33 @@
             <image class="sign-img" src="{{item.sign_img}}"/>
           </view>
         </view>
+      </navigator>
+    </block>
+  </scroll-view> -->
+
+
+  <scroll-view class="list-block" scroll-y="true">
+    <block wx:for="{{posts}}" wx:key="{{item.pId}}">
+      <navigator class="goods-block" url="./detail/detail">
+        <view class="good-info">
+          <view class="good-img">
+            <image src="{{item.ciAvatarturl}}"/>
+            <!-- console.log("item.ciAvatarurl",item.ciAvatarurl) -->
+          </view>
+          <span class="title">{{item.pTitle}} </span>
+          <view class="desc">
+            <span>{{item.createTime}}</span>
+          </view>
+        </view> 
+        <!-- <view class="good-handle"> -->
+          <!-- <view class="price">
+            <span class="current-price">{{item.current_price}}</span>
+            <span class="original-price">{{item.original_price}}</span>
+          </view>  -->
+          <!-- <view class="sign">
+            <image class="sign-img" src="{{item.sign_img}}"/>
+          </view> -->
+        <!-- </view> -->
       </navigator>
     </block>
   </scroll-view>
