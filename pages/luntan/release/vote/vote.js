@@ -1,38 +1,18 @@
-// pages/home/tips/tips.js
-import Api from '../../../api/api';
-const api = new Api();
+// pages/luntan/release/vote/vote.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
-    article_list: [
-      
-    ],
+
   },
-
-
-toDetail:function(e){
-  let index=e.currentTarget.dataset.index;
-  wx.navigateTo({
-    url: '/pages/home/tipDetail/tipDetail?index='+index,
-  })
-},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //请求诊断记录
-    api.getRequestData('api/user/diagnose_history_retrieve',{},'GET',false).then((res)=>{
-      console.log(res)
-      this.setData({ 
-        article_list:res.data.data
-      })
-    })
-    
+
   },
 
   /**
