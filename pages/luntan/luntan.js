@@ -114,6 +114,8 @@ Page({
       console.log("look_posts_res",res);
       console.log("res.data.data",res.data.data)
       that.setData({posts:res.data.data});
+      app.globalData.posts=res.data.data
+      console.log("app.global.posts",app.globalData.posts)
       console.log("posts",res.data.data[0].ciAvatarturl);
       // <!-- console.log("item.ciAvatarurl",item.ciAvatarurl) -->
     }).catch(err=>{
@@ -170,6 +172,14 @@ Page({
       complete:function(res){}
     })
 
-
+  },
+  lookDetail:function(event){
+    console.log("event",event);
+    app.globalData.post=event.currentTarget.dataset.item;
+    wx.navigateTo({
+      // 直接把item传到detail页面
+      // url: '../../pages/luntan/detail/detail?post='+event.currentTarget.dataset.post,
+      url: '../../pages/luntan/detail/detail'
+    })
   }
 })

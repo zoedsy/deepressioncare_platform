@@ -2,6 +2,7 @@
 // posts.js
 var Api = require('../../../utils/api.js');
 var util = require('../../../utils/util.js');
+const app = getApp();
 
 Page({
   data: {
@@ -13,10 +14,21 @@ Page({
   },
 
   onLoad: function (options) {
+    var that = this;
+    // console.log("options",options)
     wx.setNavigationBarTitle({
       title: '帖子',
     })
-    this.fetchData(options.id);
+    // this.fetchData(options.id);
+    that.setData({detail:app.globalData.post})
+
+  },
+
+  onShow:function(){
+    var that =this;
+    that.setData({detail:app.globalData.post})
+    console.log(that.detail)
+    console.log("app.globalData.post",app.globalData.post)
   },
 
   // 获取数据
