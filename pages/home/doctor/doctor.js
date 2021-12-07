@@ -1,4 +1,7 @@
 // pages/doctor/doctor.js
+import Api from '../../../api/api.js';
+const api = new Api();
+
 Page({
 
   /**
@@ -22,16 +25,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    api.getRequestData('doctor_first_page/list',{},'GET',false).then((res)=>{
+      console.log("res_doctor---",res);
+      this.setData({ 
+        doctor_list:res.data.data
+      })
+      console.log(this.data.doctor_list)
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //请求医生数据
+    // 请求医生数据
     // api.getRequestData('doctor_first_page/list',{},'GET',false).then((res)=>{
-    //   console.log(res)
+    //   console.log("res_doctor---",res);
     //   this.setData({ 
     //     article_list:res.data.data
     //   })

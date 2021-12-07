@@ -67,7 +67,7 @@
 }
 .detail-posts-tag{
   display: inline-block;
-  width: 80rpx;
+  width: 120rpx;
   height: 42rpx;
   text-align: center;
   line-height: 42rpx;
