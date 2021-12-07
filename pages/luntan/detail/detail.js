@@ -1,7 +1,16 @@
+
+// const api = require('../../../utils/api.js');
 // pages/luntan/detail/detail.js
 // posts.js
-var Api = require('../../../utils/api.js');
-var util = require('../../../utils/util.js');
+// var Api = require('../../../utils/api.js');
+// var util = require('../../../utils/util.js');
+// import "../../../api/api.js" 
+
+const Api = require("../../../api/api");
+
+// const api = require('../../../api/api.js');
+const api = new Api();
+
 const app = getApp();
 
 Page({
@@ -9,8 +18,10 @@ Page({
     title: '话题详情',
     collectText:"收藏",
     detail: {},
+    comment_list:{},
     hidden: false,
-    modalHidden: true
+    modalHidden: true,
+    message:""
   },
 
   onLoad: function (options) {
@@ -21,7 +32,16 @@ Page({
     })
     // this.fetchData(options.id);
     that.setData({detail:app.globalData.post})
-
+    var post_id={
+      postId:app.globalData.post.pId
+    }
+    api.getRequestData(app.globalData.url_comment_get,post_id,'GET',false).then((res)=>{
+      console.log("get_comment_list",res)
+      // app.globalData.comment_list=res.data;
+      this.setData({comment_list:res.data.data})
+      console.log("comment_list.length>0",this.comment_list)
+      
+    })
   },
 
   onShow:function(){
@@ -29,6 +49,15 @@ Page({
     that.setData({detail:app.globalData.post})
     console.log(that.detail)
     console.log("app.globalData.post",app.globalData.post)
+    var post_id={
+      postId:app.globalData.post.pId
+    }
+    api.getRequestData(app.globalData.url_comment_get,post_id,'GET',false).then((res)=>{
+      console.log("get_comment_list",res)
+      // app.globalData.comment_list=res.data;
+      this.setData({comment_list:res.data.data})
+      console.log("comment_list.length>0",this.comment_list)
+    })
   },
 
   // 获取数据
@@ -52,6 +81,36 @@ Page({
     })
   },
 
+  bindChange:function(e){
+    // var that =this;
+    // console.log("message",e.detail.value);
+    app.globalData.message=e.detail.value;
+    // this.setData({message:e.detail.value});
+    console.log("message",app.globalData.message);
+
+  },
+
+  send:function(){
+    var that =this;
+    // api.
+    var openid = wx.getStorageSync('openId');
+    // 评论部分
+   var comment={
+      "coPostId":app.globalData.post.pId,
+      "coText":app.globalData.message,
+      "coUserid":openid
+    }
+    if(comment.coText!=null){
+      api.getRequestData(app.globalData.url_comment,comment,'POST',false).then((res)=>{
+        console.log("comment",comment)
+        console.log("res_comment",res)
+        
+        //发送评论之后，刷新评论列表 
+       this.onShow() 
+      })
+    }
+
+  }
   // // 收藏文章
   // collect: function(e) {
   //   var that = this;

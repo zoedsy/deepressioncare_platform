@@ -171,3 +171,84 @@
   display: block;
   color: #80bd01;
 }
+
+.sendMessage{
+  position: relative;
+  display: block;
+  height: 80rpx;
+  padding: 10rpx 10rpx;
+  background-color: #fff;
+  border-top: 2rpx solid #eee;
+  border-bottom: 2rpx solid #eee;
+  z-index:3;
+  }
+
+
+  .sendMessage input{
+   
+    float:left;
+     
+    width: 66%;
+     
+    height: 100%;
+     
+    line-height: 80rpx;
+     
+    border-bottom: 1rpx solid #ccc;
+     
+    padding:0 10rpx;
+     
+    font-size: 35rpx;
+     
+    color: #666;
+     
+    }
+     
+    .sendMessage view{
+     
+    display: inline-block;
+     
+    width: 80rpx;
+     
+    height: 80rpx;
+     
+    line-height: 80rpx;
+     
+    font-size: 60rpx;
+     
+    text-align: center;
+     
+    color: #999;
+     
+    border: 1rpx solid #ccc;
+     
+    border-radius: 50%;
+     
+    margin-left: 10rpx;
+     
+    }
+     
+    .sendMessage button {
+     
+    position: absolute;
+  
+    right: 5rpx;
+     
+    top: 20rpx;
+    /* float: right; */
+    font-size: 25rpx;
+     
+    }
+     
+    .increased{
+     
+    width:100%;
+     
+    /* height: 150rpx; */
+     
+    padding: 40rpx 30rpx;
+     
+    background-color: #fff;
+     
+    }
+     

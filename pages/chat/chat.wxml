@@ -80,7 +80,7 @@
         <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
         <input type="text" placeholder="请输入聊天内容.." value="{{message}}" bindinput='bindChange'></input>   
         <!-- 加入图片等操作要做 -->
-        <view class="add" bindtap='increase'>+</view>    
+        <!-- <view class="add" bindtap='increase'>+</view>     -->
         <!-- send的操作要做 将上面的message和socket的image相联系-->
         <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
     </form>
