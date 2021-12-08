@@ -50,13 +50,14 @@
       <view class="goods-block"   bindtap="lookDetail" data-item="{{item}}">
         <view class="good-info">
           <view class="good-img">
+
               <image src="{{item.ciAvatarturl}}"/>
             </view>
 
           <span class="title">{{item.pTitle}} </span>
 
           <view class="desc">
-            <span>{{item.createTime}}</span>
+            {{item.createTime}}
           </view>
         
         </view> 
