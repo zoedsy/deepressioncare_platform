@@ -143,6 +143,11 @@
           "pathName": "pages/luntan/release/release",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "pages/diagnose/check/check",
+          "pathName": "pages/diagnose/check/check",
+          "scene": null
         }
       ]
     }

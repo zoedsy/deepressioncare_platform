@@ -148,7 +148,7 @@
   border-bottom: solid #e9e9e9;
   display: flex;
   width: 100%;
-  height: 170rpx;
+  height: 250rpx;
   position: relative;
 }
 
@@ -172,7 +172,7 @@
 }
 
 .doctor_floor .info{
-  width: 600rpx;
+  width: 700rpx;
   height:230rpx;
   margin:10rpx
 }
