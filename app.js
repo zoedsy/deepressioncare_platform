@@ -20,6 +20,7 @@ App({
     url_search_post:"api/search/post",
     url_comment:"api/bbs/comments/submit_comment",
     url_comment_get:"api/bbs/comments/list",
+    url_sumbit_diagnose_file:"api/diagnose/submit_diagnose_file",
     message:"",
     comment_list:[]
   },

@@ -1,5 +1,6 @@
 // pages/diagnosis/diagnosis.js
-
+import Api from '../../api/api.js';
+const api = new Api();
 const app = getApp();
 Page({
   /** 
@@ -48,7 +49,46 @@ Page({
       type:'file',
       success(res){
         // tempFilePath可以作为临时路径
-        const tempFilePaths = res.tempFilePaths
+        const tempFile = res.tempFiles[0]
+        console.log("诊断这里res输出",res);
+        console.log("诊断这里上传文件",tempFile);
+        var token = wx.getStorageSync('token');
+        token = encodeURIComponent(token);
+        var date = api.getDateTime();
+        var userId = wx.getStorageSync('openId');
+        console.log("用户是否有userIduserId",userId);
+        wx.uploadFile({
+          filePath: tempFile.path,
+          // name: tempFile.name,
+          name:'file',
+          url: app.globalData.url+"/"+app.globalData.url_sumbit_diagnose_file,
+          header:{
+            'content-type':'multipart/form-data',
+            'token':token
+          },
+          formData:{
+            userId:userId,
+            submitDate:date
+          },
+          success (res){
+            // wx.showToast({
+            //   title: '发送成功',
+            //   duration:5000
+            // })
+            console.log("成功将取到的数据传给后台",res);
+  
+          },
+          fail(res){
+            console.log("没有将取到的数据传给后台",res);
+          }
+  
+        },
+
+        
+        ),
+        
+    
+        
         // console.log('选择',res);
         wx.showModal({
           title:'您的文件已上传成功！',
@@ -64,9 +104,13 @@ Page({
             }
           }
         })
-        }
+      },
+      fail(res){
+        console.log("没有选到文件");
+      }
     })
 
+    
   },
 // 跳转到个人页面
   goToPerson:function(){
