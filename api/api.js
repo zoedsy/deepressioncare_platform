@@ -103,7 +103,7 @@ class Api {
       var openId = wx.getStorageSync("openId");
       params.openid = openId;
     
-      // toekn=encodeURIComponent(token);
+      token=encodeURIComponent(token);
       wx.request({
         url: `${APIURL}/`+url,
         data:params,
@@ -128,6 +128,47 @@ class Api {
             wx.stopPullDownRefresh();
             wx.hideNavigationBarLoading();
           }
+          wx.showToast({
+            title: "请求失败",
+            icon: 'none',
+            duration: 1500
+          });
+          reject(err);
+        }
+      })
+    })
+  }
+
+  //不带openid和token
+  getSimpleRequestData(url,params,methond) {
+    console.log("params =====", JSON.stringify(params));
+
+    if (!url) {
+      throw new Error('缺请求地址参数:url');
+    }
+    return new Promise((resolve, reject) => {
+      wx.showLoading({
+        title: '加载中...',
+        mask:true
+      })
+      if (!methond){
+        methond = "POST";
+      }
+      wx.request({
+        url: `${APIURL}/`+url,
+        data:params,
+        method: methond,
+        header: {
+          'Content-Type': 'application/json',
+        },
+        success: (res) => {
+          wx.hideLoading();
+          console.log("params:",params)
+          resolve(res);
+          console.log("res",res)
+        },
+        fail: function (err) {
+          wx.hideLoading();
           wx.showToast({
             title: "请求失败",
             icon: 'none',

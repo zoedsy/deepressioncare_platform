@@ -165,14 +165,21 @@ Page({
 // @param     e
 // @return   无
   addPosts:function(){
-    wx.navigateTo({
-      url: '../luntan/release/release',
-      success:function(res){},
-      fail:function(res){},
-      complete:function(res){}
+    wx.checkSession({
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/luntan/release/release',
+        })
+      },
+      fail:(err)=>{
+        wx.showToast({
+          title: '请先登录再发帖',
+          icon:'none'
+        })
+      },
     })
-
   },
+  
   lookDetail:function(event){
     console.log("event",event);
     app.globalData.post=event.currentTarget.dataset.item;

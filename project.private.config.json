@@ -137,6 +137,12 @@
           "pathName": "pages/home/doctor/doctor",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/luntan/release/release",
+          "query": "",
+          "scene": null
         }
       ]
     }

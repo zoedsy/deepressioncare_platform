@@ -69,6 +69,34 @@ page{
   padding-bottom: 30rpx;
   background-color: white;
 }
+.group {
+  height: 5%;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.group .image_item {
+  width: 200rpx;
+  height: 200rpx;
+  margin-right: 10rpx;
+  position: relative;
+}
+.group .image_item .delete-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.group .selectpic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 200rpx;
+  background-color: #ffffff;
+}
+
+
 .tool-top-v {
  padding-left: 40rpx;
  padding-right: 40rpx;
@@ -134,11 +162,11 @@ page{
   width: 600rpx;
 }
 .select-view .l-v image{
-  height: 35rpx;
-  width: 35rpx;
+  height: 55rpx;
+  width: 55rpx;
 }
 .select-view .l-v text{
-  font-size: 24rpx;
+  font-size: 34rpx;
   color: #9B9292;
   margin-left: 10rpx;
   max-width: 540rpx;

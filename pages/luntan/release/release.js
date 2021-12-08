@@ -70,38 +70,13 @@ Page({
 // @param     e
 // @return   无
   onShow(){
-    // var zcString = wx.getStorageSync('zcList');
-    // console.log(zcString);
-    // if (zcString && zcString.length > 0){
-    //   var zcDict = JSON.parse(zcString);
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     bfDict:null,
-    //     voteDict:null,
-    //     typeSelectIndex:4,
-    //     zcDict:zcDict
-    //   });
-    // }
-    // var bfString = wx.getStorageSync('bfList');
-    // if (bfString && bfString.length > 0){
-    //   var bfDict = JSON.parse(bfString);
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     zcDict:null,
-    //     voteDict:null,
-    //     typeSelectIndex:3,
-    //     bfDict:bfDict
-    //   });
-    // }
-    // if (this.data.voteDict){
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     zcDict:null,
-    //     voteDict:this.data.voteDict,
-    //     typeSelectIndex:0,
-    //     bfDict:null
-    //   });
-    // }
+    this.setData({
+      textareaText:wx.getStorageSync('postcontent'),
+      imageList:wx.getStorageSync('postimages'),
+      title:wx.getStorageSync('posttitle'),
+      cityName:wx.getStorageSync('postaddr')
+    })
+    
   },
 
   
@@ -191,7 +166,44 @@ Page({
     })
   },
   
-  
+  loadpic: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        that.setData({
+          imageList: that.data.imageList.concat(res.tempFilePaths),
+          imageFilePath:that.data.imageList[0]
+        })
+      }
+    });
+
+  },
+
+  previewImg: function (e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    wx.previewImage({
+      //当前显示图片
+      current: this.data.imageList[index],
+      //所有图片
+      urls: this.data.imageList
+    })
+  },
+
+  deleteImg: function (e) {
+    var that = this;
+    var imgs = that.data.imageList;
+    var index = e.currentTarget.dataset.index;
+    imgs.splice(index, 1);
+    this.setData({
+      imageList: imgs,
+    });
+  },
+
   // 选择图像
   // @title    goToChooseImages
 // @description 选择图像
@@ -314,7 +326,14 @@ Page({
 // @return   无
   saveDraft(){
     this.data.needToHome = false;
-    this.savePostClick(-1);
+    wx.setStorageSync('postcontent', this.data.textareaText)
+    wx.setStorageSync('postimages', this.data.imageList)
+    wx.setStorageSync('posttitle', this.data.title)
+    wx.setStorageSync('postaddr', this.data.cityName)
+    wx.showToast({
+      title: '保存成功',
+    })
+    // this.savePostClick(-1);
   },
 
   
@@ -327,6 +346,24 @@ Page({
 // @return   无
   beginSave(){
     this.data.needToHome = true;
+    //检验空
+    if(this.data.title==''||this.data.title=='添加标题'){
+      wx.showToast({
+        title: '标题不能为空',
+        icon:'none',
+      })
+      return
+    }
+    if(this.data.imageFilePath==''){
+      wx.showToast({
+        title: '图片不能为空',
+        icon:'none',
+      })
+      return
+    }
+    this.setData({
+      isShowSave:true
+    })
     this.savePostClick(-1);
   },
 
@@ -358,16 +395,7 @@ Page({
   // 开始保存post
   beginSavePost(draft){
     var _this = this;
-    // wx.requestSubscribeMessage({
-    //   tmplIds: ['tli7zssphnfa2VXZztZZB6isXR98LoihxjcFBdq_xIk', 'PTstSvtHM0WOiTrG9mAbXV_ziHNog79pBnZYsvAaIJg','zMGkiKgkOggfMU14D_Jfd_QviRhg5bJ8kXcMhSsKUrQ'],
-    //   success(res) {
-    //   },
-    //   fail(res) {
-    //     console.log(res);
-    //   }
-    // })
-    this.postDidWorkSave(draft);
-
+   
   },
 
   // 点击发送，draft=1

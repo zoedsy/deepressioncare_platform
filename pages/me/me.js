@@ -13,7 +13,7 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     code:"",
-    state:true,
+    state:false,
   },
 
   getUserProfile(e) {
@@ -54,9 +54,10 @@ Page({
             console.log(res.data)
             app.globalData.openId = res.data.data.openId,
             app.globalData.token = res.data.data.token,
-            wx.setStorageSync('openId', res.data.data.openId) // 缓存openid
+            wx.setStorageSync('openId', res.data.data.id) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
             wx.setStorageSync('userInfo', res.data.data.usefInfo)
+            this.onShow()
           },fail:(err)=>{
             console.log("request err",err)
           }
@@ -133,15 +134,38 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    if(wx.getStorageSync('token')){
-      api.getRequestData('healthy/get_healthy_record/isfinish',{},'GET',false).then((res)=>{
-        console.log("state",res.data)
-        this.setData({
-          state:res.data.data
+    wx.showLoading({
+      title: '加载中',
+    })
+    wx.checkSession({
+      success: (res) => {
+        console.log("session",res)
+        api.getRequestData('healthy/get_healthy_record/isfinish',{},'GET',false).then((res)=>{
+          console.log("state",res.data)
+          this.setData({
+            state:res.data.data
+          })
         })
-      })
+      },
+      fail:(err)=>{
+        console.log("session err",err)
+        
+      },
+      complete:()=>{
+        wx.hideLoading({
+          success: (res) => {},
+        })
+      }
+    })
+    // if(wx.getStorageSync('token')){
+    //   api.getRequestData('healthy/get_healthy_record/isfinish',{},'GET',false).then((res)=>{
+    //     console.log("state",res.data)
+    //     this.setData({
+    //       state:res.data.data
+    //     })
+    //   })
       
-    }
+    // }
   },
 
   /**

@@ -2,6 +2,7 @@
 <import src="../../../utils/wxParse/wxParse.wxml"/>
 
 <view class="main">
+  <image src="/images/背景页.png" class="background"></image>
 <view class="header">
   <view class="title">{{article.knoCardTitle}}</view>
   <view class="note">

@@ -31,7 +31,7 @@ Page({
      
     userInfo: {},
      
-    scrollTop: 0,2
+    scrollTop: 0,
      
     increase:false,//图片添加区域隐藏
      

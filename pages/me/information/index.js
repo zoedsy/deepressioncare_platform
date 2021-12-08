@@ -40,6 +40,7 @@ Page({
   },
 
   dateInput:function(e){
+    console.log("date",e)
     this.setData({
       date:e.detail.value
     })
@@ -96,6 +97,7 @@ Page({
       || this.data.se.length == 0 || this.data.date.length == 0){
       wx.showToast({
         title: '温馨提示：必填项不能为空！',
+        icon:'none'
       })
     }else{
         wx.showLoading({
@@ -103,9 +105,10 @@ Page({
           mask:true
         })
         var token = wx.getStorageSync("token");
+        token=encodeURIComponent(token);
         var openId = wx.getStorageSync("openId");
         var params = {}
-        params.cild = openId;
+        params.ciId = openId;
         params.userName = this.data.na;
         if(this.data.se=="男"){
           params.sex = 0
@@ -138,6 +141,9 @@ Page({
             wx.hideLoading();
             console.log("params:",params)
             console.log("res",res)
+            wx.showToast({
+              title: '保存成功',
+            })
             wx.navigateBack({
               delta: 1
             });
@@ -176,15 +182,24 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var date=this.data.date,smoke=this.data.smokeIndex
+    if(wx.getStorageSync('userbir')){
+      date = wx.getStorageSync('userbir')
+    }
+    
+    if(wx.getStorageSync('usersmoke')){
+      smoke = wx.getStorageSync('usersmoke')
+    }
+
     this.setData({
       na:wx.getStorageSync('username'),
       se:wx.getStorageSync('usersex'),
-      date:wx.getStorageSync('userbir'),
+      date:date,
       height:wx.getStorageSync('userheight'),
       weight:wx.getStorageSync('userweight'),
       BMI:wx.getStorageSync('userbmi'),
       illness:wx.getStorageSync('userill'),
-      smokeIndex:wx.getStorageSync('usersmoke')
+      smokeIndex:smoke
     })
   },
 
