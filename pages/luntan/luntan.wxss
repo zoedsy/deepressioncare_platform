@@ -125,7 +125,7 @@
 
   .icon-baojingjilu{
     font-size: 100rpx;
-    color:rgb(28, 40, 211);
+    color:rgb(3, 56, 38);
     position: fixed;
     bottom: 20rpx;
     left: 50%;
