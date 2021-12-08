@@ -22,7 +22,7 @@
 <view  class="pageView">
   <!-- 第二行，保存+发送 -->
 <view style="margin-top:{{navBarHeight}}px" class="send-view page-row-r">
-  <view catchtap="beginSave" class="send">发送</view>
+  <view catchtap="send" class="send">发送</view>
   <view catchtap="saveDraft" class="save">保存</view>
 </view>
   <!-- 发帖文本区域 -->

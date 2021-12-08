@@ -122,8 +122,8 @@ Page({
       })
     }
     else if(this.data.navID==2){
-      wx.navigateTo({
-        url: '/pages/doctor/doctor',
+      wx.switchTab({
+        url: '/pages/home/doctor/doctor',
       })
     }
   },
