@@ -1,68 +1,24 @@
-// pages/chat/friends/friends.js
+import Api from '../../api/api';
+const api = new Api();
+const Config=require("../../api/config")
+const util=require("../../utils/util")
 
-
+// pages/chatlist/chatlist.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userList:[
-      {
-        nickName:"yes",
-        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
-      },
-      {        
-        nickName:"yes",
-        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
-      },
-      {
-        nickName:"yes",
-        faceImage:"http://www.runoob.com/try/demo_source/paris.jpg"
-      }]
+    items:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // this.getAllUser()
-    wx.navigateTo({
-      url: '../../home/doctor/doctor',
-    })
+
   },
-
-  getAllUser(){
-    var that =this;
-    wx.cloud.init();
-    wx.cloud.database().collection('chat_users').get({
-      success(res){
-        console.log(res)
-        that.setData({
-          userList:res.data
-        })
-      }
-    })
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -75,7 +31,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getChatList()
   },
 
   /**
@@ -111,5 +67,27 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getChatList:function(){
+    console.log("获取聊天列表")
+    api.getRequestData("api/consult/query_consult_list").then((res)=>{
+      console.log(res)
+      let items={}
+      items=res.data.data;
+      for(let i=0;i<items.length;i++){
+        items[i].lastTime=util.getDateDiff(items[i].lastTime)
+      }
+      console.log(items)
+      this.setData({
+        items:items
+      })
+    })
+  },
+  openSession:function(e){
+    let id = e.currentTarget.id;
+    wx.navigateTo({
+      url: '/pages/chat/chat?id=' + id,
+    })
   }
+  
 })

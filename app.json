@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/me/me",
     "pages/index/index",
     "pages/logs/logs",
     "pages/home/home",
@@ -12,7 +11,6 @@
     "pages/diagnose/check/check",
     "pages/diagnose/audio/audio",
     "pages/chat/chat",
-    "pages/chat/friends/friends",
     "pages/chat/chatroom/chatroom",
     "pages/luntan/luntan",
     "pages/luntan/searchbar/searchbar",
@@ -22,21 +20,22 @@
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail",
+    "pages/me/me",
     "pages/me/help/index",
     "pages/me/record/index",
     "pages/me/information/index",
     "pages/me/aboutus/index",
-    "pages/home/searchTips/searchTips"
+    "pages/home/searchTips/searchTips",
+    "pages/friends/friends"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "color": "#bbbbbb",
     "selectedColor": "#6ec2aa",
@@ -57,7 +56,7 @@
         "selectedIconPath": "images/诊断.png"
       },
       {
-        "pagePath": "pages/home/doctor/doctor",
+        "pagePath": "pages/friends/friends",
         "text": "聊天室",
         "iconPath": "images/聊天.png",
         "selectedIconPath": "images/聊天.png"

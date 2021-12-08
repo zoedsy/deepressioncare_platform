@@ -31,6 +31,7 @@ Page({
   },
   Patient:function (name,department,date) {
     var userInfo = wx.getStorageSync('userInfo');
+    // this.data.Patient = wx.getStorageSync('key')
     this.setData({ 
       Name:name,
       Deparment:department,
@@ -93,16 +94,17 @@ Page({
         wx.showModal({
           title:'您的文件已上传成功！',
           content:'点击“确定”即可查看详情',
+          
           success:function(res){
             if(res.confirm){  //用户点击确定后
               // console.log("userInfo是否有缓存",wx.getStorageSync('userInfo'))
-              setTimeout(
-                wx.navigateTo({
-                  url: '../diagnose/check/check'
-                })
-                ,5000000
-              )
-
+              // setTimeout(
+              //   timeData()
+              //   ,2500
+              // )
+              wx.navigateTo({
+                url: '../diagnose/check/check'
+              })
             }else{  //用户点击取消后
 
             }
@@ -115,6 +117,9 @@ Page({
     })
 
     
+  },
+  timeData:function(){
+
   },
 // 跳转到个人页面
   goToPerson:function(){
@@ -135,7 +140,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.Patient('张玉','精神科室','2021-11-20')
+    var username = wx.getStorageSync('username');
+    this.Patient('张玉','精神科室','2021-11-20');
   },
 
   /**

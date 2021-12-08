@@ -1,0 +1,38 @@
+/**index.wxss**/
+.message-item{
+  display: flex;
+  flex-direction: row;
+  background: #fff;
+  border-bottom: 1rpx solid #ececec;
+}
+ .avatar{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 16rpx;
+} 
+
+.message-content{
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-left: 24rpx;
+   align-content: center; 
+  align-self: center;
+}
+.name{
+  font-size: 28rpx;
+  margin-bottom: 8rpx;
+}
+.recent{
+  font-size: 24rpx;
+  color: #999;
+}
+.time{
+  display: flex;
+  width: 180rpx;
+  align-items: center;
+  justify-content: flex-end;
+  color: #999;
+  font-size: 24rpx;
+  margin-right: 24rpx;
+}

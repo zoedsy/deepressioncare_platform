@@ -1,0 +1,11 @@
+<!--pages/chatlist/chatlist.wxml-->
+<view>
+   <view wx:for="{{items}}" wx:key="{{index}}" class='message-item' id="{{item.sessionKey}}" bindtap="openSession">
+      <image src='{{item.friendAvatar}}' class='avatar'></image>
+   <view class='message-content'>
+      <view class='name'>{{item.friendName}}</view>
+      <view class='recent'>{{item.lastMessage}}</view>
+   </view>
+   <view class='time'>{{item.lastTime}}</view>
+ </view>
+</view>

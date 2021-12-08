@@ -85,7 +85,7 @@ class Api {
   }
 
   // 获取请求到的数据YES
-  getRequestData(url,params,methond,isNeedPullFresh) {
+  getRequestData(url,params={},methond='GET',isNeedPullFresh=false) {
     console.log("params =====", JSON.stringify(params));
 
     if (!url) {

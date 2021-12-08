@@ -1,93 +1,64 @@
-<view class="news" bindtap='outbtn'>
-  <view class="historycon">
-      <scroll-view scroll-y="true" class="history" scroll-top="{{scrollTop}}">
-      <block wx:for="{{newslist}}" wx:key>
-          <!-- 历史消息 -->
-          <view>{{item.date}}</view>
-          <!-- <view>20:00:00</view> -->
-          <!--自己的消息 -->
-          <view class="chat-news" wx:if="{{item.nickName == userInfo.nickName}}">
-              <view style="text-align: right;padding-right: 20rpx;">
-              <text class="name">{{ item.nickName }}</text>
-              <image class='new_img' src="{{userInfo.avatarUrl}}"></image>
+<import src="../../modules/chat-input/chat-input.wxml" />
+<view class="chat" style="height: {{height}}px">
+    <scroll-view scroll-y='true'  class="chat-content" style="height: {{chatHeight}}px">
+      <view >
+        <!-- 默认展示 -->
+        <view class="chat-content-list-time">{{normalDataTime}}</view>
+        <view class="chat-content-list " >
+          <image class="chat-content-list-avatar "  src="{{friend.friendAvatar}}"></image>
+          <view class="chat-content-list-content" bindlongtap="delMsg" data-index="{{index}}">
+              <view class="chat-content-list-msg"> 
+                  <text selectable='true'>有什么问题快向我提问吧！</text>
               </view>
-          <view class='my_right'>
-            
-              <block wx:if="{{item.type=='text'}}">
-                  <view class='new_txt'>{{item.content}}</view>
-              </block>
-              <block wx:if="{{item.type=='image'}}">
-             <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
-      </block>
+          </view>
+        </view>
       </view>
-      </view>
-        
-      <!-- 别人的消息 -->
-        
-          <view class="chat-news" wx:else>
-              <view style="text-align: left;padding-left: 20rpx;">
-                
-              <image class='new_img' src="{{item.avatarUrl? item.avatarUrl:'images/avator.png'}}"></image>
-                
-              <text class="name">{{ item.nickName }}</text>
-          </view>
-            
-          <view class='you_left'>
-            
-              <block wx:if="{{item.type=='text'}}">
-                
-              <view class='new_txt'>{{item.content}}</view>
-                
-              </block>
-              
-              <block wx:if="{{item.type=='image'}}">
-                
-              <image class="selectImg" src="{{item.images}}" data-src="{{item.images}}" lazy-load="true" bindtap="previewImg"></image>
-                
-              </block>
-            
-          </view>
-            
-          </view>
-            
-      </block>
-        
-      </scroll-view>
       
-  </view>
-  
- </view>
+      <view wx:for="{{wxchatLists}}" wx:key="{{index}}">
+        <view wx:if="{{item.flag}}">
+        <view>
+        <view class="chat-content-list-time">{{item.sendTime}}</view>
+        <view class="chat-content-list " >
+          <image class="chat-content-list-avatar "  src="{{friend.friendAvatar}}"></image>
+          <view class="chat-content-list-content" bindlongtap="delMsg" data-index="{{index}}">
+              <view class="chat-content-list-msg"> 
+                  <text selectable='true'>{{item.content}}</text>
+              </view>
+          </view>
+        </view>
+      </view>
+      </view>
+      <view wx:if="{{item.flag==0}}">
+        <view class="chat-content-list-time">{{item.sendTime}}</view>
+        <view class="chat-content-list right" >
+          <image class="chat-content-list-avatar "  src="{{this.data.userinfo.avatarUrl}}"></image>
+          <view class="chat-content-list-content " bindlongtap="delMsg" data-index="{{index}}">
+              <!--  文字信息模板  ↓ hidden="{{!(item.msg_type === 'text')}}" -->
+              <view class="chat-content-list-msg" > 
+                  <text selectable='true'>{{item.content}}</text>
+              <view class='over-read-tip '></view>
+              </view>
+              <!--  语音信息模板  ↓   hidden="{{!(item.msg_type === 'voice')}}" -->
+              <view class="chat-content-list-voice {{item.voiceTime<10?'length1':'length3'}}"  bindtap='playRecord' hidden="{{!(item.msg_type === 'voice')}}" >
+                  <text class=''>{{item.voiceTime}}s</text> 
+                  <image class='chat-voice-img' src='../../image/chat-voice-img@3x.png'></image>
+                  <view class='over-read-tip '></view>
+              </view>
 
- <!-- <view id="flag"></view> -->
-  
-
-
- <!-- 头像和yes -->
- <!-- <block wx:for="{{userList}}">
-<view class="user-list">
-  <image class="faceImage" src="{{item.faceImage}}"></image>
-  <view class="nick-name">{{item.nickName}}</view>
+              <!--  图片信息模板  ↓   -->
+              <view class="chat-content-list-img"  hidden="{{!(item.msg_type === 'img')}}" >
+                  <image src="{{item.sendImgSrc}}" mode="aspectFill"  bindtap='seeBigImg'  data-index="{{index}}"></image>
+                  <!-- <view class='chat-content-list-msg-del' data-index="{{index}}" bindtap="delMsg">X</view> -->
+              <view class='over-read-tip '></view>
+              </view>
+          </view>
+        </view>
+      </view>
+      </view>
+      
+    </scroll-view>
+    
+    
+    <template is="chat-input" data="{{inputObj:inputObj,textMessage:textMessage,showVoicePart:true}}" />
 </view>
 
-</block> -->
- 
- <!-- 聊天输入 -->
-
-
-  
- <view class="message">
-    <form bindreset="cleanInput" class="sendMessage"> 
-        <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
-        <input type="text" placeholder="请输入聊天内容.." value="{{message}}" bindinput='bindChange'></input>   
-        <!-- 加入图片等操作要做 -->
-        <!-- <view class="add" bindtap='increase'>+</view>     -->
-        <!-- send的操作要做 将上面的message和socket的image相联系-->
-        <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
-    </form>
-
-    <!--绑定chooseImage的操作要做 -->
-    <!-- <view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
-        <view class="image" bindtap='chooseImage'>相册 </view>
-    </view> -->
-  
- </view>

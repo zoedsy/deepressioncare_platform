@@ -25,17 +25,10 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  // 需要实时刷新，所以onshow里面
   onShow: function () {
-    // 获取医生列表函数执行
 
   },
 
-  toDengLu(){
-    wx.navigateTo({
-      url: 'pages/me/me',
-    })
-  },
   /**
    * 生命周期函数--监听页面隐藏
    */
