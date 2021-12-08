@@ -1,5 +1,6 @@
 <!--pages/luntan/luntan.wxml-->
 <view class="page">
+  <image class="background" src="/images/背景页.png"></image>
   <view class="search">
     <view class="searchBar">
       <icon class="weui-icon-search" type="search" size="14"></icon>
@@ -9,11 +10,9 @@
   <!-- <view bindtap="addPosts">
     <image class="addIcon" src="../../images/发帖.png"></image>
   </view> -->
-  <navigator class="postsNavi" url="../luntan/release/release">
-     <cover-view class="posts" >
-      <cover-image class="addIcon" bindtap="addPosts" src="../../images/发帖.png"/>
-     </cover-view>
-  </navigator>
+  
+  <text class="iconfont icon-baojingjilu" bindtap="addPosts"></text>
+    
  
   <!-- <scroll-view class="list-block" scroll-y="true">
     <block wx:for="{{goods}}" wx:key="{{item.id}}">

@@ -9,7 +9,12 @@
   left:0;
   bottom:0;
   right:0;
-  background-color:#f5f8fa;
+}
+.background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /* z-index: -1; */
 }
 
 .search{
@@ -102,6 +107,15 @@
     width: 30px;
     height: 20px;
     float: right;
+  }
+
+  .icon-baojingjilu{
+    font-size: 100rpx;
+    color: seagreen;
+    position: fixed;
+    bottom: 20rpx;
+    left: 50%;
+    margin-left: -50rpx;
   }
 
 

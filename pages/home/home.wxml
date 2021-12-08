@@ -54,6 +54,7 @@ autoplay current="0" interval="5000" duration="1000" circular >
         data-index="{{item.knoCardId}}"
         bindtap="toDetail"
         hidden="{{first}}">
+        
         <view class="picture">
             <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
         </view>  
@@ -70,6 +71,7 @@ autoplay current="0" interval="5000" duration="1000" circular >
         wx:key="id"
         bindtap=""
         hidden="{{second}}">
+        <image class="background" src="/images/方框1.png"></image>
         <view class="avatar">
             <image class="img" src="{{item.docPhoto}}" mode="scaleToFill" />
         </view>   

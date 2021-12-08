@@ -31,7 +31,7 @@ Page({
      
     userInfo: {},
      
-    scrollTop: 0,
+    scrollTop: 0,2
      
     increase:false,//图片添加区域隐藏
      
@@ -66,8 +66,8 @@ Page({
  
       this.setData({
        
-      userInfo: app.globalData.userInfo
-       
+      userInfo:wx.getStorageSync('userInfo') 
+
       })
        
     }
@@ -167,6 +167,7 @@ Page({
   },
   send:function(){
     socketMessage="49283402384"
+
   }
 },
 )

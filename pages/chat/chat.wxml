@@ -86,8 +86,8 @@
     </form>
 
     <!--绑定chooseImage的操作要做 -->
-    <view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
+    <!-- <view class='increased {{aniStyle?"slideup":"slidedown"}}' wx:if="{{increase}}">
         <view class="image" bindtap='chooseImage'>相册 </view>
-    </view>
+    </view> -->
   
  </view>

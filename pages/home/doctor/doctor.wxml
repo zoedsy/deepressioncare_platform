@@ -5,6 +5,7 @@
         wx:key="id"
         bindtap="toDetail"
         bindscrolltolower="scrolltolower">
+        <image class="background" src="/images/方框1.png"></image>
         <view class="avatar">
             <image class="img" src="{{item.docPhoto}}" mode="scaleToFill" />
         </view>   
