@@ -1,4 +1,8 @@
 // pages/information/index.js
+const {
+  APIURL,
+} = require('../../../api/config.js');
+const app = getApp()
 Page({
 
   /**
@@ -6,17 +10,12 @@ Page({
    */
   data: {
     infoMess:'',
-    name:'',
     na:'',
-    sex:'',
     se:'',
-    birthday:'',
-    bir:'',
     height:'',
     weight:'',
     BMI:'',
     illness:'',
-    smoke:'',
     isSmoke:['是', '否'],
     smokeIndex:0,
     date: '1900-01-01'
@@ -29,6 +28,7 @@ Page({
     this.setData({
       na:e.detail.value
     })
+    wx.setStorageSync('username', this.data.na)
   },
 
   sexInput:function(e){
@@ -36,12 +36,14 @@ Page({
       se:e.detail.value,
       // sex:e.detail.value
     })
+    wx.setStorageSync('usersex', this.data.se)
   },
 
   dateInput:function(e){
     this.setData({
       date:e.detail.value
     })
+    wx.setStorageSync('userbir', this.data.date)
   },
 
 
@@ -50,35 +52,35 @@ Page({
     this.setData({
       height:height
     })
-    // this.setData({
-    //   heightIndex:e.detail.value,
-    //   height:heightList[heightIndex]
-    // })
+    wx.setStorageSync('userheight', this.data.height)
   },
 
   weightInput:function(e){
     this.setData({
       weight:e.detail.value
     })
+    wx.setStorageSync('userweight', this.data.weight)
   },
 
   bmiInput:function(e){
     this.setData({
       BMI:e.detail.value
     })
+    wx.setStorageSync('userbmi', this.data.BMI)
   },
 
   illnessInput:function(e){
     this.setData({
       illness:e.detail.value
     })
+    wx.setStorageSync('userill', this.data.illness)
   },
 
   smokeInput:function(e){
     this.setData({
       smokeIndex:e.detail.value,
-      // smoke:isSmoke[smokeIndex]
     })
+    wx.setStorageSync('usersmoke', this.data.smokeIndex)
   },
 
   // bindPickerChange: function (e) {
@@ -91,23 +93,67 @@ Page({
 
   saveBtnClick:function(){
     if(this.data.na.length == 0
-      || this.data.se.length == 0 || this.data.bir.length == 0){
-      this.setData({
-        infoMess:'温馨提示：必填项不能为空！',
-        
+      || this.data.se.length == 0 || this.data.date.length == 0){
+      wx.showToast({
+        title: '温馨提示：必填项不能为空！',
       })
     }else{
-      this.setData({
-        infoMess:'',
-        name:this.data.na,
-        sex:this.data.se,
-        birthday:this.data.bir
-      })
-    }
-    wx.navigateBack({
-      delta: 1
-    });
-  },
+        wx.showLoading({
+          title: '加载中...',
+          mask:true
+        })
+        var token = wx.getStorageSync("token");
+        var openId = wx.getStorageSync("openId");
+        var params = {}
+        params.cild = openId;
+        params.userName = this.data.na;
+        if(this.data.se=="男"){
+          params.sex = 0
+        }
+        else if (this.data.se=="女"){
+          params.sex = 1
+        }
+        params.userBirthday = this.data.date
+        params.userHeight = parseFloat(this.data.height)
+        params.userWeight = parseFloat(this.data.weight)
+        params.userBmi = parseFloat(this.data.BMI)
+        params.diseaseHistory = this.data.illness
+        if(this.data.smokeIndex==0){
+          params.smokeHistory = "是"
+        }  
+        else{
+          params.smokeHistory = "否"
+        }
+
+        // toekn=encodeURIComponent(token);
+        wx.request({
+          url: `${APIURL}/healthy/post_healthy_record`,
+          data:params,
+          method: 'POST',
+          header: {
+            'Content-Type': 'application/json',
+            'token': token
+          },
+          success: (res) => {
+            wx.hideLoading();
+            console.log("params:",params)
+            console.log("res",res)
+            wx.navigateBack({
+              delta: 1
+            });
+          },
+          fail: function (err) {
+            wx.hideLoading();
+            wx.showToast({
+              title: "请求失败",
+              icon: 'none',
+              duration: 1500
+            });
+          }
+        })
+
+  }
+},
 
   
 
@@ -116,15 +162,7 @@ Page({
    */
   onLoad: function () {
     console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
-    })
-
+    
   },
 
   /**
@@ -138,7 +176,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      na:wx.getStorageSync('username'),
+      se:wx.getStorageSync('usersex'),
+      date:wx.getStorageSync('userbir'),
+      height:wx.getStorageSync('userheight'),
+      weight:wx.getStorageSync('userweight'),
+      BMI:wx.getStorageSync('userbmi'),
+      illness:wx.getStorageSync('userill'),
+      smokeIndex:wx.getStorageSync('usersmoke')
+    })
   },
 
   /**

@@ -29,9 +29,7 @@
                     </view>
 
                     <view wx:else class="userBtn">
-                        <button  plain style="border:0" bindtap="getUserProfile"> 
-                          <image class="btnImg" src="../../icons/log.png"></image>
-                        </button>
+                        <image class="btnImg" src="../../icons/log.png" bindtap="getUserProfile"></image>
                     </view>
                     
 
@@ -44,11 +42,12 @@
 				<view class="center_down">
 					<view class="center_rank">
 						<!-- <image class="rank_icon" src="../../static/rank.png"></image> -->
-						<text class="rank_text">健康档案</text>
+						<text class="rank_text">健康档案：</text>
 					</view>
 					<view class="center_score">
 						<!-- <image class="rank_icon" src="../../static/points.png"></image> -->
-						<text class="rank_text">{{isPerfect}}</text>
+                        <text class="rank_text" wx:if="{{state}}" style="color: #3dcaa7;">已完善</text>
+                        <text class="rank_text" wx:else>未完善</text>
 					</view>
 				</view>
 			</view>
@@ -63,7 +62,7 @@
 
 
 <view class="user_content" >
-    <navigator url="/pages/me/information/index" >
+    <navigator url="/pages/me/information/index">
         <view class="user_information">
             <view class="iconfont icon-geren"></view>
             <view class="jiankang">健康档案</view>

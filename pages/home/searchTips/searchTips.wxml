@@ -1,3 +1,5 @@
+<!-- 引入模板 -->
+<import src="../../../utils/wxParse/wxParse.wxml"/>
 <view class="weui-search-bar"> 
             <view class="weui-search-bar__form">
             <!-- 搜索框 -->
@@ -21,6 +23,7 @@
             <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
         </view>  
         <view class="info">
+            <!-- <template is="wxParse" data="{{wxParseData:content.nodes}}"/> -->
             <view class="info_title">{{item.knoCardTitle}}</view>
             <view class="category">{{item.categoryName}}</view>
             <view class="read">阅读{{item.knoCardRead}}</view>

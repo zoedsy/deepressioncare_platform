@@ -1,5 +1,10 @@
 // pages/person/index.js
+const {
+  APIURL,
+} = require('../../api/config.js');
 const app = getApp()
+import Api from '../../api/api';
+const api = new Api();
 Page({
  
 
@@ -7,7 +12,8 @@ Page({
   data:{
     userInfo: {},
     hasUserInfo: false,
-    code:""
+    code:"",
+    state:true,
   },
 
   getUserProfile(e) {
@@ -32,7 +38,7 @@ Page({
         // 请求 openid,token
         wx.request({
           // url: 'http://106.13.28.21:8081/api/wx/wx_login',
-          url: 'http://192.168.43.202:8080/api/wx/wx_login',
+          url:`${APIURL}/api/wx/wx_login`,
           data: {
             "code": this.data.code,
             "rawData": file.rawData,
@@ -84,25 +90,6 @@ Page({
   },
 
   /**
-   * 页面的初始数据
-   */
-  // data: {
-  //   userinfo:{},
-  //   // nickname:'',
-  //   // headUrl:''
-  
-  
-
-  // },
-  // onShow(){
-  //   const userinfo=wx.getStorageSync("userinfo");
-  //   this.setData({userinfo});
-  //   // nickname=userinfo.nickName,
-  //   // headUrl=userinfo.avatarUrl
-
-  // },
-
-  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -113,10 +100,14 @@ Page({
         console.log("session",res)
         // 本地缓存没过期，就直接登录
         if(wx.getStorageSync('token')){
-          app.globalData.openid = wx.getStorageSync('openId')
-          app.globalData.token = wx.getStorageSync('token')
           this.setData({
             userInfo:wx.getStorageSync('userInfo')
+          })
+          api.getRequestData('healthy/get_healthy_record/isfinish',{},'GET',false).then((res)=>{
+            console.log("state",res.data)
+            this.setData({
+              state:res.data.data
+            })
           })
         }
       },
@@ -142,7 +133,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    if(wx.getStorageSync('token')){
+      api.getRequestData('healthy/get_healthy_record/isfinish',{},'GET',false).then((res)=>{
+        console.log("state",res.data)
+        this.setData({
+          state:res.data.data
+        })
+      })
+      
+    }
   },
 
   /**

@@ -7,6 +7,9 @@ page {
   margin-left: 20rpx;
 }
 
+input{
+  text-align: right;
+}
 
 .na {
   flex-flow: row nowrap;
@@ -76,6 +79,7 @@ page {
 }
 .hei .height {
   margin-left: 15rpx;
+  width: 60%;
 }
 .hei .input {
   margin-right: 10rpx;  
@@ -93,6 +97,7 @@ page {
 }
 .wei .weight {
   margin-left: 15rpx;
+  width: 60%;
 }
 .wei .input {
   margin-right: 10rpx;  
@@ -110,6 +115,7 @@ page {
 }
 .bm .BMI {
   margin-left: 15rpx;
+  width: 60%;
 }
 .bm .input {
   margin-right: 10rpx;  

@@ -3,8 +3,8 @@
 
     <view class="na">
         <view class="name">姓名：</view>
-        <input class="input" name="name" 
-             bindinput="nameInput" style="direction: rtl;" />
+        <input class="input" name="name" value="{{na}}"
+             bindinput="nameInput"/>
         
     </view>
     
@@ -14,8 +14,8 @@
         <view class="sex">性别： </view> 
 
         <radio-group class="radio-group" bindchange="sexInput">
-            <radio  value="male" >男</radio>
-            <radio  value="female" >女</radio>                  
+            <radio  value="男" checked="{{se=='男'}}">男</radio>
+            <radio  value="女" checked="{{se=='女'}}">女</radio>                  
         </radio-group>
     </view>
     
@@ -40,9 +40,9 @@
 
 
 <view class="hei">
-    <view class="height">身高：</view>
-    <input class="input" name="height" 
-            bindinput="heightInput" style="direction: rtl;" />
+    <view class="height">身高(单位：米）：</view>
+    <input class="input" name="height" value="{{height}}"
+            bindinput="heightInput"/>
 </view>
 
 
@@ -51,21 +51,21 @@
 </picker>  -->
 
 <view class="wei">
-    <view class="weight">体重：</view>
-    <input class="input" name="weight" 
-            bindinput="weightInput" style="direction: rtl;" />
+    <view class="weight">体重(单位：千克）：</view>
+    <input class="input" name="weight" value="{{weight}}"
+            bindinput="weightInput"/>
 </view>
 
 <view class="bm">
-    <view class="BMI">BMI：</view>
-    <input class="input" name="BMI" 
-            bindinput="bmiInput" style="direction: rtl;" />
+    <view class="BMI">BMI(体重÷身高²）：</view>
+    <input class="input" name="BMI" value="{{BMI}}"
+            bindinput="bmiInput" />
 </view>
 
 <view class="ill">
     <view class="illness">病史：</view>
-    <input class="input" name="illness" 
-            bindinput="illnessInput" style="direction: rtl;" />
+    <input class="input" name="illness" value="{{illness}}"
+            bindinput="illnessInput"/>
 </view>
 
 

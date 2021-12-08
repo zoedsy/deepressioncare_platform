@@ -48,14 +48,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    //请求文章数据
-    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
-      console.log(res)
-      this.setData({ 
-        article_list:res.data.data
-      })
-      console.log(this.data.article_list)
-    })
+    
    
   },
 
@@ -71,7 +64,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    //请求文章数据
+    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
+      console.log(res)
+      this.setData({ 
+        article_list:res.data.data
+      })
+      console.log(this.data.article_list)
+    })
   },
 
   changeNav:function(event){

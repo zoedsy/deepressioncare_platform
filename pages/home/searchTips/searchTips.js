@@ -66,12 +66,10 @@ onSearch(event){
     article_list:[],
     hasMore:true,
     page:0,
-    success:()=>{
-        console.log(this.data)
-        this.query()
-      }
   })
-  
+  console.log(this.data)
+  this.query()
+
 },
 
 query: function(event) {

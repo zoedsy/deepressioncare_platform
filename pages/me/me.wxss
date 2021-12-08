@@ -90,14 +90,14 @@ page {
 }
 .user_name{
   justify-content: center;
-  
+  margin-left: 50rpx;
   font-size: 20px;
 }
 .btnImg {
   width: 66px;
   height: 66px;
   border-radius: 50%;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .userBtn {
@@ -152,7 +152,7 @@ page {
 .rank_text {
   height: 35px;
   line-height: 35px;
-  margin-left: 10rpx;
+  margin-left: 0rpx;
   color: #AAAAAA;
 }
 
@@ -185,15 +185,14 @@ page {
 
 
 
-
 .user_content {
   width: 95%;
   border: 5rpx solid #aaaaaa1f;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
+  margin: 20rpx auto;
   border-radius: 30px;
-  box-shadow:5px 5px 5px 5px #d3d0d063;
+  box-shadow:0px 0px 5px 5px #d3d0d063;
 }
   
   
@@ -207,6 +206,8 @@ page {
   background-color: #fff;
   padding: 30rpx ;
   font-size: 40rpx;
+
+  border-bottom: solid rgba(153, 153, 153, 0.1);
 }
 
 .user_content .user_information .jiankang{
@@ -232,6 +233,7 @@ page {
   background-color: #fff;
   padding: 30rpx ;
   font-size: 40rpx;
+  border-bottom: solid rgba(153, 153, 153, 0.1);
 }
 .user_content .user_record .zhenduan{
   position: absolute;
@@ -256,6 +258,7 @@ page {
   background-color: #fff;
   padding: 30rpx ;
   font-size: 40rpx;
+  border-bottom: solid rgba(153, 153, 153, 0.1);
 }
 .user_content .user_aboutus .guanyu{
   position: absolute;
