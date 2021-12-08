@@ -57,10 +57,7 @@ class Api {
       throw new Error('loginToApp 缺少参数:code');
     }
     if (!userJson.iv) {
-      throw new Error('loginToApp 缺少参数:iv');
-    }
-    if (!userJson.encryptedData) {
-      throw new Error('loginToApp 缺少参数:encryptedData');
+      throw new Error('loginToApp 缺少参数:iv');r
     }
     var sessionKey = wx.getStorageSync('SESSION_KEY');
     return new Promise((resolve, reject) => {
@@ -104,7 +101,7 @@ class Api {
       }
       var token = wx.getStorageSync("token");
       var openId = wx.getStorageSync("openId");
-      // params.openId = openId;
+      params.openid = openId;
       // params=JSON.stringify(params)
       
       wx.request({

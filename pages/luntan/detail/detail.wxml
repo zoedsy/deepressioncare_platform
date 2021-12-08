@@ -69,6 +69,14 @@
 <!-- post-comment -->
 <view class="detail-post-comment">
   <view class="detail-post-comment-title">评论</view>
+  <form bindreset="cleanInput" class="sendMessage"> 
+        <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
+        <input type="text" placeholder="请输入您的评论.." value="{{message}}" bindinput='bindChange'></input>   
+        <!-- 加入图片等操作要做 -->
+        <!-- <view class="add" bindtap='increase'>+</view>     -->
+        <!-- send的操作要做 将上面的message和socket的image相联系-->
+        <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
+</form>
   <view class="detail-post-comment-list">
     <block wx:for="{{comment_list}}" wx:if="{{comment_list.length>0}}">
       <view class="detail-post-comment-item" index="{{index}}" id="{{item.id}}">
@@ -79,11 +87,12 @@
           <view class="detail-post-comment-info">
             <view class="detail-post-comment-info-cell">
               <view class="detail-post-comment-author-name">{{ item.nickName }}</view>
-              <!-- <view class="detail-post-comment-time">{{index + 2}}楼 发表于{{ item.create_at }}</view> -->
+              <view class="detail-post-comment-time">{{item.floor}}楼 发表于{{ item.releaseTime}}</view>
             </view>
             <view class="detail-post-comment-info-cell" style="text-align:right" id="{{item.id}}" data-index="{{index}}" catchtap="reply">
               <text class="detail-post-zan-num" wx:if="{{item.likes>=0}}">{{item.likes}}</text>
               <image class="detail-post-zan" mode="scaleToFill" src="../../../images/zan.png"></image>
+              <!-- <image class="detail-post-zan" mode="scaleToFill" src="C:/Users/zoedusy/Pictures/Camera Roll/pic/pic.png"></image> -->
             </view>
           </view>
           <view class="detail-comment-content">
@@ -106,14 +115,7 @@
 <!-- <loading hidden="{{hidden}}">
   加载中...
 </loading> -->
-<form bindreset="cleanInput" class="sendMessage"> 
-        <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
-        <input type="text" placeholder="请输入您的评论.." value="{{message}}" bindinput='bindChange'></input>   
-        <!-- 加入图片等操作要做 -->
-        <!-- <view class="add" bindtap='increase'>+</view>     -->
-        <!-- send的操作要做 将上面的message和socket的image相联系-->
-        <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
-</form>
+
 <modal title="消息" confirm-text="确认" cancel-text="关闭" hidden="{{modalHidden}}" bindconfirm="confirmChange" bindcancel="cancelChange">
   您还没未登录conde，是否前往认证登录？
 </modal>

@@ -43,7 +43,7 @@
         <view class="title">历史记录</view>
         <view class='info'>
         <view class="tui-list-box">
-            <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goTopage" data-id="{{item.id}}">
+            <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goToDetail" data-id="{{item.id}}">
                 <view class="pic">
                     <image class="abnormal-img" src="{{item.images}}" bindtap="goToDetail"></image>
                 </view>

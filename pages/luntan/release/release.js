@@ -31,6 +31,7 @@ Page({
     needToHome:true,
     post_id:"",
     isChanged:false,
+    imageFilePath:""
   },
 
 // @title    onLoad
@@ -165,15 +166,16 @@ Page({
     }
     var index = e.currentTarget.dataset.key;
     this.data.topIndex = index;
-    if (index == 0) {
-      this.goToChooseImages();
-    } else if (index == 1) {
-      this.goToTouPiao();
-    } else if (index == 2) {
-      this.goToBangFuJiDi();
-    } else if (index == 3) {
-      this.goToZhongCao();
-    }
+    this.goToChooseImages();
+    // if (index == 0) {
+      
+    // } else if (index == 1) {
+    //   this.goToTouPiao();
+    // } else if (index == 2) {
+    //   this.goToBangFuJiDi();
+    // } else if (index == 3) {
+    //   this.goToZhongCao();
+    // }
   },
 
   // 跳转到相应的页面
@@ -197,7 +199,22 @@ Page({
 // @param     e
 // @return   无
   goToChooseImages(){
-    this.chooseImages();
+    var that =this;
+    wx.chooseImage({
+      count:9,
+      mediaType:['image'],
+      sourceType:['album'],
+      maxDuration:30,
+      camera:'back',
+      success(res){
+        console.log(res)
+        console.log("图片路径",res.tempFilePaths[0]);
+        // console.log("图片数目",res.size);
+        that.imageFilePath=res.tempFilePaths[0];
+
+        // that.setData({imageFilePath:res.tempFilePaths})
+      }
+    });
     // this.chosseMedia();
   },
   // 返回初始页面
@@ -424,6 +441,7 @@ Page({
       "title":title,
       "ownerId":ownerId,
       "createTime":crateTime,
+      // "image":this.imageFilePath
     }
   
     // map.crateTime = 
@@ -437,57 +455,80 @@ Page({
     //   "title":"title",
     //   "SubmitPostForm":"fjdskflsdjf"
     // },
-    api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
+
+    wx.uploadFile({
+      filePath: that.imageFilePath,
+      name: 'name',
+      url: app.globalData.url+app.globalData.url_post,
+      formatData:map,
+      success(res){
+        
       console.log("chenggong")
       console.log("draft",draft)
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       console.log("errorCode",res.data.errorCode)
-      // if (res.data.errorCode == "") {
-      if (draft == -1) {
-        // var data = res.data.model;
-        // wx.setStorageSync('POST_ID', data.id + '');
-        // _this.data.isChanged = false;
-        // app.showToasts("保存成功～");
-        wx.showToast({
-          title: '发送成功',
-        })
-        console.log("baocunchenggong");
-        wx.navigateTo({
-          url: '../../luntan/luntan',
-        })
-      } else {
-        // _this.data.isChanged = false;
-        // wx.removeStorageSync('POST_ID');
-        // // app.showToasts("发布成功～");
-        wx.showToast({
-          title: '发送成功',
-        })
-        wx.navigateTo({
-          url: '../../luntan/luntan',
-        })
-        console.log("fabuchenggong");
-      }
-      setTimeout(function () {
-        if (_this.data.needToHome) {
-          _this.backHome();
-        }
-      }, 1400);
-      // } else {
-      //   wx.showToast({
-      //     title: res.data.errorMsg,
-      //     icon: 'none',
-      //     duration: 1500
-      //   });
-      // }
-    //  wx.showToast({
-    //    title: '发送成功',
-    //  })
+      wx.showToast({
+        title: '发送成功',
+      })
+      console.log("baocunchenggong");
+      wx.navigateTo({
+        url: '../../luntan/luntan',
+      })
 
-    }).catch(err => {
-      _this.data.canEvaluate = true;
-      console.log("catch")
-    });
+      }
+    })
+    // api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
+    //   console.log("chenggong")
+    //   console.log("draft",draft)
+    //   _this.data.canSave = true;
+    //   app.HOMENEEDFRESH = true;
+    //   console.log("errorCode",res.data.errorCode)
+    //   // if (res.data.errorCode == "") {
+    //   if (draft == -1) {
+    //     // var data = res.data.model;
+    //     // wx.setStorageSync('POST_ID', data.id + '');
+    //     // _this.data.isChanged = false;
+    //     // app.showToasts("保存成功～");
+    //     wx.showToast({
+    //       title: '发送成功',
+    //     })
+    //     console.log("baocunchenggong");
+    //     wx.navigateTo({
+    //       url: '../../luntan/luntan',
+    //     })
+    //   } else {
+    //     // _this.data.isChanged = false;
+    //     // wx.removeStorageSync('POST_ID');
+    //     // // app.showToasts("发布成功～");
+    //     wx.showToast({
+    //       title: '发送成功',
+    //     })
+    //     wx.navigateTo({
+    //       url: '../../luntan/luntan',
+    //     })
+    //     console.log("fabuchenggong");
+    //   }
+    //   setTimeout(function () {
+    //     if (_this.data.needToHome) {
+    //       _this.backHome();
+    //     }
+    //   }, 1400);
+    //   // } else {
+    //   //   wx.showToast({
+    //   //     title: res.data.errorMsg,
+    //   //     icon: 'none',
+    //   //     duration: 1500
+    //   //   });
+    //   // }
+    // //  wx.showToast({
+    // //    title: '发送成功',
+    // //  })
+
+    // }).catch(err => {
+    //   _this.data.canEvaluate = true;
+    //   console.log("catch")
+    // });
   },
   // 返回主页
   backHome(){
@@ -525,9 +566,10 @@ Page({
       }
     })
   },
+
   chooseImages(){
     this.data.chooseTye = "images";
-    this.hideShareClickView();
+    // this.hideShareClickView();
     var _this = this;
     var count = 9 - this.data.imageList.length;
     if (count <= 0){
@@ -549,6 +591,8 @@ Page({
         },
       })
   },
+
+  // 上传图片
   upLoadimage(tempPath) {
     var _this = this;
     wx.showLoading({
@@ -594,6 +638,8 @@ Page({
     })
   },
   
+
+  // 预览图片
   previewImages(e) {
     var index = parseInt(e.currentTarget.dataset.key);
     var url = this.data.imageList[index];
@@ -602,6 +648,8 @@ Page({
       urls: this.data.imageList,
     })
   },
+
+  //删除图片
   deleteImage(e){
     var _this = this;
     var index = parseInt(e.currentTarget.dataset.key);
@@ -630,6 +678,8 @@ Page({
       imageList: list
     });
   },
+
+
   onUnload: function () {
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');

@@ -46,7 +46,7 @@ Page({
           success:function(res){
             if(res.confirm){  //用户点击确定后
               wx.navigateTo({
-                url: '../check/check'
+                url: '../diagnose/check/check'
               })
             }else{  //用户点击取消后
 
@@ -63,13 +63,13 @@ Page({
       // 跳转个人页面
       // url: '../Person/person',
       // 测试案例
-      url: '/pages/check/check'
+      url: '/pages/diagnose/check/check'
     })
   },
   goToDetail:function(){
     wx.navigateTo({
       // 跳转到历史记录页面
-      url:'/pages/check/check'
+      url:'/pages/diagnose/check/check'
     })
   },
   /**
