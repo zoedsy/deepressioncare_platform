@@ -7,7 +7,7 @@
 // import "../../../api/api.js" 
 
 const Api = require("../../../api/api");
-
+const {appid,APIURL,url_post,url_post_list,url_search_post,url_comment,url_comment_get}=require("../../../api/config.js");
 // const api = require('../../../api/api.js');
 const api = new Api();
 
@@ -35,7 +35,7 @@ Page({
     var post_id={
       postId:app.globalData.post.pId
     }
-    api.getRequestData(app.globalData.url_comment_get,post_id,'GET',false).then((res)=>{
+    api.getRequestData(url_comment_get,post_id,'GET',false).then((res)=>{
       console.log("get_comment_list",res)
       // app.globalData.comment_list=res.data;
       this.setData({comment_list:res.data.data})
@@ -52,7 +52,7 @@ Page({
     var post_id={
       postId:app.globalData.post.pId
     }
-    api.getRequestData(app.globalData.url_comment_get,post_id,'GET',false).then((res)=>{
+    api.getRequestData(url_comment_get,post_id,'GET',false).then((res)=>{
       console.log("get_comment_list",res)
       // app.globalData.comment_list=res.data;
       this.setData({comment_list:res.data.data})
@@ -101,7 +101,7 @@ Page({
       "coUserid":openid
     }
     if(comment.coText!=null){
-      api.getRequestData(app.globalData.url_comment,comment,'POST',false).then((res)=>{
+      api.getRequestData(url_comment,comment,'POST',false).then((res)=>{
         console.log("comment",comment)
         console.log("res_comment",res)
         

@@ -23,7 +23,7 @@ App({
     message:"",
     comment_list:[]
   },
- 
+  
   onShow(){
     this.onLaunch()
   },

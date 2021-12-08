@@ -4,6 +4,8 @@ var app = getApp();
 import Api from '../../../api/api.js';
 // import getDateTime from '../../../wxs/tool.wxs';
 const api = new Api();
+const {} = require("../../../api/config.js")
+
 Page({
   data: {
     toolList:[{"title":"添加图片","img":"/images/release/addImag.png"}],
