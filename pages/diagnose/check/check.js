@@ -1,7 +1,7 @@
 Page({
   data: {
     // percent:25 percent:50   percent:75 percent: 100
-    percent: 50
+    percent: 100
     // probability:80%,
 
 
@@ -25,3 +25,4 @@ Page({
 })
 
 
+ 

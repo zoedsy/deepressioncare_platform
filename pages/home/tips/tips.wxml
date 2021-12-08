@@ -19,17 +19,17 @@
 <scroll-view scroll-y="true">
   <view class="floor"
         wx:for="{{article_list}}"
-        wx:key="knowledgeId"
-        data-index="{{item.knowledgeId}}"
+        wx:key="knoCardId"
+        data-index="{{item.knoCardId}}"
         bindtap="toDetail">
         <view class="picture">
-            <image class="img" src="{{item.coverImageUrl}}" mode="scaleToFill" />
+            <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
         </view>  
         <view class="info">
-            <view class="info_title">{{item.title}}</view>
-            <view class="category">{{item.category}}</view>
-            <view class="read">阅读{{item.readAmount}}</view>
-            <view class="like">赞{{item.likes}}</view>
+            <view class="info_title">{{item.knoCardTitle}}</view>
+            <view class="category">{{item.categoryName}}</view>
+            <view class="read">阅读{{item.knoCardRead}}</view>
+            <view class="like">赞{{item.knoCardLikes}}</view>
         </view>  
     </view>
 </scroll-view>

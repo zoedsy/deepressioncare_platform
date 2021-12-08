@@ -1,1 +1,145 @@
-/* pages/record/index.wxss */
+/* pages/home/tips/tips.wxss */
+.weui-search-bar {
+  position: relative;
+  padding: 8px 10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  box-sizing: border-box;
+  background-color: #EFEFF4;
+  border-top: 1rpx solid #D7D6DC;
+  border-bottom: 1rpx solid #D7D6DC;
+  /*height: 50rpx;*/
+}
+.weui-icon-search_in-box {
+  position: absolute;
+  left: 10px;
+  top: 7px;
+}
+.weui-search-bar__form {
+  position: relative;
+  -webkit-box-flex: 1;
+  -webkit-flex: auto;
+          flex: auto;
+  border-radius: 5px;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E6EA;
+}
+.weui-search-bar__box {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1;
+}
+.weui-search-bar__input {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.weui-search-bar__cancel-btn {
+  margin-left: 10px;
+  line-height: 28px;
+  color: #09BB07;
+  white-space: nowrap;
+}
+
+/* 导航栏布局相关 */
+.navbar {
+  width: 100%;
+  height: 90rpx;
+  /* 文本不换行 */
+  white-space: nowrap;
+  display: flex;
+  box-sizing: border-box;
+  border-bottom: 1rpx solid #eee;
+  background: #fff;
+  align-items: center;
+  /* 固定在顶部 */
+  position: fixed;
+  left: 0rpx;
+  top: 0rpx;
+}
+
+.nav-item {
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  height: 100%;
+  display: inline-block;
+  /* 普通文字大小 */
+  font-size: 28rpx;
+}
+
+.nav-text {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 4rpx;
+  box-sizing: border-box;
+}
+
+.tab-on {
+  color: #000080;
+  /* 选中放大 */
+  font-size: 38rpx !important;
+  font-weight: 600;
+  border-bottom: 4rpx solid #000080 !important;
+}
+
+.floor{
+  border-bottom: solid #e9e9e9;
+  display: flex;
+  width: 100%;
+  height: 250rpx;
+}
+.floor .picture{
+  margin: 25rpx;
+  width: 30%;
+  height: 200rpx;
+}
+
+.floor .picture .img{
+  width: 100%;
+  height: 100%;
+}
+
+.floor .info{
+  width: 60%;
+  position: relative; 
+}
+
+.floor .info .info_title{
+   font-weight: 500; 
+   margin: 25rpx 0;
+   overflow: hidden;
+  /*超出隐藏*/
+  text-overflow: ellipsis;
+  /*超出显示为省略号*/
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.floor .info .category{
+  position: absolute;
+  left:1%;
+  bottom: 8%;
+  color: #b4afae;
+}
+
+.floor .info .read{
+  position: absolute;
+  left:40%;
+  bottom: 8%;
+  color: #b4afae;
+}
+
+.floor .info .like{
+  position: absolute;
+  left:80%;
+  bottom: 8%;
+  color: #b4afae;
+}

@@ -18,6 +18,7 @@
       </view>
     </view>
  </view>
+ 
 <view  class="pageView">
   <!-- 第二行，保存+发送 -->
 <view style="margin-top:{{navBarHeight}}px" class="send-view page-row-r">
@@ -31,28 +32,41 @@
     <text>{{textList[0]}}<text wx:if="{{textList[1].length > 0}}" class="ht-text">#{{textList[1]}}#</text>{{textList[2]}}</text>
   </view>
 
-  <view class="images-view page-row">
+  <!-- <view class="images-view page-row">
     <block wx:for="{{imageList}}">
       <view class="image-item page-column">
         <image class="img" src="{{item}}" data-key="{{index}}" catchtap="previewImages" mode="aspectFill"></image>
         <image src="/images/release/delete.png" data-key="{{index}}" catchtap="deleteImage" class="close"></image>
       </view>
     </block>
-  </view>
+  </view> -->
+  
 
 
 <!-- 添加图片，添加标题，添加地点 -->
   <view class="tool-view page-column">
     <!-- 添加图片 -->
-    <view class="tool-top-v page-row">
+    <!-- <view class="tool-top-v page-row">
       <block wx:for="{{toolList}}">
         <view data-key="{{index}}" class="top-item page-column" catchtap="toolClick">
           <image class="img" src="{{item.img}}"></image>
           <text>{{item.title}}</text>
         </view>
       </block>
+    </view> -->
+    <view class="group">
+      <view class="image_group"
+          wx:for="{{imageList}}"
+          wx:key="*this"
+      >
+          <image class="image_item" src="{{item}}" mode="aspectFit" bindtap="previewImg" data-index="{{index}}">   
+          <icon type='cancel' class="delete-btn" data-index="{{index}}" catchtap="deleteImg"></icon>             
+          </image>      
+      </view>
+      <view class="selectpic" bindtap="loadpic">
+          <image class="pic" src="/images/release/addImag.png" mode="aspectFit"/>                
+      </view>
     </view>
-
 
 
     <!-- 添加标题 -->

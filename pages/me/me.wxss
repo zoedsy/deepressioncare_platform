@@ -1,137 +1,298 @@
 page {
-    background-color: #edece8;
-  }
+  /* background-color: #fffefb; */
+  background-color:white;
+}
+
+/*
+.user_info_wrap {
+  height: 40vh;
+  background-color: #6acd70;
+  position: relative;
+}
+
+.user_info_wrap .userBtn{
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 20%;
+  text-align: center;
+  
+}
+.user_info_wrap .userBtn .btnImg{
   
   
-  .user_info_wrap {
-    height: 40vh;
-    background-color: #6acd70;
-    position: relative;
-  }
-  
-  .user_info_wrap .userBtn{
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 20%;
-    text-align: center;
-    
-  }
-  .user_info_wrap .userBtn .btnImg{
-    /* position: absolute; */
-    
-    width: 200rpx;
-    height: 200rpx;
-    border-radius: 50%;
-  
-  }
-  
-  .user_info_wrap .user_info {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 20%;
-    text-align: center;
-          
-  }
-  .user_info_wrap .user_info .user_icon {
-    
-    /* position: absolute;
-    left: 10%;
-    top: 20rpx; */
-    width: 200rpx;
-    height: 200rpx;
-    border-radius: 50%;
-  }
-  .user_info_wrap .user_info .user_name {
-    /* position: absolute;
-    left: 40%;
-    top: 80rpx; */
-    color: white;
-    font-size: 40rpx;
-  }
-  .user_info_wrap .user_money {
-    position: absolute;
-    left: 10%;
-    top: 450rpx;
-    color: white;
-  }
-  .user_info_wrap .user_coupon {
-    position: absolute;
-    left: 60%;
-    top: 450rpx;
-    color: white;
-  }
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+
+}
+
+.user_info_wrap .user_info {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  top: 20%;
+  text-align: center;
+        
+}
+.user_info_wrap .user_info .user_icon {
   
   
-    
-    
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+
+.user_info_wrap .user_info .user_name {
   
-  .user_content .user_information {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    display: flex;
-    margin-top: 3rpx;
-    background-color: #fff;
-    padding: 30rpx ;
-    font-size: 40rpx;
-  }
-  .user_content .user_information .info_arrow{
-    width: 15px;   
-    height: 15px;   
-    border-top: 2px solid #999;   
-    border-right: 2px solid #999;  
-    right: 20rpx;   
-    transform: rotate(45deg);   
-  }
-  .user_content .user_record {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    display: flex;
-    margin-top: 3rpx;
-    background-color: #fff;
-    padding: 30rpx ;
-    font-size: 40rpx;
-  }
-  .user_content .user_record .re_arrow{
-    width: 15px;   
-    height: 15px;   
-    border-top: 2px solid #999;   
-    border-right: 2px solid #999;  
-    right: 20rpx;   
-    transform: rotate(45deg);   
-  }
-  .user_content .user_aboutus {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    display: flex;
-    margin-top: 3rpx;
-    background-color: #fff;
-    padding: 30rpx ;
-    font-size: 40rpx;
-  } 
-  .user_content .user_aboutus .us_arrow{
-    width: 15px;   
-    height: 15px;   
-    border-top: 2px solid #999;   
-    border-right: 2px solid #999;  
-    right: 20rpx;   
-    transform: rotate(45deg);   
-  }
-  .user_content .user_help {
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    display: flex;
-    margin-top: 3rpx;
-    background-color: #fff;
-    padding: 30rpx ;
-    font-size: 40rpx;
-  }
-  .user_content .user_help .help_arrow{
-    width: 15px;   
-    height: 15px;   
-    border-top: 2px solid #999;   
-    border-right: 2px solid #999;  
-    right: 20rpx;   
-    transform: rotate(45deg);   
-  }
+  color: white;
+  font-size: 40rpx;
+} */
+.top {
+  width: 100%;
+  height: 250px;
+  background: #23EBB9;
+  padding-top: 15px;
+  position: relative;
+}
+
+.center {
+  width: 95%;
+  height: 190px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  border-radius: 15px;
+}
+
+.center_top {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 80px;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.user_info{
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.user_icon {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user_name{
+  justify-content: center;
+  margin-left: 50rpx;
+  font-size: 20px;
+}
+.btnImg {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  /* overflow: hidden; */
+}
+
+.userBtn {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.center_img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.center_img .user_head {
+  width: 100%;
+  height: 100%;
+}
+
+.center_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10rpx;
+  margin-left: 30px;
+}
+
+.center_name {
+  font-size: 20px;
+}
+
+.center_phone {
+  color: #BEBEBE;
+}
+
+.center_down {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 35px;
+  margin: 0 auto;
+  margin-top: 60rpx;
+}
+
+.center_rank {
+  width: 50%;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+}
+
+.rank_text {
+  height: 35px;
+  line-height: 35px;
+  margin-left: 0rpx;
+  color: #AAAAAA;
+}
+
+.center_rank image {
+  width: 35px;
+  height: 35px;
+}
+
+.center_score {
+  width: 50%;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+}
+
+.center_score image {
+  width: 35px;
+  height: 35px;
+}
+
+.gif-wave {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  mix-blend-mode: screen;
+  height: 100rpx;
+}
+
+
+
+.user_content {
+  width: 95%;
+  border: 5rpx solid #aaaaaa1f;
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx auto;
+  border-radius: 30px;
+  box-shadow:0px 0px 5px 5px #d3d0d063;
+}
+  
+  
+
+.user_content .user_information {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  background-color: #fff;
+  padding: 30rpx ;
+  font-size: 40rpx;
+
+  border-bottom: solid rgba(153, 153, 153, 0.1);
+}
+
+.user_content .user_information .jiankang{
+  position: absolute;
+  left:15%;
+  font-size: 35rpx;
+}
+
+.user_content .user_information .info_arrow{
+  width: 15px;   
+  height: 15px;   
+  border-top: 2px solid rgba(153, 153, 153, 0.678);   
+  border-right: 2px solid rgba(153, 153, 153, 0.678);  
+  right: 20rpx;   
+  transform: rotate(45deg);   
+}
+.user_content .user_record {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  background-color: #fff;
+  padding: 30rpx ;
+  font-size: 40rpx;
+  border-bottom: solid rgba(153, 153, 153, 0.1);
+}
+.user_content .user_record .zhenduan{
+  position: absolute;
+  left:15%;
+  font-size: 35rpx;
+}
+
+.user_content .user_record .re_arrow{
+  width: 15px;   
+  height: 15px;   
+  border-top: 2px solid rgba(153, 153, 153, 0.678);   
+  border-right: 2px solid rgba(153, 153, 153, 0.678);  
+  right: 20rpx;   
+  transform: rotate(45deg);   
+}
+.user_content .user_aboutus {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  background-color: #fff;
+  padding: 30rpx ;
+  font-size: 40rpx;
+  border-bottom: solid rgba(153, 153, 153, 0.1);
+}
+.user_content .user_aboutus .guanyu{
+  position: absolute;
+  left:15%;
+  font-size: 35rpx;
+}
+.user_content .user_aboutus .us_arrow{
+  width: 15px;   
+  height: 15px;   
+  border-top: 2px solid rgba(153, 153, 153, 0.678);   
+  border-right: 2px solid rgba(153, 153, 153, 0.678);  
+  right: 20rpx;   
+  transform: rotate(45deg);   
+}
+.user_content .user_help {
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  margin-top: 3rpx;
+  background-color: #fff;
+  padding: 30rpx ;
+  font-size: 40rpx;
+}
+.user_content .user_help .bangzhu{
+  position: absolute;
+  left:15%;
+  font-size: 35rpx;
+}
+.user_content .user_help .help_arrow{
+  width: 15px;   
+  height: 15px;   
+  border-top: 2px solid rgba(153, 153, 153, 0.678);   
+  border-right: 2px solid rgba(153, 153, 153, 0.678);  
+  right: 20rpx;   
+  transform: rotate(45deg);   
+}

@@ -1,0 +1,33 @@
+<!-- 引入模板 -->
+<import src="../../../utils/wxParse/wxParse.wxml"/>
+<view class="weui-search-bar"> 
+            <view class="weui-search-bar__form">
+            <!-- 搜索框 -->
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='onSearch'/>
+                </view>
+            </view>
+            <!-- 搜索按钮,调用搜索查询方法 -->
+            <view class="weui-search-bar__cancel-btn" bindtap='onSearch'>搜索</view>
+</view>
+
+<!-- 列表 -->
+<scroll-view scroll-y="true" style="height: 1250rpx;" bindscrolltolower="scrolltolower">
+  <view class="floor"
+        wx:for="{{article_list}}"
+        wx:key="knoCardId"
+        data-index="{{item.knoCardId}}"
+        bindtap="toDetail">
+        <view class="picture">
+            <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
+        </view>  
+        <view class="info">
+            <!-- <template is="wxParse" data="{{wxParseData:content.nodes}}"/> -->
+            <view class="info_title">{{item.knoCardTitle}}</view>
+            <view class="category">{{item.categoryName}}</view>
+            <view class="read">阅读{{item.knoCardRead}}</view>
+            <view class="like">赞{{item.knoCardLikes}}</view>
+        </view>  
+    </view>
+</scroll-view>

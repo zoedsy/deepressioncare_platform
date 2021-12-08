@@ -2,12 +2,12 @@
             <view class="weui-search-bar__form">
             <!-- 搜索框 -->
                 <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+                    <icon class="weui-icon-search_in-box" type="search" size="14" bindtap='query'></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'/>
                 </view>
             </view>
             <!-- 搜索按钮,调用搜索查询方法 -->
-            <view class="weui-search-bar__cancel-btn" bindtap='search'>搜索</view>
+            <view class="weui-search-bar__cancel-btn" bindtap='query'>搜索</view>
 </view>
 
 <swiper class="banners" indicator-dots indicator-color="rgb(254,247,251)" indicator-active-color="rgb(36,147,240)"
@@ -47,12 +47,14 @@ autoplay current="0" interval="5000" duration="1000" circular >
   </view>
 </view>
  
-<scroll-view scroll-y="false">
+<scroll-view scroll-y style="height: 700rpx;" >
   <view class="floor"
         wx:for="{{article_list}}"
-        wx:key="id"
-        bindtap=""
+        wx:key="knoCardId"
+        data-index="{{item.knoCardId}}"
+        bindtap="toDetail"
         hidden="{{first}}">
+        
         <view class="picture">
             <image class="img" src="{{item.knoCardIcon}}" mode="scaleToFill" />
         </view>  
@@ -69,14 +71,19 @@ autoplay current="0" interval="5000" duration="1000" circular >
         wx:key="id"
         bindtap=""
         hidden="{{second}}">
+        <image class="background" src="/images/方框1.png"></image>
         <view class="avatar">
-            <image class="img" src="{{item.picsource}}" mode="scaleToFill" />
+            <image class="img" src="{{item.docPhoto}}" mode="scaleToFill" />
         </view>   
         <view class="info"> 
-          <text class="name">{{item.name}}</text>
-          <text class="title">{{item.title}}</text>
-          <view class="hospital">{{item.hospital}}</view>
-          <view class="excel">擅长：{{item.excel}}</view>
+          <text class="name">{{item.ciRealname}}</text>
+          <text class="title">{{item.docPost}}</text>
+          <view>
+            <text class="hospital">{{item.docHospital}}</text>
+            <text class="keshi">{{item.docDepartment}}</text>
+          </view>
+          
+          <!-- <view class="excel">擅长：{{item.excel}}</view> -->
         </view>   
   </view>
   <!-- <view class="post_floor"

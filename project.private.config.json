@@ -25,12 +25,6 @@
           "scene": null
         },
         {
-          "name": "pages/luntan/goods-info/goods-info",
-          "pathName": "pages/luntan/goods-info/goods-info",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "pages/luntan/searchbar/searchbar",
           "pathName": "pages/luntan/searchbar/searchbar",
           "query": "",
@@ -43,44 +37,20 @@
           "scene": null
         },
         {
-          "name": "pages/luntan",
-          "pathName": "pages/luntan",
+          "name": "pages/home/tips/tips",
+          "pathName": "pages/home/tips/tips",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/index/index",
-          "pathName": "pages/index/index",
+          "name": "pages/home/tipDetail/tipDetail",
+          "pathName": "pages/home/tipDetail/tipDetail",
           "query": "",
           "scene": null
         },
         {
-          "name": "pages/home/home",
-          "pathName": "pages/home/home",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tips/tips",
-          "pathName": "pages/tips/tips",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tipDetail/tipDetail",
-          "pathName": "pages/tipDetail/tipDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/tipDetail/tipDetail",
-          "pathName": "pages/tipDetail/tipDetail",
-          "query": "",
-          "scene": null
-        },
-        {
-          "name": "pages/doctor/doctor",
-          "pathName": "pages/doctor/doctor",
+          "name": "pages/home/doctor/doctor",
+          "pathName": "pages/home/doctor/doctor",
           "query": "",
           "scene": null
         },
@@ -93,6 +63,84 @@
         {
           "name": "pages/chat/chat",
           "pathName": "pages/chat/chat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/file/index",
+          "pathName": "pages/me/file/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/record/index",
+          "pathName": "pages/me/record/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/information/index",
+          "pathName": "pages/me/information/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/me/help/index",
+          "pathName": "pages/me/help/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/me/me",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/friends/friends",
+          "pathName": "pages/chat/friends/friends",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/chat/chatroom/chatroom",
+          "pathName": "pages/chat/chatroom/chatroom",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "知识搜索",
+          "pathName": "pages/home/searchTips/searchTips",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/diagnose",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/eva_result/eva_result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/check/check",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/home/doctor/doctor",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/luntan/release/release",
           "query": "",
           "scene": null
         }

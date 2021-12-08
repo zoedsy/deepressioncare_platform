@@ -57,10 +57,7 @@ class Api {
       throw new Error('loginToApp 缺少参数:code');
     }
     if (!userJson.iv) {
-      throw new Error('loginToApp 缺少参数:iv');
-    }
-    if (!userJson.encryptedData) {
-      throw new Error('loginToApp 缺少参数:encryptedData');
+      throw new Error('loginToApp 缺少参数:iv');r
     }
     var sessionKey = wx.getStorageSync('SESSION_KEY');
     return new Promise((resolve, reject) => {
@@ -87,9 +84,10 @@ class Api {
     })
   }
 
-  // 获取请求到的数据
-  getRequestData(url,params,isNeedPullFresh,methond) {
+  // 获取请求到的数据YES
+  getRequestData(url,params,methond,isNeedPullFresh) {
     console.log("params =====", JSON.stringify(params));
+
     if (!url) {
       throw new Error('缺请求地址参数:url');
     }
@@ -102,22 +100,27 @@ class Api {
         methond = "POST";
       }
       var token = wx.getStorageSync("token");
-      params.appId = `${appid}`;
+      var openId = wx.getStorageSync("openId");
+      params.openid = openId;
+    
+      token=encodeURIComponent(token);
       wx.request({
         url: `${APIURL}/`+url,
+        data:params,
         method: methond,
         header: {
-          'content-type': 'application/json',
-          'autoken': token
+          'Content-Type': 'application/json',
+          'token': token
         },
-        data: params,
         success: (res) => {
           wx.hideLoading();
+          console.log("params:",params)
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
             wx.hideNavigationBarLoading();
           }
           resolve(res);
+          console.log("res",res)
         },
         fail: function (err) {
           wx.hideLoading();
@@ -136,6 +139,50 @@ class Api {
     })
   }
 
+  //不带openid和token
+  getSimpleRequestData(url,params,methond) {
+    console.log("params =====", JSON.stringify(params));
+
+    if (!url) {
+      throw new Error('缺请求地址参数:url');
+    }
+    return new Promise((resolve, reject) => {
+      wx.showLoading({
+        title: '加载中...',
+        mask:true
+      })
+      if (!methond){
+        methond = "POST";
+      }
+      wx.request({
+        url: `${APIURL}/`+url,
+        data:params,
+        method: methond,
+        header: {
+          'Content-Type': 'application/json',
+        },
+        success: (res) => {
+          wx.hideLoading();
+          console.log("params:",params)
+          resolve(res);
+          console.log("res",res)
+        },
+        fail: function (err) {
+          wx.hideLoading();
+          wx.showToast({
+            title: "请求失败",
+            icon: 'none',
+            duration: 1500
+          });
+          reject(err);
+        }
+      })
+    })
+  }
+
+
+
+  
   // 获取请求数据不加载？
   getRequestDataNoLoading(url, params, isNeedPullFresh,methodName) {
     if (!url) {
@@ -321,6 +368,22 @@ class Api {
       })
     })
   }
+  // Yes
+  getDateTime (){
+    let d = new Date();
+    var year = d.getFullYear()
+    var month = d.getMonth()+1
+    var day = d.getDate()
+    var hour = d.getHours()
+    var minute = d.getMinutes()
+    var second = d.getSeconds()
+    // if(day)
+
+    var date = year+"-"+month+"-"+day+" "+hour+":"+minute
+    console.log("date",date)
+    return date
+  }
+
   
 }
 module.exports = Api

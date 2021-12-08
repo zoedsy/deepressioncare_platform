@@ -1,3 +1,4 @@
+
 var getDateTime = function (date){
   var year = date.substring(0, 4);
   var month = date.substring(5, 7);
@@ -7,11 +8,12 @@ var getDateTime = function (date){
 
   var nowDate = getDate();
   var nowYear = nowDate.getFullYear()+"";
-  if (nowYear == year){
-    return month + '-' + day + ' ' + hour + ':' + min;
-  } else {
-    return year + '-' + month + '-' + day + ' ' + hour + ':' + min;
-  }
+  return year+"-"+month+"-"+day
+  // if (nowYear == year){
+  //   return month + '-' + day + ' ' + hour + ':' + min;
+  // } else {
+  //   return year + '-' + month + '-' + day + ' ' + hour + ':' + min;
+  // }
 }
 
 var getDateTimeHaveSecends = function (date){

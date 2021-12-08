@@ -1,4 +1,7 @@
 // pages/doctor/doctor.js
+import Api from '../../../api/api.js';
+const api = new Api();
+
 Page({
 
   /**
@@ -7,54 +10,7 @@ Page({
   data: {
     page:1,
     doctor_list:[
-      {
-        id: "1", 
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      {
-        id: "2",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      { 
-        id: "3",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"新华",
-        title:"副主任医师", 
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍,运用心理学、发展心理学"
-      },
-      {
-        id: "4", 
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      {
-        id: "5",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"杨新华",
-        title:"副主任医师",
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍"
-      },
-      { 
-        id: "6",
-        picsource: "https://tse1-mm.cn.bing.net/th/id/OIP.mYBs-T9BgY4bSS17ezfI4QHaE8?w=187&h=125&c=7&o=5&dpr=1.5&pid=1.7",
-        name:"新华",
-        title:"副主任医师", 
-        hospital:"华西医院",
-        excel:"运用心理学、发展心理学、人格心理学、变态心理学等理论知识，通过理疗等手段，解决来访者心理障碍,运用心理学、发展心理学"
-      }
+      
     ]
   },
 
@@ -69,14 +25,27 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    api.getRequestData('doctor_first_page/list',{},'GET',false).then((res)=>{
+      console.log("res_doctor---",res);
+      this.setData({ 
+        doctor_list:res.data.data
+      })
+      console.log(this.data.doctor_list)
+    })
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //请求医生数据
+    // 请求医生数据
+    // api.getRequestData('doctor_first_page/list',{},'GET',false).then((res)=>{
+    //   console.log("res_doctor---",res);
+    //   this.setData({ 
+    //     article_list:res.data.data
+    //   })
+    //   console.log(this.data.article_list)
+    // })
     // wx.request({               
     //   url:'http://127.0.0.1/get/consult/doctor_list?page='+this.data.page,
     //   data:{
@@ -92,9 +61,10 @@ Page({
 
   // 跳转详细对话框
   toDetail:function(){
-    let index=e.currentTarget.dataset.index;
+    // let index=e.currentTarget.dataset.index;
     wx.navigateTo({
-      url: '/pages/chat/chat?index='+index,
+      // url: '/pages/chat/chat?index='+index,
+      url:'/pages/chat/chat'
     })
   },
 
