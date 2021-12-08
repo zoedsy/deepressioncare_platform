@@ -17,6 +17,7 @@ const url_comment_get="api/bbs/comments/list";
 module.exports = {
   appid,
   APIURL,
+
   url_post,
   url_post_list,
   url_search_post,

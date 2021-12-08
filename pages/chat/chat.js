@@ -3,6 +3,7 @@ const io = require('../../utils/weapp.socket.io.js')
 // socket 连接地址
 // var socketUrl = 'wss://www.贵司服务器地址.com'
 var socketUrl = 'http://106.13.28.21:8888'
+// const {APIURL} = require('config.js')
 // socket 状态更新
 var socketMessage = ''
 // 上下文对象

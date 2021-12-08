@@ -4,19 +4,25 @@ Page({
    * 页面的初始数据
    */
   data: {
-    untreated_abnormalList: [
+    hospitals: [
       {
           id: 0,
           images: "../../images/baby.png",
-          title: "历史记录1",
+          title: "华西医院",
           detail: "21113222211vvvvvvvvvcccccccccc1"
       },
       {
           id: 1,
           images: "../../images/baby.png",
-          title: "历史记录2",
+          title: "四川省医院",
           detail: "2222"
       },
+      {
+        id: 2,
+        images: "../../images/baby.png",
+        title: "瑞金医院",
+        detail: "2222"
+    }
   ],
   },
   Patient:function (name,department,date) {

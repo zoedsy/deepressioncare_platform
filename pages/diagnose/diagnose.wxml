@@ -38,11 +38,11 @@
         
         
         <view class="title">
-            <text class="name">—— 历史记录 ——</text>
+            <text class="name">—— 医院介绍 ——</text>
         </view>
         <scroll-view scroll-y style="height: 700rpx;" >
         <view class="floor"
-        wx:for="{{untreated_abnormalList}}"
+        wx:for="{{hospitals}}"
         wx:key="id"
         data-index="{{item.id}}"
         bindtap="toDetail">
