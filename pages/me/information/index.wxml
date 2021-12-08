@@ -2,7 +2,7 @@
 <view class="components">
 
     <view class="na">
-        <view class="name">姓名：</view>
+        <view class="name">真实姓名：</view>
         <input class="input" name="name" value="{{na}}"
              bindinput="nameInput"/>
         

@@ -67,8 +67,8 @@ Page({
  
       this.setData({
        
-      userInfo: app.globalData.userInfo
-       
+      userInfo:wx.getStorageSync('userInfo') 
+
       })
        
     }
@@ -168,6 +168,7 @@ Page({
   },
   send:function(){
     socketMessage="49283402384"
+
   }
 },
 )

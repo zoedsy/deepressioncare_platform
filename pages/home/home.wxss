@@ -173,6 +173,14 @@ swiper swiper-item .pic {
   display: flex;
   width: 100%;
   height: 150rpx;
+  position: relative;
+}
+
+.doctor_floor .background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
 .doctor_floor .avatar{
@@ -220,4 +228,5 @@ swiper swiper-item .pic {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+  word-break: break-all;
 }

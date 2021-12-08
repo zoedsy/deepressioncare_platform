@@ -82,7 +82,7 @@ Page({
     console.log(this.data.navID)
     if(navID==1){
       //请求文章数据
-    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
+    api.getSimpleRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
       console.log(res)
       this.setData({ 
         article_list:res.data.data,

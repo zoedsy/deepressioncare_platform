@@ -2,7 +2,7 @@
     <view class="header">
         <view class="header-top">    
         <view class="nav-search">
-            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <icon class="weui-icon-search" type="search" size="24"></icon>
             <input type="text" placeholder="请输入您要搜索的内容" class="text-search" bindinput="changeSearch"  bindconfirm="bindconfirm" value="{{searchContext}}"/>
         </view>
         </view>
@@ -17,7 +17,7 @@
                 </view>
             </view>
             <button class="deleteHistory" bindtap="deleteHistory">清空历史</button>
-            <view class="hot-search">
+            <!-- <view class="hot-search">
                 <text class="search-hot">热门搜索</text>
                 <view class="search-item">
                     <view class="hot-search-item" wx:for="{{hots}}" wx:key="{{item.id}}">
@@ -30,7 +30,7 @@
                     </view>
                     </view>         
                 </view>
-            </view>
+            </view> -->
         </view>
         <view wx:else class="search-like">
 

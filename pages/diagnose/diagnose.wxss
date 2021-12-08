@@ -70,7 +70,7 @@
     width: 360rpx;
     font-size: 28rpx;
     left: 50%;
-    margin-left: -170rpx;
+    margin-left: -150rpx;
     top: -65%;
     font-size: 40rpx;
     color:rgb(126, 122, 122);

@@ -10,7 +10,6 @@
   border-top: 1rpx solid #D7D6DC;
   border-bottom: 1rpx solid #D7D6DC;
   /*height: 50rpx;*/
-  margin-top: 100rpx;
 }
 .weui-icon-search_in-box {
   position: absolute;

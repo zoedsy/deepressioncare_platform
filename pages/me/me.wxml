@@ -47,7 +47,7 @@
 					<view class="center_score">
 						<!-- <image class="rank_icon" src="../../static/points.png"></image> -->
                         <text class="rank_text" wx:if="{{state}}" style="color: #3dcaa7;">已完善</text>
-                        <text class="rank_text" wx:else>未完善</text>
+                        <text class="rank_text" style="color: #ca593d;" wx:else>未完善</text>
 					</view>
 				</view>
 			</view>
