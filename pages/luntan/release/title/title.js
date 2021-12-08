@@ -29,6 +29,7 @@ Page({
       isChanged:true,
       title: this.data.title
     });
+    // wx.setStorageSync('posttitle', this.data.title)
     wx.navigateBack({});
   },
   /**

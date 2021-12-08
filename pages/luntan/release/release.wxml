@@ -90,8 +90,8 @@
   <!-- 如果检测到文本框里面有文字，那么弹出是否保存草稿的页面 -->
   <view wx:if="{{isShowSave}}" class="float-view page-column" catchtap="floatClick">
     <view class="f-b-view page-column">
-      <view data-key="0" class="f-item-view" catchtap="saveClick">保存草稿</view>
-      <view data-key="1" class="f-item-view" catchtap="saveClick">不保存</view>
+      <view data-key="0" class="f-item-view" catchtap="saveAndSend">保存草稿</view>
+      <view data-key="1" class="f-item-view" catchtap="beginSave">不保存</view>
       <view data-key="2" class="f-item-view cancel" catchtap="saveClick">取消</view>
     </view>
   </view>
