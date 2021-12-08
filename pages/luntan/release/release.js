@@ -461,25 +461,37 @@ Page({
       name: 'file',
       url: app.globalData.url+"/"+app.globalData.url_post,
       header:{
-        'Content-Type':'application/json',
+        'content-type':'multipart/form-data',
         'token':token
       },
-      formatData:map,
+      formData:{
+        "location":cityName,
+        "content":this.data.inputText,
+        "title":title,
+        "ownerId":ownerId,
+        "createTime":crateTime,
+        // "image":this.imageFilePath
+      },
       success(res){
         
-      console.log("chenggong")
+      console.log("上传文件大成功！！！！")
       console.log("draft",draft)
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       console.log("errorCode",res.data.errorCode)
       wx.showToast({
         title: '发送成功',
+        duration:5000
       })
       console.log("baocunchenggong");
-      wx.navigateTo({
-        url: '../../luntan/luntan',
+      wx.navigateBack({
+        // url: '../../luntan/luntan',
+        delta:1
       })
-
+      },
+      fail(res){
+        console.log("res.fail",res)
+        console.log("fialllllllll")
       }
     })
     // api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {

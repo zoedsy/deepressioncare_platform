@@ -9,8 +9,8 @@
         <view class="avatar">
             <image class="img" src="{{item.docPhoto}}" mode="scaleToFill" />
         </view>   
-
         
+
         <view class="info"> 
           <text class="name">{{item.ciRealname}}</text>
           <text class="title">{{item.docPost}}</text>
