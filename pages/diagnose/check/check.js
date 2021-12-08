@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     console.log("诊断这里的userInfo",userInfo);
-    this.Patient('王小翰','音频','2021-11-28 09：35：45')
+    this.Patient(userInfo.name,'音频','2021-11-28 09：35：45')
   },
 })
 

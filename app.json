@@ -26,11 +26,8 @@
     "pages/me/information/index",
     "pages/me/aboutus/index",
     "pages/home/searchTips/searchTips",
-<<<<<<< HEAD
+    "pages/luntan/searchRes/searchRes",
     "pages/friends/friends"
-=======
-    "pages/luntan/searchRes/searchRes"
->>>>>>> ae8d521a35a9e0fb03a0cf434fa5d178380bcecb
   ],
   "window": {
     "backgroundTextStyle": "light",
