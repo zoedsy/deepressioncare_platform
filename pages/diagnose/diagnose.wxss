@@ -140,4 +140,10 @@
     /*超出显示为省略号*/
     text-overflow: ellipsis;
   }
+
+.phone_call{
+  width:20rpx;
+  height:20rpx;
+  font:5rpx;
+}
   
