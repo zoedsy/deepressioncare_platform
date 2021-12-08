@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    page:1,
+    page:0,
     inputValue:'',
     hasMore:true,
     article_list: [],
@@ -32,8 +32,8 @@ scrolltolower() {
   }
   this.data.page++
     
-    //查询
-    this.query()
+  //查询
+  this.query()
 
 },
 
@@ -46,8 +46,8 @@ scrolltolower() {
       inputValue:options.value
     })
     console.log(this.data.inputValue)
+    
     this.query()
-   
   },
 
   //搜索框文本内容显示
@@ -61,31 +61,41 @@ scrolltolower() {
  /**
  * 搜索执行按钮
  */
+onSearch(event){
+  this.setData({
+    article_list:[],
+    hasMore:true,
+    page:0,
+    success:()=>{
+        console.log(this.data)
+        this.query()
+      }
+  })
+  
+},
+
 query: function(event) {
-  // wx.showLoading({
-  //   title: '正在加载中...',
-  // })
-  //请求搜索知识结果
-  // api.getRequestData('search/knowledge',{keyWords:this.data.inputValue,content:this.data.inputValue,page:this.data.page},'GET',false).then((res)=>{
-  //     console.log(res)
-  //     if (!res.data.hasMore) {
-  //       wx.hideLoading()
-  //       wx.showToast({
-  //         title: '已经到底了！',
-  //         icon: 'none'
-  //       })
-  //       this.setData({
-  //         hasMore: false
-  //       })
-  //       return
-  //     }
-  //     wx.hideLoading()
-  //     var tmpList = [...this.data.article_list, ...res.data.data]    //取数组里的一个值，后再赋值到一个新数组里
-  //     this.setData({
-  //       article_list: tmpList
-  //     }) 
-  //     console.log(this.data)
-  //   })
+  wx.showLoading({
+    title: '正在加载中...',
+  })
+  api.getRequestData('api/search/knowledge',{keyWords:this.data.inputValue,content:this.data.inputValue,page:this.data.page},'GET',false).then((res)=>{
+      console.log(res)
+      if (!this.data.hasMore) {
+        wx.hideLoading()
+        wx.showToast({
+          title: '已经到底了！',
+          icon: 'none'
+        })
+        return
+      }
+      wx.hideLoading()
+      var tmpList = [...this.data.article_list, ...res.data.data.data]    //取数组里的一个值，后再赋值到一个新数组里
+      this.setData({
+        article_list: tmpList,
+        hasMore:res.data.data.hasMore
+      }) 
+      console.log(this.data)
+    })
 },
 
   /**
@@ -99,7 +109,10 @@ query: function(event) {
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // this.setData({
+    //   article:[],
+    // })
+    // this.query(this.data.keyword)
   },
 
   /**

@@ -49,13 +49,13 @@ Page({
    */
   onLoad: function (options) {
     //请求文章数据
-    // api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
-    //   console.log(res)
-    //   this.setData({ 
-    //     article_list:res.data.data
-    //   })
-    //   console.log(this.data.article_list)
-    // })
+    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
+      console.log(res)
+      this.setData({ 
+        article_list:res.data.data
+      })
+      console.log(this.data.article_list)
+    })
    
   },
 

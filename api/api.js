@@ -104,9 +104,9 @@ class Api {
       }
       var token = wx.getStorageSync("token");
       var openId = wx.getStorageSync("openId");
-      // params.openId = openId;
-      // params=JSON.stringify(params)
-      
+      params.openid = openId;
+    
+      // toekn=encodeURIComponent(token);
       wx.request({
         url: `${APIURL}/`+url,
         data:params,
