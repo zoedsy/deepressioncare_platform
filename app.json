@@ -26,7 +26,8 @@
     "pages/me/record/index",
     "pages/me/information/index",
     "pages/me/aboutus/index",
-    "pages/home/searchTips/searchTips"
+    "pages/home/searchTips/searchTips",
+    "pages/luntan/searchRes/searchRes"
   ],
   "window": {
     "backgroundTextStyle": "light",

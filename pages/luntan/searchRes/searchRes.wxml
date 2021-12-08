@@ -1,0 +1,33 @@
+<!--pages/luntan/luntan.wxml-->
+<view class="page">
+  <image class="background" src="/images/背景页.png"></image>
+  <view class="search">
+    <view class="searchBar">
+      <icon class="weui-icon-search" type="search" size="24"></icon>
+      <input  class="input" placeholder="请输入要搜索的内容" bindtap="entrySearch" value="{{inputValue}}" disabled />
+    </view>
+  </view>
+
+  <scroll-view wx-if="{{!none}}" class="list-block" scroll-y="true">
+    <!-- <block wx:for="{{posts}}" wx:key="{{item.pId}}"> -->
+      <block wx:for="{{posts}}" wx:key="{{item.pId}}" >      
+      <!-- <navigator class="goods-block" url="./detail/detail"> -->
+      <view class="goods-block"   bindtap="lookDetail" data-item="{{item}}">
+        <image class="postimage" src="{{item.pImage}}"/>
+        <view class="good-info">
+          <image class="ava" src="{{item.ciAvatarturl}}"/>
+
+          <view class="title">{{item.pTitle}} </view>
+
+          <view class="date">
+            {{item.createTime}}
+          </view>
+          <view class="addr">{{item.pLocation}}</view>
+        </view> 
+      </view> 
+
+      </block>
+  </scroll-view>
+  <view class="none" wx-else>暂无搜索结果</view>
+</view>
+

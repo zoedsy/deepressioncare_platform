@@ -100,6 +100,98 @@ Page({
     
   },
 
+  //发送
+  send(){
+    //检验空
+    if(this.data.title==''||this.data.title=='添加标题'){
+      wx.showToast({
+        title: '标题不能为空',
+        icon:'none',
+      })
+      return
+    }
+    if(this.data.imageFilePath==''){
+      wx.showToast({
+        title: '图片不能为空',
+        icon:'none',
+      })
+      return
+    }
+    if (this.data.textareaText.length == 0) {
+      wx.showToast({
+        title: '正文不能为空',
+        icon:'none',
+      })
+      return;
+    }
+    //请求
+    var cityName = this.data.cityName;
+    if (cityName == "添加地点") {
+      cityName = "";
+    }
+    var type = 1;
+    this.data.canSave = false;
+    var _this = this;
+    var ownerId = wx.getStorageSync('openId');
+    console.log("ownerId----获取缓存后的",ownerId);
+    var token = wx.getStorageSync('token');
+    token = encodeURIComponent(token);
+  
+    var crateTime = api.getDateTime()
+    
+    var map={
+      "location":cityName,
+      "content":this.data.textareaText,
+      "title":title,
+      "ownerId":app.globalData.openId,
+      "createTime":crateTime,
+    }
+    console.log(JSON.stringify(map));
+    console.log("上传文件前ownerid是否有",ownerId);
+    console.log("image_file_path路径",this.data.imageFilePath)
+    wx.uploadFile({
+      filePath:this.data.imageFilePath,
+      name: 'file',
+      url: app.globalData.url+"/"+app.globalData.url_post,
+      header:{
+        'content-type':'multipart/form-data',
+        'token':token
+      },
+      formData:{
+        "location":cityName,
+        "content":this.data.textareaText,
+        "title":title,
+        "ownerId":ownerId,
+        "createTime":crateTime,
+        "image":this.data.imageFilePath,
+
+      },
+      success(res){
+    
+      console.log("上传文件大成功！！！！")
+      console.log("draft",draft)
+      _this.data.canSave = true;
+      app.HOMENEEDFRESH = true;
+      console.log("errorCode",res.data.errorCode)
+      wx.showToast({
+        title: '发送成功',
+        duration:5000
+      })
+      console.log("baocunchenggong");
+      wx.navigateBack({
+        // url: '../../luntan/luntan',
+        delta:1
+      })
+      },
+      fail(res){
+        console.log("res.fail",res)
+        console.log("fialllllllll")
+      }
+    })
+
+
+  },
+
   
 // @title    textareaClick
 // @description 
@@ -229,34 +321,6 @@ Page({
       imageList: imgs,
     });
   },
-
-  // 选择图像
-  // @title    goToChooseImages
-// @description 选择图像
-// @auth      shiyidu            
-// @param     e
-// @return   无
-  goToChooseImages(){
-    var that =this;
-    wx.chooseImage({
-      count:9,
-      mediaType:['image'],
-      sourceType:['album'],
-      maxDuration:30,
-      camera:'back',
-      success(res){
-        console.log(res)
-        console.log("图片路径",res.tempFilePaths[0]);
-        console.log("图片数目",res.size);
-        that.imageFilePath=res.tempFilePaths[0];
-
-        // that.setData({imageFilePath:res.tempFilePaths})
-      }
-    });
-    // this.chosseMedia();
-  },
-  // 返回初始页面
-
 
 // 选择图像
 // @title    beginBack

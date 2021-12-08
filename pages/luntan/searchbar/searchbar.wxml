@@ -12,15 +12,15 @@
         <view class="content" wx:if="{{!haveSerachLike}}">
             <view class="search-history">
                 <text class="history-record">历史记录</text>
-                <view class="search-history-item" wx:for="{{historyRecord}}" wx:key="{{index}}">
+                <view class="search-history-item" wx:for="{{historyRecord}}" wx:key="{{index}}" data-index="{{item.recordItem}}" bindtap="clickHot">
                     <text>{{item.recordItem}}</text>
                 </view>
             </view>
             <button class="deleteHistory" bindtap="deleteHistory">清空历史</button>
-            <!-- <view class="hot-search">
+            <view class="hot-search">
                 <text class="search-hot">热门搜索</text>
                 <view class="search-item">
-                    <view class="hot-search-item" wx:for="{{hots}}" wx:key="{{item.id}}">
+                    <view class="hot-search-item" wx:for="{{hots}}" wx:key="{{item.id}}" data-index="{{item.text}}" bindtap="clickHot">
                     <view class="hot-item">
                         <view class="text">
                             <image class="hot-img" src="{{item.hotImg}}" wx:if="{{item.hotImg}}"></image>
@@ -30,7 +30,7 @@
                     </view>
                     </view>         
                 </view>
-            </view> -->
+            </view>
         </view>
         <view wx:else class="search-like">
 

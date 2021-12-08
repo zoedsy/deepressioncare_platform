@@ -4,10 +4,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    historyRecord:[{
-      id: '0',
-      recordItem:' '
-    }],
+    historyRecord:[],
     // 热门搜索内容变量
     hots:[{
       id:'01',
@@ -48,21 +45,22 @@ Page({
     searchLikeList: [],
 
     //模糊查询变量
-    searchLikeAllList: [{
-      text: '抑郁症如何释放心情'
-    }, {
-      text: '如何更好的调节心情'
-    }, {
-      text: '怎么拥有更加乐观的心态'
-    }, {
-      text: '如何休息放松'
-    }, {
-      text: '如何避免完美注意'
-    }, {
-      text: '怎么避免消极'
-    },{
-      text:'...'
-    }]
+    searchLikeAllList:[]
+    // searchLikeAllList: [{
+    //   text: '抑郁症如何释放心情'
+    // }, {
+    //   text: '如何更好的调节心情'
+    // }, {
+    //   text: '怎么拥有更加乐观的心态'
+    // }, {
+    //   text: '如何休息放松'
+    // }, {
+    //   text: '如何避免完美注意'
+    // }, {
+    //   text: '怎么避免消极'
+    // },{
+    //   text:'...'
+    // }]
     
   },
 
@@ -111,6 +109,16 @@ Page({
     })
   },
 
+  clickHot(e){
+    console.log(e.currentTarget.dataset.index)
+    this.saveHistory({
+      id: 0,
+      recordItem:e.currentTarget.dataset.index
+    })
+    wx.navigateTo({
+      url: '/pages/luntan/searchRes/searchRes?value='+e.currentTarget.dataset.index,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -150,7 +158,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+    
   },
 
   /**
@@ -173,7 +181,7 @@ Page({
       recordItem
     })
     wx.navigateTo({
-      url: '../searchbar/searchbar',
+      url: '/pages/luntan/searchRes/searchRes?value='+recordItem,
     })
     this.setData({
       searchContext:''
@@ -243,7 +251,15 @@ Page({
 // @return    返回参数名        参数类型         "解释"
   saveHistory (param) {
     let arr = this.data.historyRecord
-    arr.unshift(param)
+    //如果相同不插入
+    var i=0
+    for(i=0;i<arr.length;i++){
+      if(arr[i].recordItem==param.recordItem){
+        break;
+      }
+    }
+    if(i==arr.length){
+      arr.unshift(param)
     wx.setStorage({
       key: 'historyRecord',
       data: arr
@@ -251,19 +267,13 @@ Page({
     this.setData({
       historyRecord: arr
     })
+    }
+    
   },
   deleteHistory (param) {
-    // let arr = this.data.historyRecord
-    // arr.unshift(param)
-    // wx.setStorage({
-    //   key: 'historyRecord',
-    //   data: arr
-    // })
     this.setData({
-      historyRecord: [{
-        id: '0',
-        recordItem:' '
-      }]
+      historyRecord: []
     })
+    wx.setStorageSync('historyRecord', [])
   }
 })
