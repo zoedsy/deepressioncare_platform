@@ -149,6 +149,12 @@
           "pathName": "pages/luntan/searchRes/searchRes",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "query": "",
+          "pathName": "pages/diagnose/check/check",
+          "scene": null
         }
       ]
     }

@@ -143,3 +143,57 @@
   bottom: 8%;
   color: #b4afae;
 }
+
+.doctor_floor{
+  border-bottom: solid #e9e9e9;
+  display: flex;
+  width: 100%;
+  height: 250rpx;
+  position: relative;
+}
+
+.doctor_floor .background{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -1;
+}
+
+.doctor_floor .avatar{
+  width: 100rpx;
+  height:100rpx;
+  margin:10rpx
+}
+
+.doctor_floor .avatar .img{
+  height: 100%;
+  width:100%;
+  border-radius: 50rpx;
+}
+
+.doctor_floor .info{
+  width: 700rpx;
+  height:230rpx;
+  margin:10rpx
+}
+
+.doctor_floor .info .name{
+  font-size: large;
+  font-weight: bold;
+}
+
+.doctor_floor .info .title{
+  border: none;
+  margin-left: 10rpx;
+}
+
+.doctor_floor .info .excel{
+  color:#b4afae;
+  overflow: hidden;
+  /*超出隐藏*/
+  text-overflow: ellipsis;
+  /*超出显示为省略号*/
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

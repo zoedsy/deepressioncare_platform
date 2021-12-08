@@ -13,7 +13,7 @@
 <!-- 档案 -->
 
 <!-- 列表 -->
-<scroll-view style="height:500rpx" scroll-y="true">
+<!-- <scroll-view style="height:500rpx" scroll-y="true">
   <view class="floor"
         wx:for="{{article_list}}"
         wx:key="knoCardId"
@@ -26,4 +26,29 @@
             <view class="info_title">{{item.knoCardTitle}}</view>
         </view>  
     </view>
+</scroll-view> -->
+
+
+<scroll-view scroll-y="false">
+  <view class="doctor_floor"
+        wx:for="{{record_list}}"
+        wx:item="item"
+        wx:key="id"
+        bindtap="toDetail"
+        bindscrolltolower="scrolltolower">
+        <image class="background" src="/images/方框1.png"></image>
+        <view class="avatar">
+            <image class="img" src="{{item.userAvatar}}" mode="scaleToFill" />
+        </view>   
+        
+
+        <view class="info"> 
+          <text class="name">{{item.realName}}</text>
+          <text class="title" wx:if="{{item.sex}}">女</text>
+          <text class="title" wx:if="{{!item.sex}}">男</text>    
+          <view class="hospital" wx:if="{{item.diagnoseResult}}">患有抑郁症（模型准确率>90%）</view>
+          <view class="hospital" wx:if="{{!item.diagnoseResult}}">未患有抑郁症（模型准确率>90%）</view>
+          <view class="excel" >诊断时间：{{item.updateTime}}</view>
+        </view>   
+  </view>
 </scroll-view>

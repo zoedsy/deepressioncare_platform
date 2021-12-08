@@ -58,7 +58,7 @@ Page({
 
     // 基本上没有缓存数据，所以直接跳到onshow
     if (post_id && post_id.length > 0){
-      console.log("zero----------")
+      console.log("zero----------");
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
       // this.getDetailData();
@@ -417,14 +417,7 @@ Page({
 // @return   无
   saveDraft(){
     this.data.needToHome = false;
-    wx.setStorageSync('postcontent', this.data.textareaText)
-    wx.setStorageSync('postimages', this.data.imageList)
-    wx.setStorageSync('posttitle', this.data.title)
-    wx.setStorageSync('postaddr', this.data.cityName)
-    wx.showToast({
-      title: '保存成功',
-    })
-    // this.savePostClick(-1);
+    this.savePostClick(-1);
   },
 
   
@@ -437,24 +430,6 @@ Page({
 // @return   无
   beginSave(){
     this.data.needToHome = true;
-    //检验空
-    if(this.data.title==''||this.data.title=='添加标题'){
-      wx.showToast({
-        title: '标题不能为空',
-        icon:'none',
-      })
-      return
-    }
-    if(this.data.imageFilePath==''){
-      wx.showToast({
-        title: '图片不能为空',
-        icon:'none',
-      })
-      return
-    }
-    this.setData({
-      isShowSave:true
-    })
     this.savePostClick(-1);
   },
 
@@ -486,7 +461,16 @@ Page({
   // 开始保存post
   beginSavePost(draft){
     var _this = this;
-   
+    // wx.requestSubscribeMessage({
+    //   tmplIds: ['tli7zssphnfa2VXZztZZB6isXR98LoihxjcFBdq_xIk', 'PTstSvtHM0WOiTrG9mAbXV_ziHNog79pBnZYsvAaIJg','zMGkiKgkOggfMU14D_Jfd_QviRhg5bJ8kXcMhSsKUrQ'],
+    //   success(res) {
+    //   },
+    //   fail(res) {
+    //     console.log(res);
+    //   }
+    // })
+    this.postDidWorkSave(draft);
+
   },
 
   // 点击发送，draft=1

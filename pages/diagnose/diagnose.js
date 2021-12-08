@@ -96,9 +96,13 @@ Page({
           success:function(res){
             if(res.confirm){  //用户点击确定后
               // console.log("userInfo是否有缓存",wx.getStorageSync('userInfo'))
-              wx.navigateTo({
-                url: '../diagnose/check/check'
-              })
+              setTimeout(
+                wx.navigateTo({
+                  url: '../diagnose/check/check'
+                })
+                ,5000000
+              )
+
             }else{  //用户点击取消后
 
             }
