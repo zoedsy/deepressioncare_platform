@@ -45,6 +45,20 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/audio/audio'
     // })
+    wx.checkSession({
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/diagnose/diagnose',
+        })
+      },
+      fail:(err)=>{
+        wx.showToast({
+          title: '请先登录再发帖',
+          icon:'none'
+        })
+      },
+    })
+
     wx.chooseMessageFile({
       count: 1,
       type:'file',
@@ -140,6 +154,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.checkSession({
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/diagnose/diagnose',
+        })
+      },
+      fail:(err)=>{
+        wx.showToast({
+          title: '请先登录再访问诊断界面',
+          icon:'none',
+          duration:7000
+        })
+        wx.switchTab({
+          url: '../home/home',
+        })
+      },
+    })
     var username = wx.getStorageSync('username');
     this.Patient('张玉','精神科室','2021-11-20');
   },
@@ -155,7 +186,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    wx.checkSession({
+      success: (res) => {
+        wx.navigateTo({
+          url: '/pages/diagnose/diagnose',
+        })
+      },
+      fail:(err)=>{
 
+        wx.showToast({
+          title: '请先登录再访问诊断界面',
+          icon:'none',
+          duration:7000
+        })
+        
+        wx.switchTab({
+          url: '../home/home',
+        })
+      },
+    })
   },
 
   /**

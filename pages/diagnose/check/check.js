@@ -6,10 +6,10 @@ Page({
 
 
   },
-  Patient:function (name,audio_Type,date) {
+  Patient:function (name,date) {
     this.setData({
       Name:name,
-      Type:audio_Type,
+      // Type:audio_Type,
       Date:date,
     })
       
@@ -22,7 +22,7 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     console.log("诊断这里的userInfo",userInfo);
-    this.Patient(userInfo.name,'音频','2021-11-28 09：35：45')
+    this.Patient(userInfo.nickName,'2021-11-28 09：35：45')
   },
 })
 

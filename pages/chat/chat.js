@@ -73,7 +73,15 @@ Page({
             this.setData({wxchatLists:chatLists})
           });
           ws.on('chat',(res)=>{
-            
+            console.log(res)
+            let item = {
+              sendTime: this.data.normalDataTime,
+              content: res.content,
+              flag: 1
+            }
+            let chatLists = this.data.wxchatLists
+            chatLists.push(item)
+            this.setData({ wxchatLists: chatLists })
           })
   
         }else {

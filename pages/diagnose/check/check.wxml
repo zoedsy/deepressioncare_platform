@@ -91,10 +91,10 @@
           <view class="Name_id">病人姓名：</view>
           <text class="Name">{{Name}}</text>
         </view>
-        <view class="info info2">
+        <!-- <view class="info info2">
           <view class="Type_id">诊断类型：</view>
           <text class="Type">{{Type}}</text>
-        </view>
+        </view> -->
         <view class=" info info3">
           <view class="Date_id">发起时间：</view>
           <text class="Date">{{Date}}</text>
@@ -107,7 +107,8 @@
         <image src="/images/doctor.jpg"></image>
         <view class="result">
           <view class="rob_Result">模型诊断结果:</view>
-          <view class="rob_Result1">80%可能患抑郁</view>
+          <view class="rob_Result1">患抑郁</view>
+          <!-- <view class="rob_Result1">模型准确率>90%</view> -->
         </view>
     </view>
   

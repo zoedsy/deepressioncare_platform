@@ -12,7 +12,7 @@
         </view>
         <image src="/images/doctor.jpg"></image>
     </view>
-
+    
     <!-- 上传数据 -->
  <view class="audio_box">
     <image src="/images/whiteboard.jpg" bindtap='bindViewTap'></image>
