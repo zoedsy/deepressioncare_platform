@@ -11,6 +11,7 @@ Page({
     inputValue:'',
     hasMore:true,
     article_list: [],
+    none:true
   },
 
 
@@ -66,6 +67,7 @@ onSearch(event){
     article_list:[],
     hasMore:true,
     page:0,
+    none:true
   })
   console.log(this.data)
   this.query()
@@ -92,6 +94,11 @@ query: function(event) {
         article_list: tmpList,
         hasMore:res.data.data.hasMore
       }) 
+      if(this.data.article_list.length>0){
+        this.setData({
+          none:false
+        })
+      }
       console.log(this.data)
     })
 },

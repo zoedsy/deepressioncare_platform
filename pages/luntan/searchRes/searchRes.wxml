@@ -8,12 +8,12 @@
     </view>
   </view>
 
-  <scroll-view wx-if="{{!none}}" class="list-block" scroll-y="true">
+  <scroll-view wx:if="{{!none}}" class="list-block" scroll-y="true" style="height: 1300rpx;">
     <!-- <block wx:for="{{posts}}" wx:key="{{item.pId}}"> -->
       <block wx:for="{{posts}}" wx:key="{{item.pId}}" >      
       <!-- <navigator class="goods-block" url="./detail/detail"> -->
       <view class="goods-block"   bindtap="lookDetail" data-item="{{item}}">
-        <image class="postimage" src="{{item.pImage}}"/>
+        <image class="postimage" src="{{item.imageUrl}}"/>
         <view class="good-info">
           <image class="ava" src="{{item.ciAvatarturl}}"/>
 
@@ -28,6 +28,6 @@
 
       </block>
   </scroll-view>
-  <view class="none" wx-else>暂无搜索结果</view>
+  <view class="none" wx:else>暂无搜索结果</view>
 </view>
 

@@ -152,8 +152,14 @@
         },
         {
           "name": "",
-          "query": "",
           "pathName": "pages/diagnose/check/check",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/luntan/detail/detail",
+          "query": "",
           "scene": null
         }
       ]
