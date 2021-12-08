@@ -10,18 +10,31 @@ Page({
     navID:1,
     first:false,
     second:true,
+    inputValue:"",
     bannerList:[
       {
         bannerID: "1",
-        pic: "/images/swiper1.png",
+        pic: "https://img.zcool.cn/community/0156ec58a15143a8012060c81d371e.png@1280w_1l_2o_100sh.png",
       },
       {
         bannerID: "2",
-        pic: "/images/swiper2.png",
+        pic: "https://tse3-mm.cn.bing.net/th/id/OIP-C.WVlVYwnSfrRDmoPHcH9aEgHaDn?w=342&h=170&c=7&r=0&o=5&dpr=1.75&pid=1.7",
       },
       {
         bannerID: "3",
-        pic: "/images/swiper3.png",
+        pic: "https://1.s91i.faiusr.com/4/AFsIABAEGAAg_Pnr7wUovInOyQUwhAc4-wI!800x800.png.webp?v=1576729849160",
+      },
+      {
+        bannerID: "4",
+        pic: "https://1.s91i.faiusr.com/4/AFsI3eekARAEGAAgsvuW8wUo5JTLjAIwhAc4-wI!800x800.png.webp?v=1583742654425",
+      },
+      {
+        bannerID: "5",
+        pic: "https://tse3-mm.cn.bing.net/th/id/OIP-C.LuRFccbwzqTbeKDjOlHr7gHaEH?pid=ImgDet&rs=1",
+      },
+      {
+        bannerID: "6",
+        pic: "https://tse1-mm.cn.bing.net/th/id/R-C.e0e7d8d0444ba9487ab1e20c7bab4855?rik=Sfy8uTRaDWhSOw&riu=http%3a%2f%2fpic.5tu.cn%2fuploads%2fallimg%2f2011%2fpic_5tu_big_2020010111320097153.jpg&ehk=pIy19leO3ZNNXDOslba%2b4ziBwQdrJWuRNXpigQniUHU%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1",
       },
     ],
     article_list: [
@@ -36,13 +49,13 @@ Page({
    */
   onLoad: function (options) {
     //请求文章数据
-    api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
-      console.log(res)
-      this.setData({ 
-        article_list:res.data.data
-      })
-      console.log(this.data.article_list)
-    })
+    // api.getRequestData('knowledge/first_page',{},'GET',false).then((res)=>{
+    //   console.log(res)
+    //   this.setData({ 
+    //     article_list:res.data.data
+    //   })
+    //   console.log(this.data.article_list)
+    // })
    
   },
 
@@ -114,6 +127,25 @@ Page({
       })
     }
   },
+
+  //搜索框文本内容显示
+  inputBind: function(event) {
+    this.setData({
+        inputValue: event.detail.value
+    })
+    console.log('bindInput' + this.data.inputValue)
+
+  },
+ /**
+ * 搜索执行按钮
+ */
+query: function(event) {
+  //跳转搜索知识结果页面
+  wx.navigateTo({
+    url: '/pages/home/searchTips/searchTips?value='+this.data.inputValue,
+  })
+},
+
   /**
    * 生命周期函数--监听页面隐藏
    */

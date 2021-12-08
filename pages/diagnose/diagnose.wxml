@@ -1,59 +1,46 @@
 <div>
     <!-- 患者信息 -->
-    <view class="infomation">
-
-        <!-- 姓名 -->
-        <view class="iconfont icon-yousanjiaoxing">
-            <view class="name" bindtap='goToPerson'>{{Name}}</view>
-        </view>
-
+    <view class="infomation" bindtap='goToPerson'>
         <view class="information0">
+            <!-- 姓名 -->
+            <view class="name" >{{Name}}</view>
             <!-- 科室/ -->
-            <view class="department" bindtap='goToPerson'>{{Deparment}}</view>
-
+            <view class="department">{{Deparment}}</view>
             <!-- 诊断时间 -->
-            <view class="date" bindtap='goToPerson'>{{Date}}</view>
+            <view class="date">{{Date}}</view>
 
         </view>
-        <!-- <view class="mask">
-            <view class="iconfont icon-jiantouyou"></view>
-        </view> -->
-
+        <image src="/images/doctor.jpg"></image>
     </view>
 
-    <!-- 图片 -->
-    <!-- <view>
-        <image src="../../images/baby.png" class="img" mode="aspectFill"></image>
-    </view> -->
     <!-- 上传音频 -->
  <view class="audio_box">
-    <view bindtap='bindViewTap' class="iconfont icon-tianjia">
-        <text class="audio">
-            添加文件
-        </text>
-    </view>
-    <view class="tip">
-        <!--style="display:flex;justify-content: center;align-items: center;"> -->
-        请上传您的音频或活动序列数据
-    </view>
+    <image src="/images/whiteboard.jpg"></image>
+    <!-- <text bindtap='bindViewTap' class="iconfont icon-tianjia"></text> -->
+    <view class="tip">请上传您的音频数据</view>
  </view>
 
     <!-- 历史记录 -->
     <view class="history_box">
-        <view class="title">历史记录</view>
-        <view class='info'>
-        <view class="tui-list-box">
-            <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goTopage" data-id="{{item.id}}">
-                <view class="pic">
-                    <image class="abnormal-img" src="{{item.images}}" bindtap="goToDetail"></image>
-                </view>
-                <view class="abnormal-box abnormal-left abnormal-right" bindtap="goToDetail">
-                    <div class="abnormal-name">{{item.title}}</div>
-                    <div class="abnormal-detail">{{item.detail}}</div>
-                </view>
-            </view>
+        <!-- <view class="title">历史记录</view> -->
+        <view class="title">
+            <text class="name">—— 历史记录 ——</text>
         </view>
-    </view>
-    </view>
+        <scroll-view scroll-y style="height: 700rpx;" >
+        <view class="floor"
+        wx:for="{{untreated_abnormalList}}"
+        wx:key="id"
+        data-index="{{item.id}}"
+        bindtap="toDetail">
+        <view class="picture">
+            <image class="img" src="{{item.images}}" mode="scaleToFill" />
+        </view>  
+        <view class="info">
+            <view class="info_title">{{item.title}}</view>
+            <view class="detail">{{item.detail}}</view>
+        </view>  
+        </view> 
+        </scroll-view>
+    </view> 
 
 </div>

@@ -104,18 +104,21 @@
   
     <!-- 机器分析 -->
     <view class="analyze_box">
-      <view class="analyze0">
-        <view class="rob_Result">模型诊断结果</view>
-        <view class="accuracy">(正确率:80%)</view>
-      </view>
-      <view class="analyze1">
-        <view class="rob_Result1">是否患抑郁:</view>
-        <view class="result">是</view>
-      </view>
+        <image src="/images/doctor.jpg"></image>
+        <view class="result">
+          <view class="rob_Result">模型诊断结果:</view>
+          <view class="rob_Result1">80%可能患抑郁</view>
+        </view>
     </view>
   
     <!-- 结果查看 -->
-    <view class="result_box" bindtap='goToeva_result'>医生评议完成，点击查看结果</view>
+    <view class="audio_box" bindtap='goToeva_result'>
+    <image src="/images/whiteboard.jpg"></image>
+    <!-- <text bindtap='bindViewTap' class="iconfont icon-tianjia"></text> -->
+    <view class="tip">医生评议完成，</view>
+    <view class="tip tip1">点击查看结果</view>
+    </view>
+    <!-- <view class="result_box" bindtap='goToeva_result'>医生评议完成，点击查看结果</view> -->
   </view>
 
 </view>

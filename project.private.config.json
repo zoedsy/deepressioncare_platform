@@ -107,6 +107,30 @@
           "pathName": "pages/chat/chatroom/chatroom",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "知识搜索",
+          "pathName": "pages/home/searchTips/searchTips",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/diagnose",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/eva_result/eva_result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/diagnose/check/check",
+          "query": "",
+          "scene": null
         }
       ]
     }

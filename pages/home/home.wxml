@@ -2,12 +2,12 @@
             <view class="weui-search-bar__form">
             <!-- 搜索框 -->
                 <view class="weui-search-bar__box">
-                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容"/>
+                    <icon class="weui-icon-search_in-box" type="search" size="14" bindtap='query'></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" confirm-type='search' value="{{inputValue}}" bindinput='inputBind' bindconfirm='query'/>
                 </view>
             </view>
             <!-- 搜索按钮,调用搜索查询方法 -->
-            <view class="weui-search-bar__cancel-btn" bindtap='search'>搜索</view>
+            <view class="weui-search-bar__cancel-btn" bindtap='query'>搜索</view>
 </view>
 
 <swiper class="banners" indicator-dots indicator-color="rgb(254,247,251)" indicator-active-color="rgb(36,147,240)"

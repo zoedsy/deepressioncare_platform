@@ -2,23 +2,17 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-
     "pages/home/home",
     "pages/home/tips/tips",
     "pages/home/tipDetail/tipDetail",
     "pages/home/doctor/doctor",
-
     "pages/diagnose/diagnose",
     "pages/diagnose/eva_result/eva_result",
-    "pages/diagnose/check/check", 
-    "pages/diagnose/audio/audio" ,
-    
+    "pages/diagnose/check/check",
+    "pages/diagnose/audio/audio",
     "pages/chat/chat",
     "pages/chat/friends/friends",
     "pages/chat/chatroom/chatroom",
-   
-  
-
     "pages/luntan/luntan",
     "pages/luntan/searchbar/searchbar",
     "pages/luntan/release/release",
@@ -27,17 +21,12 @@
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail",
-
-
-
-
     "pages/me/me",
     "pages/me/help/index",
     "pages/me/record/index",
     "pages/me/information/index",
-    "pages/me/aboutus/index"
-
-
+    "pages/me/aboutus/index",
+    "pages/home/searchTips/searchTips"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -68,7 +57,6 @@
         "selectedIconPath": "images/诊断.png"
       },
       {
-
         "pagePath": "pages/home/doctor/doctor",
         "text": "聊天室",
         "iconPath": "images/聊天.png",
