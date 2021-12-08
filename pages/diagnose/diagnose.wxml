@@ -15,17 +15,17 @@
 
     <!-- 上传音频 -->
  <view class="audio_box">
-    <image src="/images/whiteboard.jpg"></image>
-    <!-- <text bindtap='bindViewTap' class="iconfont icon-tianjia"></text> -->
-    <view class="tip">请上传您的音频数据</view>
+    <image src="/images/whiteboard.jpg" bindtap='bindViewTap'></image>
+    <!-- <text bindtap='bindViewTap'></text> -->
+    <view class="tip"  bindtap='bindViewTap'>请上传您的数据</view>
  </view>
 
     <!-- 历史记录 -->
     <view class="history_box">
-        <view class="title">历史记录</view>
+        <!-- <view class="title">历史记录</view> -->
         <view class='info'>
         <view class="tui-list-box">
-            <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goToDetail" data-id="{{item.id}}">
+            <!-- <view class="abnormal" wx:for="{{untreated_abnormalList}}" wx:key="navList3" bindtap="goToDetail" data-id="{{item.id}}">
                 <view class="pic">
                     <image class="abnormal-img" src="{{item.images}}" bindtap="goToDetail"></image>
                 </view>
@@ -33,8 +33,10 @@
                     <div class="abnormal-name">{{item.title}}</div>
                     <div class="abnormal-detail">{{item.detail}}</div>
                 </view>
-            </view>
+            </view> -->
         <!-- <view class="title">历史记录</view> -->
+        
+        
         <view class="title">
             <text class="name">—— 历史记录 ——</text>
         </view>
