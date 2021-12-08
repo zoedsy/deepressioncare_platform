@@ -34,7 +34,6 @@ Page({
       Name:name,
       Deparment:department,
       Date:date,
-      Patient:userInfo
     })
       
     },
