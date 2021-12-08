@@ -164,7 +164,7 @@ Page({
         wx.showToast({
           title: '请先登录再访问诊断界面',
           icon:'none',
-          duration:7000
+          duration:9000
         })
         wx.switchTab({
           url: '../home/home',
@@ -193,11 +193,11 @@ Page({
         })
       },
       fail:(err)=>{
-
+        console.log("没有的登陆，不能诊断");
         wx.showToast({
           title: '请先登录再访问诊断界面',
           icon:'none',
-          duration:7000
+          duration:9000
         })
         
         wx.switchTab({

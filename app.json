@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/index/index",
     "pages/logs/logs",
     "pages/home/home",
@@ -20,7 +21,7 @@
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail",
-    "pages/me/me",
+    
     "pages/me/help/index",
     "pages/me/record/index",
     "pages/me/information/index",
