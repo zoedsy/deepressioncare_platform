@@ -422,7 +422,7 @@ Page({
     // map.type = type;
     // map.userId = app.USER_ID();
     var ownerId = app.globalData.openId;
-    
+    var token = wx.getStorageSync('token')
     if(!map.ownerId){
       ownerId=wx.getStorageSync('openId')
     }
@@ -457,9 +457,13 @@ Page({
     // },
 
     wx.uploadFile({
-      filePath: that.imageFilePath,
-      name: 'name',
-      url: app.globalData.url+app.globalData.url_post,
+      filePath: _this.imageFilePath,
+      name: 'file',
+      url: app.globalData.url+"/"+app.globalData.url_post,
+      header:{
+        'Content-Type':'application/json',
+        'token':token
+      },
       formatData:map,
       success(res){
         
