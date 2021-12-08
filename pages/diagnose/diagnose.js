@@ -46,7 +46,7 @@ Page({
           success:function(res){
             if(res.confirm){  //用户点击确定后
               wx.navigateTo({
-                url: '../check/check'
+                url: '../diagnose/check/check'
               })
             }else{  //用户点击取消后
 
