@@ -2,6 +2,7 @@
 //获取应用实例
 var app = getApp();
 import Api from '../../../api/api.js';
+// import getDateTime from '../../../wxs/tool.wxs';
 const api = new Api();
 Page({
   data: {
@@ -57,7 +58,7 @@ Page({
       console.log("zero----------")
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
-      this.getDetailData();
+      // this.getDetailData();
     }
 
   },
@@ -188,19 +189,7 @@ Page({
     })
   },
   
-  //没有帮扶点了所以这个可以删除 
-  // goToBangFuJiDi(){
-  //   wx.navigateTo({
-  //     url: '/pages/index/bangfu/bangfu',
-  //   })
-  // },
-  // 没有种草的东西了，这个可以删除
-  // goToZhongCao(){
-  //   wx.navigateTo({
-  //     url: '/pages/index/bfZhongCao/bfZhongCao',
-  //   })
-  // },
-
+  
   // 选择图像
   // @title    goToChooseImages
 // @description 选择图像
@@ -321,7 +310,7 @@ Page({
 // @return   无
   beginSave(){
     this.data.needToHome = true;
-    this.savePostClick(1);
+    this.savePostClick(-1);
   },
 
 // 选择城市
@@ -391,84 +380,113 @@ Page({
     }
     // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
     var type = 1;
-    if (this.data.zcDict) {
-      type = 4;
-    }
-    if (this.data.voteDict) {
-      type = 2;
-    }
-    if (this.data.bfDict) {
-      type = 3;
-    }
+    // if (this.data.zcDict) {
+    //   type = 4;
+    // }
+    // if (this.data.voteDict) {
+    //   type = 2;
+    // }
+    // if (this.data.bfDict) {
+    //   type = 3;
+    // }
     if (!this.data.canSave) return;
     this.data.canSave = false;
     var _this = this;
     var map = {};
-    map.address = "";
-    // if (this.data.bfDict) {
-    //   if (this.data.bfDict.id) {
-    //     map.baseId = this.data.bfDict.id;
-    //   } else {
-    //     map.baseId = this.data.bfDict.basesId;
-    //   }
-    // }
-    // if (this.data.zcDict) {
-    //   map.productId = this.data.zcDict.productId;
-    //   map.skuId = this.data.zcDict.skuId;
-    // }
-    // if (this.data.voteDict) {
-    //   map.votes = this.data.voteDict.options;
-    //   map.voteTitle = this.data.voteDict.title;
-    //   map.endTime = this.data.voteDict.endTime + "";
-    // }
+    // map.address = "";
 
-    map.city = cityName;
-    map.content = this.data.inputText;
-    map.draft = draft;
-    map.imgs = JSON.stringify(this.data.imageList);
-    map.kind = this.data.typeSelectIndex + 1;
-    map.title = title;
-    map.type = type;
+
+    // map.location = cityName;
+    // map.content = this.data.inputText;
+    // map.draft = draft;
+    // map.imgs = JSON.stringify(this.data.imageList);
+    // map.kind = this.data.typeSelectIndex + 1;
+    // map.title = title;
+    // map.type = type;
     // map.userId = app.USER_ID();
-    map.userId = app.globalData.openId;
-    map.videoUrl = this.data.videoUrl;
+    var ownerId = app.globalData.openId;
+    
+    if(!map.ownerId){
+      ownerId=wx.getStorageSync('openId')
+    }
+
+    // var date =new Date();
+    // console.log(date)
+    // var date = api.getDateTime(date.toString());
+    // console.log("date-----------",date)
+    // 获取时间，返回时间
+    // console.log("date",date)
+    var crateTime = api.getDateTime()
+    
+    map={
+      "location":cityName,
+      "content":this.data.inputText,
+      "title":title,
+      "ownerId":ownerId,
+      "createTime":crateTime,
+    }
+  
+    // map.crateTime = 
+    // map.videoUrl = this.data.videoUrl;
+
 
     console.log(JSON.stringify(map));
-    map={
-      "ownerId":app.globalData.openId,
-      "path":"pages/luntan/luntan",
-      "title":"title",
-      "SubmitPostForm":"fjdskflsdjf"
-    },
-    api.getRequestData(app.globalData.url_post, map, false, "POST").then(res => {
+    // map={
+    //   "ownerId":app.globalData.openId,
+    //   "path":"pages/luntan/luntan",
+    //   "title":"title",
+    //   "SubmitPostForm":"fjdskflsdjf"
+    // },
+    api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
+      console.log("chenggong")
+      console.log("draft",draft)
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
-      if (res.data.errorCode == 0) {
-        if (draft == -1) {
-          var data = res.data.model;
-          wx.setStorageSync('POST_ID', data.id + '');
-          _this.data.isChanged = false;
-          app.showToasts("保存成功～");
-        } else {
-          _this.data.isChanged = false;
-          wx.removeStorageSync('POST_ID');
-          app.showToasts("发布成功～");
-        }
-        setTimeout(function () {
-          if (_this.data.needToHome) {
-            _this.backHome();
-          }
-        }, 1400);
-      } else {
+      console.log("errorCode",res.data.errorCode)
+      // if (res.data.errorCode == "") {
+      if (draft == -1) {
+        // var data = res.data.model;
+        // wx.setStorageSync('POST_ID', data.id + '');
+        // _this.data.isChanged = false;
+        // app.showToasts("保存成功～");
         wx.showToast({
-          title: res.data.errorMsg,
-          icon: 'none',
-          duration: 1500
-        });
+          title: '发送成功',
+        })
+        console.log("baocunchenggong");
+        wx.navigateTo({
+          url: '../../luntan/luntan',
+        })
+      } else {
+        // _this.data.isChanged = false;
+        // wx.removeStorageSync('POST_ID');
+        // // app.showToasts("发布成功～");
+        wx.showToast({
+          title: '发送成功',
+        })
+        wx.navigateTo({
+          url: '../../luntan/luntan',
+        })
+        console.log("fabuchenggong");
       }
+      setTimeout(function () {
+        if (_this.data.needToHome) {
+          _this.backHome();
+        }
+      }, 1400);
+      // } else {
+      //   wx.showToast({
+      //     title: res.data.errorMsg,
+      //     icon: 'none',
+      //     duration: 1500
+      //   });
+      // }
+    //  wx.showToast({
+    //    title: '发送成功',
+    //  })
 
     }).catch(err => {
       _this.data.canEvaluate = true;
+      console.log("catch")
     });
   },
   // 返回主页

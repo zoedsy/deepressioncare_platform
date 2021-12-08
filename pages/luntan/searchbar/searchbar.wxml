@@ -16,7 +16,7 @@
                     <text>{{item.recordItem}}</text>
                 </view>
             </view>
-            <!-- <button class="deleteHistory" bindtap="deleteHistory">清空历史</button> -->
+            <button class="deleteHistory" bindtap="deleteHistory">清空历史</button>
             <view class="hot-search">
                 <text class="search-hot">热门搜索</text>
                 <view class="search-item">

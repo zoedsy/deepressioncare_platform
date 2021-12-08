@@ -90,6 +90,7 @@ class Api {
   // 获取请求到的数据
   getRequestData(url,params,methond,isNeedPullFresh) {
     console.log("params =====", JSON.stringify(params));
+
     if (!url) {
       throw new Error('缺请求地址参数:url');
     }
@@ -103,44 +104,28 @@ class Api {
       }
       var token = wx.getStorageSync("token");
       var openId = wx.getStorageSync("openId");
-      params.openid = openId;
-      var header;
-      console.log(methond)
-      if(methond=='GET'){
-        header={
-          'content-type': 'application/json',
-          'token': token
-        }
-      }
-      else{
-        header={
-          'content-type': 'application/x-www-form-urlencoded',
-          'token': token
-        }
-      }
-      // params是请求的具体参数
-      console.log(params)
-      // header请求头主要是token以及content-type
-      console.log(header)
-      console.log(`${APIURL}/`+url)
+      // params.openId = openId;
+      // params=JSON.stringify(params)
+      
       wx.request({
         url: `${APIURL}/`+url,
-        // console.log(url),
+        data:params,
         method: methond,
-        header: header,
-        data: params,
+        header: {
+          'Content-Type': 'application/json',
+          'token': token
+        },
         success: (res) => {
-          console.log("qingqiu chenggong")
           wx.hideLoading();
+          console.log("params:",params)
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
             wx.hideNavigationBarLoading();
           }
           resolve(res);
-          console.log(res)
+          console.log("res",res)
         },
         fail: function (err) {
-          console.log("qingqiu shibai")
           wx.hideLoading();
           if (isNeedPullFresh) {
             wx.stopPullDownRefresh();
@@ -157,6 +142,9 @@ class Api {
     })
   }
 
+
+
+  
   // 获取请求数据不加载？
   getRequestDataNoLoading(url, params, isNeedPullFresh,methodName) {
     if (!url) {
@@ -342,6 +330,21 @@ class Api {
       })
     })
   }
+  getDateTime (){
+    let d = new Date();
+    var year = d.getFullYear()
+    var month = d.getMonth()+1
+    var day = d.getDate()
+    var hour = d.getHours()
+    var minute = d.getMinutes()
+    var second = d.getSeconds()
+    // if(day)
+
+    var date = year+"-"+month+"-"+day+" "+hour+":"+minute
+    console.log("date",date)
+    return date
+  }
+
   
 }
 module.exports = Api

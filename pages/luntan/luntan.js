@@ -1,5 +1,7 @@
 // pages/luntan/luntan.js
-const app = getApp()
+import Api from "../../api/api.js"
+const api = new Api();
+const app = getApp();
 
 Page({
 
@@ -57,7 +59,8 @@ Page({
         // original_price:"￥138",
         // sign_img:"https://img.xiaohongshu.com/seller/0d1b063d887360fc5a3779bd6784a453"
       }
-    ]
+    ],
+    posts:[]
   },
   
   entrySearch(e) {
@@ -70,18 +73,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that =this;
     wx.setNavigationBarTitle({
       title: '论坛',
     })
-    wx.request({               //请求数据
-      // url: 'https://www.easy-mock.com/mock/5b1e17a0d4a14a3247a6cd6b/data',
-      success: (res) => {
-        this.setData({
-          goods: res.data.data
-        })
-        console.log(this.data.goods)
-      }
-    })  
+    api.getRequestData(app.globalData.url_post_list,{},"Get",false).then(res=>{
+      console.log("look_posts_res",res);
+      console.log("res.data.data",res.data.data)
+      that.setData({posts:res.data.data});
+      // console.log("posts",that.posts);
+      console.log("posts",res.data.data[0].ciAvatarturl);
+    }).catch(err=>{
+      console.log("catch error")
+    })
+
+    // wx.request({               //请求数据
+    //   // url: 'https://www.easy-mock.com/mock/5b1e17a0d4a14a3247a6cd6b/data',
+    //   success: (res) => {
+    //     this.setData({
+    //       goods: res.data.data
+    //     })
+    //     console.log(this.data.goods)
+    //   }
+    // })  
   },
 
   /**
@@ -95,6 +109,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    var that =this;
+    api.getRequestData(app.globalData.url_post_list,{},"Get",false).then(res=>{
+      console.log("look_posts_res",res);
+      console.log("res.data.data",res.data.data)
+      that.setData({posts:res.data.data});
+      app.globalData.posts=res.data.data
+      console.log("app.global.posts",app.globalData.posts)
+      console.log("posts",res.data.data[0].ciAvatarturl);
+      // <!-- console.log("item.ciAvatarurl",item.ciAvatarurl) -->
+    }).catch(err=>{
+      console.log("catch error")
+    })
   
   },
 
@@ -146,6 +172,14 @@ Page({
       complete:function(res){}
     })
 
-
+  },
+  lookDetail:function(event){
+    console.log("event",event);
+    app.globalData.post=event.currentTarget.dataset.item;
+    wx.navigateTo({
+      // 直接把item传到detail页面
+      // url: '../../pages/luntan/detail/detail?post='+event.currentTarget.dataset.post,
+      url: '../../pages/luntan/detail/detail'
+    })
   }
 })

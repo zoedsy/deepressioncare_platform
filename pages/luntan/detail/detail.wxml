@@ -6,74 +6,88 @@
 <view class="detail-post-meta">
   <!-- 用户头像 -->
   <view class="detail-post-avatar">
-    <image class="detail-post-avatar-img" mode="scaleToFill" src="{{ detail.author.avatar_url }}" />
+    <!-- <image class="detail-post-avatar-img" mode="scaleToFill" src="{{ detail.author.avatar_url }}" /> -->
+    <image class="detail-post-avatar-img" mode="scaleToFill" src="{{detail.ciAvatarturl}}" />
   </view>
 
   <view class="detail-post-info">
     <view class="detail-post-author-name">
-      <!-- 、、用户名字 -->
-      <text>{{ detail.author.loginname }}</text>
+      <!-- 用户名字 -->
+      <text>{{ detail.ciNkname}}</text>
   
-      <view class="detail-type-item"  wx:if="{{detail.tab === 'good'}}">
+      <!-- <view class="detail-type-item"  wx:if="{{detail.tab === 'good'}}"> -->
+      <view class="detail-type-item"> 
         <view class="detail-type-item-font">#精华#</view>
       </view>
-      <view class="detail-type-item"  wx:if="{{detail.tab === 'share'}}">
+      <view class="detail-type-item">
+      <!-- <view class="detail-type-item"  wx:if="{{detail.tab === 'share'}}"> -->
         <view class="detail-type-item-font">#分享#</view>
       </view>
-      <view class="detail-type-item"  wx:if="{{detail.tab === 'ask'}}">
+      <view class="detail-type-item">
+      <!-- <view class="detail-type-item"  wx:if="{{detail.tab === 'ask'}}"> -->
         <view class="detail-type-item-font">#问答#</view>
       </view>
-      <view class="detail-type-item"  wx:if="{{detail.tab === 'job'}}">
+      <view class="detail-type-item">
+      <!-- <view class="detail-type-item"  wx:if="{{detail.tab === 'job'}}"> -->
         <view class="detail-type-item-font">#招聘#</view>
       </view>
     </view>
     <!-- 发表时间 -->
-    <view class="detail-post-time">楼主 发表于{{ detail.create_at }}</view>
+    <view class="detail-post-time">楼主 发表于{{ detail.createTime }},{{detail.pLocation}}</view>
   </view>
 
-  <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect" wx:if="{{detail.is_collect == true}}">取消收藏
+  <!-- <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect" wx:if="{{detail.is_collect == true}}">取消收藏
+  </view> -->
+  <!-- <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect">取消收藏 -->
+  <!-- </view> -->
+  <!-- <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect" wx:if="{{detail.is_collect == false}}">收藏
 
-  </view>
-  <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect" wx:if="{{detail.is_collect == false}}">收藏
+  </view> -->
+  <!-- <view class="detail-collect-item" id="{{detail.id}}" catchtap="collect">收藏 -->
 
-  </view>
+  <!-- </view> -->
 </view>
 
 <!-- post-header -->
 <view class="detail-post-header">
 
   <view class="detail-post-title">
-    <view class="detail-posts-tag hot" wx:if="{{detail.top === true}}">置顶</view>
+    <!-- <view class="detail-posts-tag hot">置顶</view> -->
+    <view class="detail-posts-tag">浏览量：{{detail.pReadNum}}</view>
+    <view>{{detail.pTitle}}</view>
+  </view>
+  <!-- <view class="detail-posts-tag hot" wx:if="{{detail.top === true}}">置顶</view>
     <view class="detail-posts-tag" wx:if="{{detail.good === true}}">精华</view>
     {{ detail.title }}
-  </view>
+  </view> -->
+
 </view>
 <!-- post-content -->
 <view class="detail-post-content">
-  <text class="content-info">{{ detail.content }}</text>
+  <text class="content-info">{{ detail.pContent}}</text>
 </view>
 <!-- post-comment -->
 <view class="detail-post-comment">
   <view class="detail-post-comment-title">评论</view>
   <view class="detail-post-comment-list">
-    <block wx:for="{{ detail.replies }}" wx:if="{{detail.replies.length > 0}}">
+    <block wx:for="{{comment_list}}" wx:if="{{comment_list.length>0}}">
       <view class="detail-post-comment-item" index="{{index}}" id="{{item.id}}">
         <view class="detail-post-comment-avatar">
-          <image class="detail-post-comment-avatar-img" mode="scaleToFill" src="{{ item.author.avatar_url }}"></image>
+          <image class="detail-post-comment-avatar-img" mode="scaleToFill" src="{{item.userAvatarturl }}"></image>
         </view>
         <view class="detail-post-comment-cell">
           <view class="detail-post-comment-info">
             <view class="detail-post-comment-info-cell">
-              <view class="detail-post-comment-author-name">{{ item.author.loginname }}</view>
-              <view class="detail-post-comment-time">{{index + 2}}楼 发表于{{ item.create_at }}</view>
+              <view class="detail-post-comment-author-name">{{ item.nickName }}</view>
+              <!-- <view class="detail-post-comment-time">{{index + 2}}楼 发表于{{ item.create_at }}</view> -->
             </view>
             <view class="detail-post-comment-info-cell" style="text-align:right" id="{{item.id}}" data-index="{{index}}" catchtap="reply">
-              <image class="detail-post-zan" mode="scaleToFill" src="/images/icon/zan.png"></image>
-              <text class="detail-post-zan-num" wx:if="{{item.zanNum > 0}}">{{item.zanNum}}</text>
+              <text class="detail-post-zan-num" wx:if="{{item.likes>=0}}">{{item.likes}}</text>
+              <image class="detail-post-zan" mode="scaleToFill" src="../../../images/zan.png"></image>
             </view>
           </view>
           <view class="detail-comment-content">
-            <text class="detail-comment-text">{{ item.content }}</text>
+            <text class="detail-comment-text">{{item.text}}</text>
           </view>
         </view>
       </view>
@@ -89,10 +103,17 @@
   </view>
 </view>
 
-<loading hidden="{{hidden}}">
+<!-- <loading hidden="{{hidden}}">
   加载中...
-</loading>
-
+</loading> -->
+<form bindreset="cleanInput" class="sendMessage"> 
+        <!-- bindchange的操作要做，然后就是message这块什么情况也要看 -->
+        <input type="text" placeholder="请输入您的评论.." value="{{message}}" bindinput='bindChange'></input>   
+        <!-- 加入图片等操作要做 -->
+        <!-- <view class="add" bindtap='increase'>+</view>     -->
+        <!-- send的操作要做 将上面的message和socket的image相联系-->
+        <button type="primary" bindtap='send' formType="reset" size="small" button-hover="blue" style="width:140rpx">发送</button>
+</form>
 <modal title="消息" confirm-text="确认" cancel-text="关闭" hidden="{{modalHidden}}" bindconfirm="confirmChange" bindcancel="cancelChange">
   您还没未登录conde，是否前往认证登录？
 </modal>

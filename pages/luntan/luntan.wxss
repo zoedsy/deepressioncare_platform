@@ -54,9 +54,9 @@
     display: block;
   }
   .good-img image{
-    width: 100%;
-    height: 200px;
-    border-radius: 5px;
+    width: 85rpx;
+    height: 85rpx;
+    border-radius: 50%;
   }
   .good-href{
     display: inline-block;
