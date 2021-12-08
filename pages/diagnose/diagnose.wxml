@@ -1,6 +1,6 @@
 <div>
     <!-- 患者信息 -->
-    <view class="infomation" bindtap='goToPerson'>
+    <view class="infomation" >
         <view class="information0">
             <!-- 姓名 -->
             <view class="name" >{{Name}}</view>
@@ -13,7 +13,7 @@
         <image src="/images/doctor.jpg"></image>
     </view>
 
-    <!-- 上传音频 -->
+    <!-- 上传数据 -->
  <view class="audio_box">
     <image src="/images/whiteboard.jpg" bindtap='bindViewTap'></image>
     <!-- <text bindtap='bindViewTap'></text> -->
@@ -38,11 +38,11 @@
         
         
         <view class="title">
-            <text class="name">—— 历史记录 ——</text>
+            <text class="name">—— 医院介绍 ——</text>
         </view>
         <scroll-view scroll-y style="height: 700rpx;" >
         <view class="floor"
-        wx:for="{{untreated_abnormalList}}"
+        wx:for="{{hospitals}}"
         wx:key="id"
         data-index="{{item.id}}"
         bindtap="toDetail">
@@ -50,8 +50,15 @@
             <image class="img" src="{{item.images}}" mode="scaleToFill" />
         </view>  
         <view class="info">
-            <view class="info_title">{{item.title}}</view>
+            <view class="info_title">{{item.title}}
+                <button class="phone_call" style="font-size:10rpx;left:5rpx;width=10rpx;justify-content:left;"
+                bindtap="phoneCall" data-item="{{item.id}}"
+                >联系电话</button> 
+            </view>
+            <!-- <button class="phone_call" style="font-size:20rpx;left:5rpx">点击拨打联系电话</button>  -->
             <view class="detail">{{item.detail}}</view>
+            <!-- <view></view> -->
+            
         </view>  
         </view> 
         </scroll-view>

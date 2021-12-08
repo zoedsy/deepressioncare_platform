@@ -1,25 +1,35 @@
 // pages/diagnosis/diagnosis.js
+
+const app = getApp();
 Page({
   /** 
    * 页面的初始数据
    */
   data: {
-    untreated_abnormalList: [
+    hospitals: [
       {
           id: 0,
-          images: "../../images/baby.png",
-          title: "历史记录1",
-          detail: "21113222211vvvvvvvvvcccccccccc1"
+          images: "../../images/华西医院.png",
+          title: "华西医院",
+          detail: "四川大学华西医院，是位于中国四川省成都市国学巷的一座著名大型三级甲等医院。"
       },
       {
           id: 1,
-          images: "../../images/baby.png",
-          title: "历史记录2",
-          detail: "2222"
+          images: "../../images/四川省医院.png",
+          title: "四川省医院",
+          detail: "四川省医学科学院·四川省人民医院，始建于1941年，是一所三级甲等综合性医院。"
       },
+      {
+        id: 2,
+        images: "../../images/瑞金医院.png",
+        title: "瑞金医院",
+        detail: "上海交通大学医学院附属瑞金医院是位于中国上海市黄浦区瑞金二路197号的一所三级甲等医院。"
+    }
   ],
+    Patient:{}
   },
   Patient:function (name,department,date) {
+    var userInfo = wx.getStorageSync('userInfo');
     this.setData({ 
       Name:name,
       Deparment:department,
@@ -45,6 +55,7 @@ Page({
           content:'点击“确定”即可查看详情',
           success:function(res){
             if(res.confirm){  //用户点击确定后
+              // console.log("userInfo是否有缓存",wx.getStorageSync('userInfo'))
               wx.navigateTo({
                 url: '../diagnose/check/check'
               })
@@ -53,7 +64,7 @@ Page({
             }
           }
         })
-      }
+        }
     })
 
   },
@@ -125,6 +136,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
+  },
+  phoneCall:function(){
 
   }
 })

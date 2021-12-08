@@ -4,6 +4,8 @@ var app = getApp();
 import Api from '../../../api/api.js';
 // import getDateTime from '../../../wxs/tool.wxs';
 const api = new Api();
+const {} = require("../../../api/config.js")
+
 Page({
   data: {
     toolList:[{"title":"添加图片","img":"/images/release/addImag.png"}],
@@ -412,7 +414,6 @@ Page({
   postDidWorkSave(draft){
     if (this.data.inputText.length == 0) {
       console.log("请输入正文~")
-      // app.alert("请输入正文~");
       return;
     }
     var title = this.data.title;
@@ -425,22 +426,10 @@ Page({
     }
     // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
     var type = 1;
-    // if (this.data.zcDict) {
-    //   type = 4;
-    // }
-    // if (this.data.voteDict) {
-    //   type = 2;
-    // }
-    // if (this.data.bfDict) {
-    //   type = 3;
-    // }
-    if (!this.data.canSave) return;
     this.data.canSave = false;
     var _this = this;
-    var map = {};
+    // var map = {};
     // map.address = "";
-
-
     // map.location = cityName;
     // map.content = this.data.inputText;
     // map.draft = draft;
@@ -449,11 +438,15 @@ Page({
     // map.title = title;
     // map.type = type;
     // map.userId = app.USER_ID();
-    var ownerId = app.globalData.openId;
-    var token = wx.getStorageSync('token')
-    if(!map.ownerId){
-      ownerId=wx.getStorageSync('openId')
-    }
+    // var ownerId = app.globalData.openId
+
+    var ownerId = wx.getStorageSync('openId');
+    console.log("ownerId----获取缓存后的",ownerId);
+    var token = wx.getStorageSync('token');
+    token = encodeURIComponent(token);
+    // if(!map.ownerId){
+    //   ownerId=wx.getStorageSync('openId')
+    // }
 
     // var date =new Date();
     // console.log(date)
@@ -463,11 +456,11 @@ Page({
     // console.log("date",date)
     var crateTime = api.getDateTime()
     
-    map={
+    var map={
       "location":cityName,
       "content":this.data.inputText,
       "title":title,
-      "ownerId":ownerId,
+      "ownerId":app.globalData.openId,
       "createTime":crateTime,
       // "image":this.imageFilePath
     }
@@ -483,7 +476,7 @@ Page({
     //   "title":"title",
     //   "SubmitPostForm":"fjdskflsdjf"
     // },
-
+    console.log("上传文件前ownerid是否有",ownerId);
     wx.uploadFile({
       filePath: _this.imageFilePath,
       name: 'file',
@@ -501,7 +494,7 @@ Page({
         // "image":this.imageFilePath
       },
       success(res){
-        
+    
       console.log("上传文件大成功！！！！")
       console.log("draft",draft)
       _this.data.canSave = true;

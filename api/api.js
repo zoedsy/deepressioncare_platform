@@ -84,7 +84,7 @@ class Api {
     })
   }
 
-  // 获取请求到的数据
+  // 获取请求到的数据YES
   getRequestData(url,params,methond,isNeedPullFresh) {
     console.log("params =====", JSON.stringify(params));
 
@@ -368,6 +368,7 @@ class Api {
       })
     })
   }
+  // Yes
   getDateTime (){
     let d = new Date();
     var year = d.getFullYear()

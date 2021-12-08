@@ -20,7 +20,7 @@ Page({
     //先login，再getUserProfile
     wx.login({
       success: (res) => {
-        console.log("code",res)
+        // console.log("code",res)
         this.setData({
           code:res.code
         })
@@ -29,7 +29,7 @@ Page({
     wx.getUserProfile({
       desc: '用户登录', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
       success: (file) => {
-        console.log(file)
+        // console.log(file)
         this.setData({
           userInfo: file.userInfo,
           hasUserInfo: true
@@ -52,8 +52,10 @@ Page({
           },
           success:(res)=>{  
             console.log(res.data)
-            app.globalData.openId = res.data.data.openId,
-            app.globalData.token = res.data.data.token,
+            app.globalData.openId = res.data.data.id;
+            app.globalData.token = res.data.data.token;
+            console.log("登录后的返回-----------",res.data.data);
+            console.log("登录后的返回id-----------",res.data.data.id)
             wx.setStorageSync('openId', res.data.data.id) // 缓存openid
             wx.setStorageSync('token', res.data.data.token) //缓存token
             wx.setStorageSync('userInfo', res.data.data.usefInfo)
