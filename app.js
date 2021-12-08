@@ -21,6 +21,7 @@ App({
     url_comment:"api/bbs/comments/submit_comment",
     url_comment_get:"api/bbs/comments/list",
     url_sumbit_diagnose_file:"api/diagnose/submit_diagnose_file",
+    url_get_diagnose_history_list:'api/diagnose/get_diagnose_history_list',
     message:"",
     comment_list:[]
   },

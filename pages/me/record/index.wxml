@@ -13,7 +13,7 @@
 <!-- 档案 -->
 
 <!-- 列表 -->
-<scroll-view style="height:500rpx" scroll-y="true">
+<!-- <scroll-view style="height:500rpx" scroll-y="true">
   <view class="floor"
         wx:for="{{article_list}}"
         wx:key="knoCardId"
@@ -26,4 +26,27 @@
             <view class="info_title">{{item.knoCardTitle}}</view>
         </view>  
     </view>
+</scroll-view> -->
+
+
+<scroll-view scroll-y="false">
+  <view class="doctor_floor"
+        wx:for="{{recordr_list}}"
+        wx:item="item"
+        wx:key="id"
+        bindtap="toDetail"
+        bindscrolltolower="scrolltolower">
+        <image class="background" src="/images/方框1.png"></image>
+        <view class="avatar">
+            <image class="img" src="{{item.docPhoto}}" mode="scaleToFill" />
+        </view>   
+        
+
+        <view class="info"> 
+          <text class="name">{{item.ciRealname}}</text>
+          <text class="title">{{item.docPost}}</text>
+          <view class="hospital">{{item.docHospital}}</view>
+          <view class="excel">科室：{{item.docDepartment}}</view>
+        </view>   
+  </view>
 </scroll-view>
