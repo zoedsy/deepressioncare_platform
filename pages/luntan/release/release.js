@@ -72,38 +72,32 @@ Page({
 // @param     e
 // @return   无
   onShow(){
-    // var zcString = wx.getStorageSync('zcList');
-    // console.log(zcString);
-    // if (zcString && zcString.length > 0){
-    //   var zcDict = JSON.parse(zcString);
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     bfDict:null,
-    //     voteDict:null,
-    //     typeSelectIndex:4,
-    //     zcDict:zcDict
-    //   });
-    // }
-    // var bfString = wx.getStorageSync('bfList');
-    // if (bfString && bfString.length > 0){
-    //   var bfDict = JSON.parse(bfString);
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     zcDict:null,
-    //     voteDict:null,
-    //     typeSelectIndex:3,
-    //     bfDict:bfDict
-    //   });
-    // }
-    // if (this.data.voteDict){
-    //   this.data.isChanged = true;
-    //   this.setData({
-    //     zcDict:null,
-    //     voteDict:this.data.voteDict,
-    //     typeSelectIndex:0,
-    //     bfDict:null
-    //   });
-    // }
+    var postcontent=this.data.textareaText
+    if(wx.getStorageSync('postcontent')){
+      postcontent = wx.getStorageSync('postcontent')
+    }
+    var postimages=this.data.imageList
+    if(wx.getStorageSync('postimages')){
+      postimages = wx.getStorageSync('postimages')
+      this.setData({
+        imageFilePath:postimages[0]
+      })
+    }
+    var posttitle = this.data.title
+    if(wx.getStorageSync('posttitle')){
+      posttitle = wx.getStorageSync('posttitle')
+    }
+    var postaddr = this.data.cityName
+    if(wx.getStorageSync('postaddr')){
+      postaddr = wx.getStorageSync('postaddr')
+    }
+    this.setData({
+      textareaText:postcontent,
+      imageList:postimages,
+      title:posttitle,
+      cityName:postaddr
+    })
+    
   },
 
   
@@ -193,7 +187,49 @@ Page({
     })
   },
   
-  
+  loadpic: function () {
+    var that = this;
+    wx.chooseImage({
+      count: 9,
+      sizeType: ['original', 'compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+        // tempFilePath可以作为img标签的src属性显示图片
+        console.log("loadsuccess",res)
+        console.log("origin imageList",that.data.imageList,typeof(that.data.imageList))
+        that.setData({
+          imageList: that.data.imageList.concat(res.tempFilePaths)
+        })
+        that.setData({
+          imageFilePath:that.data.imageList[0]
+        })
+        console.log(that.data.imageList)
+      }
+    });
+
+  },
+
+  previewImg: function (e) {
+    //获取当前图片的下标
+    var index = e.currentTarget.dataset.index;
+    wx.previewImage({
+      //当前显示图片
+      current: this.data.imageList[index],
+      //所有图片
+      urls: this.data.imageList
+    })
+  },
+
+  deleteImg: function (e) {
+    var that = this;
+    var imgs = that.data.imageList;
+    var index = e.currentTarget.dataset.index;
+    imgs.splice(index, 1);
+    this.setData({
+      imageList: imgs,
+    });
+  },
+
   // 选择图像
   // @title    goToChooseImages
 // @description 选择图像
@@ -211,7 +247,7 @@ Page({
       success(res){
         console.log(res)
         console.log("图片路径",res.tempFilePaths[0]);
-        // console.log("图片数目",res.size);
+        console.log("图片数目",res.size);
         that.imageFilePath=res.tempFilePaths[0];
 
         // that.setData({imageFilePath:res.tempFilePaths})
@@ -299,7 +335,8 @@ Page({
       this.data.needToHome = true;
       this.savePostClick(-1);
     } else if (index == 1){
-      wx.removeStorageSync('POST_ID');
+      // wx.removeStorageSync('POST_ID');
+      this.beginSave();
       this.backHome();
     }
   },
@@ -384,7 +421,7 @@ Page({
 
   // 可以进行请求了，就是有了标题内容这些
   postDidWorkSave(draft){
-    if (this.data.inputText.length == 0) {
+    if (this.data.textareaText.length == 0) {
       console.log("请输入正文~")
       return;
     }
@@ -430,7 +467,7 @@ Page({
     
     var map={
       "location":cityName,
-      "content":this.data.inputText,
+      "content":this.data.textareaText,
       "title":title,
       "ownerId":app.globalData.openId,
       "createTime":crateTime,
@@ -442,15 +479,11 @@ Page({
 
 
     console.log(JSON.stringify(map));
-    // map={
-    //   "ownerId":app.globalData.openId,
-    //   "path":"pages/luntan/luntan",
-    //   "title":"title",
-    //   "SubmitPostForm":"fjdskflsdjf"
-    // },
+
     console.log("上传文件前ownerid是否有",ownerId);
+    console.log("image_file_path路径",this.data.imageFilePath)
     wx.uploadFile({
-      filePath: _this.imageFilePath,
+      filePath:this.data.imageFilePath,
       name: 'file',
       url: app.globalData.url+"/"+app.globalData.url_post,
       header:{
@@ -459,11 +492,12 @@ Page({
       },
       formData:{
         "location":cityName,
-        "content":this.data.inputText,
+        "content":this.data.textareaText,
         "title":title,
         "ownerId":ownerId,
         "createTime":crateTime,
-        // "image":this.imageFilePath
+        "image":this.data.imageFilePath,
+
       },
       success(res){
     
@@ -487,57 +521,7 @@ Page({
         console.log("fialllllllll")
       }
     })
-    // api.getRequestData(app.globalData.url_post, map,"POST", false).then(res => {
-    //   console.log("chenggong")
-    //   console.log("draft",draft)
-    //   _this.data.canSave = true;
-    //   app.HOMENEEDFRESH = true;
-    //   console.log("errorCode",res.data.errorCode)
-    //   // if (res.data.errorCode == "") {
-    //   if (draft == -1) {
-    //     // var data = res.data.model;
-    //     // wx.setStorageSync('POST_ID', data.id + '');
-    //     // _this.data.isChanged = false;
-    //     // app.showToasts("保存成功～");
-    //     wx.showToast({
-    //       title: '发送成功',
-    //     })
-    //     console.log("baocunchenggong");
-    //     wx.navigateTo({
-    //       url: '../../luntan/luntan',
-    //     })
-    //   } else {
-    //     // _this.data.isChanged = false;
-    //     // wx.removeStorageSync('POST_ID');
-    //     // // app.showToasts("发布成功～");
-    //     wx.showToast({
-    //       title: '发送成功',
-    //     })
-    //     wx.navigateTo({
-    //       url: '../../luntan/luntan',
-    //     })
-    //     console.log("fabuchenggong");
-    //   }
-    //   setTimeout(function () {
-    //     if (_this.data.needToHome) {
-    //       _this.backHome();
-    //     }
-    //   }, 1400);
-    //   // } else {
-    //   //   wx.showToast({
-    //   //     title: res.data.errorMsg,
-    //   //     icon: 'none',
-    //   //     duration: 1500
-    //   //   });
-    //   // }
-    // //  wx.showToast({
-    // //    title: '发送成功',
-    // //  })
 
-    // }).catch(err => {
-    //   _this.data.canEvaluate = true;
-    //   console.log("catch")
-    // });
   },
   // 返回主页
   backHome(){
@@ -548,6 +532,12 @@ Page({
     //   url: '/pages/index/index',
     // })
   },
+
+  saveAndSend(){
+    this.saveDraft();
+    this.beginSave();
+  },
+
   // 上传图片
   chosseMedia() {
     this.setData({
