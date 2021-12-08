@@ -32,6 +32,7 @@
     margin-top: 20px;
     color: #e5e5e5;
 }
+
 /* 医生擅长 */
 .good_at{
     width: 100%;
@@ -52,28 +53,17 @@
 }
 
 /* 医生建议 */
-
-.suggest_box{
-    width: 96%;
-    height: 400px;
-    /* background-color: #a2a2a2; */
-    box-sizing: border-box;
-    margin: 0 auto;
-    border: 1px solid #a2a2a2;
-    border-radius: 5px 5px 5px 5px;
-}
-
-.suggest_title{
-    height: 70px;
-    background-color: #37d27b;
-    text-align:center;
-    align-items:center;
-    justify-content: center;
-    line-height: 70px;
-    color: #fff;
-    /* font-weight: 700; */
-    font-size: 18px;
-}
+.tab{
+    height: 100rpx;
+    text-align: center;
+  }
+  
+.tab .name{
+    color: #37d27b;
+    font-size: 40rpx;
+    font-weight: 600;
+    line-height: 100rpx;
+  }
 
 .suggest_content{
     width: 80%;
@@ -84,14 +74,22 @@
     padding: 5px;
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px #000;
-}
-
-.font-break{
     word-break:break-all;
 }
 
-/* 快速提问按钮 */
-button{
-    border: 1px solid #a2a2a2;
-    border-radius: 5px 5px 5px 5px;
+.icon-jilu{
+    font-size: 100rpx;
+    color: #37d27b;
+
 }
+/* 快速提问 */
+.ask{
+    text-align: center;
+    width: 500rpx;
+    margin: 50rpx auto;
+}
+.askText{
+    font-size: 40rpx;
+    color: #37d27b;
+}
+

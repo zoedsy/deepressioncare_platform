@@ -2,30 +2,32 @@
     position: relative;
     height: 150px;
     width: 100%;
-    background-color: #37d27b; 
+    background-color: #e4e7ee; 
     box-sizing: border-box;  
 } 
-.infomation0{
-    display: flex;
+.information0 .date{
+    top: 60px;
 }
-.date{
-    margin-left: 80px;
+.information0 .name{
+    top: 30px;
 }
-.name{
-    margin-top: 35px;
-    position: absolute;
-    left: 60px;
-    font-size: 18px;
-    font-weight: 700;
-    color: #fff; 
+.information0 .department{
+    top: 90px;
 }
-.department, .date{
+.information0 .department, .information0 .date, .information0 .name{
     /* margin-top: 25px; */
     position: absolute;
     left: 60px;
     font-size: 18px;
     font-weight: 700;
-    color: #fff;
+    color: rgb(97, 94, 94);
+}
+
+.infomation image{
+    float: right;
+    height: 100%;
+    width: 50%;
+    opacity:0.7;
 }
 /* 
 .mask{
@@ -39,10 +41,13 @@
 .icon-jinrujiantouxiao{
     color: #fff;
 } */
-.iconfont{
-    display: flex;
-    margin-top: 40px;
+
+
+.audio_box image{
+    width: 100%;
+    height: 100%;
 }
+
 /* .img{
     margin: 10px;
     width: 100%;
@@ -59,24 +64,20 @@
     margin: 5px 0;
     margin-left: 3px;
 }
-.audio:before{
-    content: '';
-    vertical-align:text-bottom;
-    display:inline-block;
-    margin-left: 50px;
-    font:SimHei;
-    font-size: 20px;
-    font-weight: 700;
-}
+
 .tip{
-    font-size: 14px;
-    vertical-align: middle;
-    margin-left: 25%;
+    position: relative;
+    width: 360rpx;
+    font-size: 28rpx;
+    left: 50%;
+    margin-left: -170rpx;
+    top: -65%;
+    font-size: 40rpx;
     color:rgb(126, 122, 122);
 }
 .history_box{
     width: 98%;
-    height: 400px;
+    height: 450px;
     margin: 0 auto;
     /* box-shadow: 0 0 2px #000; */
     border-radius: 5px 5px 5px 5px;
@@ -84,81 +85,59 @@
     /* background-color: #37d27b;  */
 }
 .history_box .title{
-    width: 100%;
-    height: 40px;
-    margin: 0 auto;
-    background-color:  #37d27b;  
-    /* border-radius: 5px 5px 5px 5px; */
-    border: 1px solid#a2a2a2;
-    line-height: 40px;
-    /* display: flex; */
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 20px;
-    color: #fff;
-}
+    border-top: solid #e9e9e9;
+    height: 100rpx;
+    border-bottom: solid #e9e9e9;
+    text-align: center;
+  }
+  
+  .history_box .title .name{
+    color: #fccc9f;
+    font-size: 40rpx;
+    font-weight: 600;
+    line-height: 100rpx;
+  }
 
-.info{
-    display:flex;
-    width: 100%;
-    height: 300px;
-    margin-top: 10rpx;
-    /* justify-content: center;
-    align-items:center;
-    flex-direction: column; */
+  .floor{
+    border-bottom: solid #e9e9e9;
     display: flex;
-    flex-direction: row;
-   }
-   .info image { 
-     width:300rpx;
-     height:300rpx;
-   }
-   .info text {
-     /* margin-top: 10rpx; */
-     font-size: 30rpx;
-     color: #908df5;
-     justify-content: center;
-     align-items: center;
-   }
-  .abnormal{
-   display: -webkit-flex;
-   display: flex;
-   align-items: center;
-   justify-content: space-between;
-   border: 1px solid #bbb;
-   margin-top: 5px;
-   /* height: 20%; */
+    width: 100%;
+    height: 250rpx;
+  }
+  .floor .picture{
+    margin: 25rpx;
+    width: 30%;
+    height: 200rpx;
+  }
+  
+  .floor .picture .img{
+    width: 100%;
+    height: 100%;
+  }
+  
+  .floor .info{
+    width: 60%;
+    height: 100%;
+  }
+  .floor .info .info_title{
+    font-weight: 700; 
+    margin: 25rpx 0;
+    overflow: hidden;
+   /*超出隐藏*/
+   text-overflow: ellipsis;
  }
- .abnormal-img{
-   width: 20rpx;
-   height: 20rpx;
-   margin: 5px;
-   border: 1px solid #bbb;
-   flex: 1 1 auto;
- }
- .abnormal-box{
-   height: 90rpx;
-   overflow: hidden;
- }
- .abnormal-name{
-   display: block;
-   height: 40rpx;
-   line-height: 40rpx;
-   overflow: hidden;
-   font-size: 35rpx;
- }
-  .abnormal-detail{
-   display: block;
-   width: 400rpx;
-   height:40rpx;
-   line-height: 40rpx;
-   overflow: hidden;
-   font-size: 30rpx;
-   color: #8f8f94;
-   text-align: left;
-   white-space: nowrap;  /* 所有的文本都显示在这一行*/
-   text-overflow: ellipsis;  /* 多余的文本用省略号显示*/
- }
- .abnormal-left{padding-left: 10px;}
- .abnormal-right{padding-right: 10px;}
+  
+  .floor .info .detail{
+     font-weight: 500; 
+     margin: 25rpx 0;
+     display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    /* 英文拆分 */
+    word-break: break-all;
+    /*超出隐藏*/
+    overflow: hidden;
+    /*超出显示为省略号*/
+    text-overflow: ellipsis;
+  }
+  

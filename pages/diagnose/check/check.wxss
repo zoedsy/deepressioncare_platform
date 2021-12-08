@@ -21,7 +21,7 @@
 .step_box{
   width: 730rpx;
   height: 300rpx;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, .8);
   align-items: center;
   justify-content: center;
   border: 1rpx  solid #DCDCDC;
@@ -31,6 +31,9 @@
   
   box-shadow: 0 0 10px #888888;
   border-radius:5px 5px 5px 5px;
+
+  position: relative;
+  top: 10%;
 }
 .step{
   display: flex;
@@ -81,8 +84,8 @@
   height: 260rpx;
   /* color: rgb(61, 46, 46); */
   background-color: #fff;
-  margin: 0 auto;
-  margin-top: 20px;
+  margin: 40rpx auto;
+  margin-top: 80rpx;
   box-shadow: 0 0 10px #888888;
   padding: 2px;
   padding-top: 15px;
@@ -108,38 +111,29 @@
   height: 260rpx;
   /* color: rgb(61, 46, 46); */
   background-color: #fff;
-  margin: 0 auto;
-  margin-top: 20px;
   box-shadow: 0 0 10px #888888;
   padding: 2px; 
   display: flex;
   border-radius:5px 5px 5px 5px;
-
+  margin: 20rpx auto;
 }
 
-.analyze0{
-  flex:5;
-  background-color: #37d27b;
-  text-align: center;
-  border-radius:5px 5px 5px 5px;
+.analyze_box image{
+  height: 100%;
+  width: 50%;
+  opacity: 0.7;
+}
+.result{
+  width: 50%;
+  background-color: #e9ebf1;
 }
 .rob_Result{
   text-align: center;
-  line-height: 80px;
+  margin: 40px 0;
   font-size: 20px;
-}
-.accuracy{
-  text-align: center;
-  line-height: 0px;
-  font-size: 24px;
-}
-.analyze1{
-  flex:6;
-  text-align: center;
 }
 .rob_Result1{
   text-align: center;
-  line-height: 80px;
   font-size: 20px;
 }
 .result{
@@ -148,6 +142,35 @@
   font-size: 24px;
 }
 /* 结果查看 */
+.audio_box{
+  width: 98%;
+  height: 150px;
+  margin: 0 auto;
+  box-shadow: 0 0 5px #000;
+  border-radius: 5px 5px 5px 5px;
+  border: 1px solid#a2a2a2;
+  margin: 25px 0;
+  margin-left: 3px;
+}
+.audio_box image{
+  width: 100%;
+  height: 100%;
+}
+
+.tip{
+  position: relative;
+  width: 360rpx;
+  font-size: 28rpx;
+  left: 55%;
+  margin-left: -170rpx;
+  top: -80%;
+  font-size: 40rpx;
+  color:rgb(126, 122, 122);
+}
+.tip1{
+  top: -75%;
+}
+
 .result_box{
   width: 730rpx;
   height: 260rpx;
