@@ -22,16 +22,11 @@ Page({
     videoUrl:"",
     showMedia:false,
     topIndex:0,
-    zcDict:null,
-    bfDict:null,
-    voteDict:null,
     textList:[],
     headHeigt:44,
     headTop:26,
     headWidht:317,
     navBarHeight:64,
-    needToHome:true,
-    post_id:"",
     isChanged:false,
     imageFilePath:""
   },
@@ -42,8 +37,6 @@ Page({
 // @param     e
 // @return   无
   onLoad: function () {
-    wx.removeStorageSync('zcList');
-    wx.removeStorageSync('bfList');
     var height = wx.getMenuButtonBoundingClientRect().height;
     var top = wx.getMenuButtonBoundingClientRect().top;
     var statausBarHeight = wx.getSystemInfoSync().statusBarHeight;
@@ -53,16 +46,6 @@ Page({
       headHeigt: height,
       headTop:top,
     });
-    var post_id = wx.getStorageSync('POST_ID');
-    console.log("======",post_id);
-
-    // 基本上没有缓存数据，所以直接跳到onshow
-    if (post_id && post_id.length > 0){
-      console.log("zero----------");
-      this.data.post_id = post_id;
-      // 有缓存的帖子 需恢复数据
-      // this.getDetailData();
-    }
 
   },
 
@@ -458,135 +441,6 @@ Page({
     })
   },
 
-  // 开始保存post
-  beginSavePost(draft){
-    var _this = this;
-    // wx.requestSubscribeMessage({
-    //   tmplIds: ['tli7zssphnfa2VXZztZZB6isXR98LoihxjcFBdq_xIk', 'PTstSvtHM0WOiTrG9mAbXV_ziHNog79pBnZYsvAaIJg','zMGkiKgkOggfMU14D_Jfd_QviRhg5bJ8kXcMhSsKUrQ'],
-    //   success(res) {
-    //   },
-    //   fail(res) {
-    //     console.log(res);
-    //   }
-    // })
-    this.postDidWorkSave(draft);
-
-  },
-
-  // 点击发送，draft=1
-  savePostClick(draft){
-    if (draft != -1){
-      this.beginSavePost(draft);
-      return;
-    } 
-    this.postDidWorkSave(draft);
-  },
-
-
-  // 可以进行请求了，就是有了标题内容这些
-  postDidWorkSave(draft){
-    if (this.data.textareaText.length == 0) {
-      console.log("请输入正文~")
-      return;
-    }
-    var title = this.data.title;
-    if (title == "添加标题") {
-      title = "";
-    }
-    var cityName = this.data.cityName;
-    if (cityName == "添加地点") {
-      cityName = "";
-    }
-    // 删除了支持，投票，帮扶，这些杂七杂八的东西，然后默认type=1
-    var type = 1;
-    this.data.canSave = false;
-    var _this = this;
-    // var map = {};
-    // map.address = "";
-    // map.location = cityName;
-    // map.content = this.data.inputText;
-    // map.draft = draft;
-    // map.imgs = JSON.stringify(this.data.imageList);
-    // map.kind = this.data.typeSelectIndex + 1;
-    // map.title = title;
-    // map.type = type;
-    // map.userId = app.USER_ID();
-    // var ownerId = app.globalData.openId
-
-    var ownerId = wx.getStorageSync('openId');
-    console.log("ownerId----获取缓存后的",ownerId);
-    var token = wx.getStorageSync('token');
-    token = encodeURIComponent(token);
-    // if(!map.ownerId){
-    //   ownerId=wx.getStorageSync('openId')
-    // }
-
-    // var date =new Date();
-    // console.log(date)
-    // var date = api.getDateTime(date.toString());
-    // console.log("date-----------",date)
-    // 获取时间，返回时间
-    // console.log("date",date)
-    var crateTime = api.getDateTime()
-    
-    var map={
-      "location":cityName,
-      "content":this.data.textareaText,
-      "title":title,
-      "ownerId":app.globalData.openId,
-      "createTime":crateTime,
-      // "image":this.imageFilePath
-    }
-  
-    // map.crateTime = 
-    // map.videoUrl = this.data.videoUrl;
-
-
-    console.log(JSON.stringify(map));
-
-    console.log("上传文件前ownerid是否有",ownerId);
-    console.log("image_file_path路径",this.data.imageFilePath)
-    wx.uploadFile({
-      filePath:this.data.imageFilePath,
-      name: 'file',
-      url: app.globalData.url+"/"+app.globalData.url_post,
-      header:{
-        'content-type':'multipart/form-data',
-        'token':token
-      },
-      formData:{
-        "location":cityName,
-        "content":this.data.textareaText,
-        "title":title,
-        "ownerId":ownerId,
-        "createTime":crateTime,
-        "image":this.data.imageFilePath,
-
-      },
-      success(res){
-    
-      console.log("上传文件大成功！！！！")
-      console.log("draft",draft)
-      _this.data.canSave = true;
-      app.HOMENEEDFRESH = true;
-      console.log("errorCode",res.data.errorCode)
-      wx.showToast({
-        title: '发送成功',
-        duration:5000
-      })
-      console.log("baocunchenggong");
-      wx.navigateBack({
-        // url: '../../luntan/luntan',
-        delta:1
-      })
-      },
-      fail(res){
-        console.log("res.fail",res)
-        console.log("fialllllllll")
-      }
-    })
-
-  },
   // 返回主页
   backHome(){
     wx.navigateBack({
@@ -595,64 +449,6 @@ Page({
     // wx.switchTab({
     //   url: '/pages/index/index',
     // })
-  },
-
-  saveAndSend(){
-    this.saveDraft();
-    this.beginSave();
-  },
-
-  // 上传图片
-  chosseMedia() {
-    this.setData({
-      showMedia:true
-    });
-  },
-  hideShareClickView(){
-    this.setData({
-      showMedia:false
-    });
-  },
-  chooseVideo(){
-    this.data.chooseTye = "video";
-    this.hideShareClickView();
-    var _this = this;
-    wx.chooseVideo({
-      sourceType: ['album','camera'],
-      maxDuration: 60,
-      camera: 'back',
-      success(res) {
-        console.log(res.tempFilePath)
-        var path = res.tempFilePath;
-         _this.upLoadimage(path);     
-
-      }
-    })
-  },
-
-  chooseImages(){
-    this.data.chooseTye = "images";
-    // this.hideShareClickView();
-    var _this = this;
-    var count = 9 - this.data.imageList.length;
-    if (count <= 0){
-      // app.alert("最多上传9张图片~");
-      console.log("最多上传9张图片~")
-      return;
-    }
-    wx.chooseImage({
-      count: count,
-        sizeType: ['original', 'compressed'],
-        sourceType: ['album', 'camera'],
-        success: function (res) {
-          var tempPaths = res.tempFilePaths;
-          var count = _this.data.imageList.length;
-          for (var i = 0;i < tempPaths.length;i++){
-            var path = tempPaths[i];
-            _this.upLoadimage(path);     
-          }
-        },
-      })
   },
 
   // 上传图片
@@ -728,24 +524,8 @@ Page({
     });
   },
 
-  beginDelete (index) {
-    var _this = this;
-    var list = [];
-    for (var i = 0; i < _this.data.imageList.length; i++) {
-      if (i != index) {
-        var url = _this.data.imageList[i];
-        list.push(url);
-      }
-    }
-    _this.setData({
-      imageList: list
-    });
-  },
-
-
   onUnload: function () {
-    wx.removeStorageSync('zcList');
-    wx.removeStorageSync('bfList');
+    
   },
 
   // 请求数据
@@ -766,102 +546,4 @@ Page({
     });
   },
 
-  
-  formatData(dataDict){
-    var _this = this;
-    var postDict = dataDict.post;
-    var kind = postDict.kind;
-    if (kind == 4) {
-      // 帮扶
-      var bangFuDict = dataDict.bases;
-      console.log("========", bangFuDict);
-      wx.setStorageSync('bfList', JSON.stringify(bangFuDict))
-      _this.setData({
-        zcDict:null,
-        voteDict:null,
-        typeSelectIndex:3,
-        bfDict:bangFuDict
-      });
-    } else if (kind == 5) {
-      // 种草
-      var productId = postDict.productId;
-      var skuId = postDict.skuId;
-      _this.getGoodDetail(productId,skuId);
-    } else {
-      var voteList = dataDict.votes;
-      if (voteList){
-        var voteDict = {};
-        voteDict.title = postDict.voteTitle;
-        var endTime = postDict.endTime;
-        voteDict.endDate = endTime;
-        var optionsList = [];
-        for(var i = 0;i < voteList.length;i++){
-          var dict = voteList[i];
-          optionsList.push(dict.vote.content);
-        }
-        voteDict.options = optionsList;
-        _this.setData({
-          voteDict:voteDict
-        });
-      }
-    }
-    var imgString = postDict.imgs;
-    if (imgString){
-      if (imgString.length > 0){
-        var list = JSON.parse(imgString);
-        _this.setData({
-          imageList:list
-        });
-      }
-    }
-    var videoUrl = postDict.videoUrl;
-    if (videoUrl){
-      if (videoUrl.length > 0){
-        _this.setData({
-          videoUrl:videoUrl
-        });
-      }
-    }
-    var content = postDict.content;
-    if (content){
-      var list = content.split("#");
-      this.setData({
-        textList: list
-      });
-    }
-    _this.setData({
-      title:postDict.title.length > 0 ?postDict.title:'添加标题',
-      cityName:postDict.city.length > 0 ? postDict.city:'添加地点',
-      textareaText:postDict.content,
-      inputText:postDict.content,
-      detailData: dataDict
-    });
-  },
-
-
-  // 获取产品参数
-  getGoodDetail(productId,skuId) {
-    var _this = this;
-    var map = {};
-    map.productId = productId;
-    api.getRequestData(app.goodsDetailUrl, map, true, "GET").then(res => {
-      if (res.data.errorCode == 0) {
-        var list = res.data.model.skus;
-        var skuDict = null;
-        for(var i = 0;i < list.length;i++){
-          var dict = list[i];
-          if (dict.id == skuId){
-            skuDict = dict;
-            break;
-          }
-        }
-       _this.setData({
-        bfDict:null,
-        voteDict:null,
-        typeSelectIndex:4,
-        zcDict: skuDict
-       });
-      } 
-    });
-  },
 })
