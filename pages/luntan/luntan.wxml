@@ -41,21 +41,24 @@
   </scroll-view> -->
 
 
+
+
   <scroll-view class="list-block" scroll-y="true">
     <!-- <block wx:for="{{posts}}" wx:key="{{item.pId}}"> -->
-      <block wx:for="{{posts}}" wx:key="{{item.pId}}" >
+      <block wx:for="{{posts}}" wx:key="{{item.pId}}" >      
       <!-- <navigator class="goods-block" url="./detail/detail"> -->
       <view class="goods-block"   bindtap="lookDetail" data-item="{{item}}">
         <view class="good-info">
           <view class="good-img">
-            <view>{{item.id}}</view>
-            <image src="{{item.ciAvatarturl}}"/>
-            <!-- console.log("item.ciAvatarurl",item.ciAvatarurl) -->
-          </view>
+              <image src="{{item.ciAvatarturl}}"/>
+            </view>
+
           <span class="title">{{item.pTitle}} </span>
+
           <view class="desc">
             <span>{{item.createTime}}</span>
           </view>
+        
         </view> 
         <!-- <view class="good-handle"> -->
           <!-- <view class="price">
@@ -68,7 +71,8 @@
         <!-- </view> -->
       <!-- </navigator> -->
       </view>
-    </block>
+
+      </block>
   </scroll-view>
 
 </view>

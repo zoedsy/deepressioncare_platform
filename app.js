@@ -1,5 +1,5 @@
 // app.js
-import Api from './api/api';
+import Api from './api/api.js';
 const api = new Api();
 const app = getApp();
 App({
