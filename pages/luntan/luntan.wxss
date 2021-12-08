@@ -54,8 +54,10 @@
     display: block;
   }
   .good-img image{
-    width: 85rpx;
-    height: 85rpx;
+    /* width: 85rpx;
+    height: 85rpx; */
+    width: 185rpx;
+    height: 185rpx;
     border-radius: 50%;
   }
   .good-href{
