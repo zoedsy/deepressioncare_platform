@@ -11,11 +11,11 @@ App({
     // relies
     post:{},
     // url: "http://106.13.28.21:8081",
-    // url: "http://10.132.49.110:8080",
+    url: "http://10.132.49.110:8080",
     // chuanyi
     // url = "http://192.168.40.117:8080",
     //dsy
-    url: "http://192.168.43.202:8080",
+    // url: "http://192.168.43.202:8080",
     url_post:"api/bbs/submit_post",
     url_post_list:"api/bbs/look_post_list",
     url_search_post:"api/search/post",

@@ -78,7 +78,8 @@
 }
 .detail-post-title{
   flex: 1;
-  font-size: 32rpx;
+  font-size: 38rpx;
+  font-weight: 800;
 }
 
 .detail-post-content{
