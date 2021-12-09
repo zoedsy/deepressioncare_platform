@@ -3,13 +3,13 @@ const appid = 'wxd114542303074ab3';
 //api的值
 // const APIURL = "http://106.13.28.21:8081";
 //dushiyi
-// const APIURL = "http://192.168.43.202:8080"; 
+const APIURL = "http://192.168.43.202:8080"; 
 
 // chuanyi
 // const APIURL =  "http://192.168.40.117:8080";
 
 //scunet
-const APIURL =  "http://10.132.49.110:8080";
+// const APIURL =  "http://10.132.49.110:8080";
 
 const url= "http://192.168.43.202:8080";
 const url_post="api/bbs/submit_post";

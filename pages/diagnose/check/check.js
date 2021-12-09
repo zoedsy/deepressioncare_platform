@@ -1,8 +1,9 @@
 Page({
   data: {
     // percent:25 percent:50   percent:75 percent: 100
-    percent: 100
+    percent: 100,
     // probability:80%,
+    isDepression:false
 
 
   },
@@ -22,7 +23,7 @@ Page({
   onLoad: function (options) {
     var userInfo = wx.getStorageSync('userInfo');
     console.log("诊断这里的userInfo",userInfo);
-    this.Patient(userInfo.nickName,'2021-11-28 09：35：45')
+    this.Patient(userInfo.nickName,'2021-12-09')
   },
 })
 

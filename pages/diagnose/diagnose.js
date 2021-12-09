@@ -40,7 +40,10 @@ Page({
       
     },
     
-  //上传音频事件处理
+    test:function(){
+
+    },
+  //上传文件事件处理
   bindViewTap:function(){
     // wx.navigateTo({
     //   url: '/pages/audio/audio'
@@ -110,12 +113,18 @@ Page({
         ),
         
     
-        
+        wx.showToast({
+          title: '请稍等后台模型结果返还后点击确认',
+          duration:10000,
+          icon:"none"
+        });
+        //  var time =setTimeout(this.test(),1000);
+        //  clearTimeout(time);
         // console.log('选择',res);
+        // setTimeout()
         wx.showModal({
           title:'您的文件已上传成功！',
           content:'点击“确定”即可查看详情',
-          
           success:function(res){
             if(res.confirm){  //用户点击确定后
               // console.log("userInfo是否有缓存",wx.getStorageSync('userInfo'))
@@ -127,10 +136,11 @@ Page({
                 url: '../diagnose/check/check'
               })
             }else{  //用户点击取消后
-
             }
+
           }
         })
+        
       },
       fail(res){
         console.log("没有选到文件");

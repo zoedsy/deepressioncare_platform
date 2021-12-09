@@ -88,7 +88,7 @@
     <view class="info_box">
       <view class="info_id">
         <view class=" info info1">
-          <view class="Name_id">病人姓名：</view>
+          <view class="Name_id">病人昵称：</view>
           <text class="Name">{{Name}}</text>
         </view>
         <!-- <view class="info info2">
@@ -107,7 +107,8 @@
         <image src="/images/doctor.jpg"></image>
         <view class="result">
           <view class="rob_Result">模型诊断结果:</view>
-          <view class="rob_Result1">患抑郁</view>
+          <view class="rob_Result1" wx:if="{{isDepression}}">患抑郁</view>
+          <view class="rob_Result1" wx:if="{{!isDepression}}">不患抑郁</view>
           <!-- <view class="rob_Result1">模型准确率>90%</view> -->
         </view>
     </view>
