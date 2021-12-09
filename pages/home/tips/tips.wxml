@@ -27,7 +27,7 @@
         </view>  
         <view class="info">
             <view class="info_title">{{item.knoCardTitle}}</view>
-            <view class="category">{{item.categoryName}}</view>
+            <view class="category">#{{item.categoryName}}</view>
             <view class="read">阅读{{item.knoCardRead}}</view>
             <view class="like">赞{{item.knoCardLikes}}</view>
         </view>  

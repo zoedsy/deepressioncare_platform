@@ -6,7 +6,7 @@
 <view class="header">
   <view class="title">{{article.knoCardTitle}}</view>
   <view class="note">
-      <view class="from">{{article.knoCardAuthor}}</view>
+      <view class="from">来源：{{article.knoCardAuthor}}</view>
       <!-- <view class="time">{{article.knoCardReleaseDate}}</view> -->
       <view class="like" bindtap="changeCollect">
         <text wx:if="{{!is_liked}}" class="iconfont icon-dianzan_kuai"></text> 

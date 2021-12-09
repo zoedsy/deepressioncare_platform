@@ -145,7 +145,7 @@ swiper swiper-item .pic {
   position: absolute;
   left:1%;
   bottom: 8%;
-  color: #b4afae;
+  color: #26ebba;
 }
 
 /* .floor .info .date{
