@@ -145,25 +145,6 @@ Page({
         let friend = that.data.friend
         console.log(content);
       
-        // 监听socket 是否连接成功
-      socket.connect((status, ws) => {
-  
-        // 连接成功 则发送信息
-        if (status) {
-          // 向服务端发送消息
-          ws.emit('chat', { 
-            sessionKey:that.data.options.id,
-            senderId:wx.getStorageSync('openId'),
-            receiverId:that.data.friend.friendId,
-            content:content
-
-          }); // 参数一：发送消息的socket名，参数二: 发送的数据
-  
-  
-        }else {
-          // ...连接超时
-        }
-      })
         var list = that.data.wxchatLists;
         var temp = {
           content: content,

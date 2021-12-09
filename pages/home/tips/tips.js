@@ -89,6 +89,15 @@ toDetail:function(e){
     })
   },
 
+  //搜索框文本内容显示
+  inputBind: function(event) {
+    this.setData({
+        inputValue: event.detail.value
+    })
+    console.log('bindInput' + this.data.inputValue)
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
