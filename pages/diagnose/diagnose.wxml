@@ -51,9 +51,9 @@
         </view>  
         <view class="info">
             <view class="info_title">{{item.title}}
-                <button class="phone_call" style="font-size:10rpx;left:5rpx;width:10rpx;justify-content:left;"
+                <!-- <button class="phone_call" style="font-size:10rpx;left:5rpx;width:10rpx;justify-content:left;"
                 bindtap="phoneCall" data-item="{{item.id}}"
-                >联系电话</button> 
+                >联系电话</button>  -->
             </view>
             <!-- <button class="phone_call" style="font-size:20rpx;left:5rpx">点击拨打联系电话</button>  -->
             <view class="detail">{{item.detail}}</view>
