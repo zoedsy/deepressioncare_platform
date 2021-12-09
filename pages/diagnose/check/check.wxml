@@ -1,5 +1,5 @@
 <view class="big_box">
-
+  <image class="background" src="../../../images/背景页.png"></image>
   <view class="box">
     <!-- 流程 -->
     <view class="step_box">
