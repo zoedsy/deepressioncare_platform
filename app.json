@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/me/me",
     "pages/index/index",
     "pages/logs/logs",
     "pages/home/home",
@@ -20,14 +21,14 @@
     "pages/luntan/release/vote/vote",
     "pages/luntan/release/zhichi/zhichi",
     "pages/luntan/detail/detail",
-    "pages/me/me",
+    
     "pages/me/help/index",
     "pages/me/record/index",
     "pages/me/information/index",
     "pages/me/aboutus/index",
     "pages/home/searchTips/searchTips",
-    "pages/luntan/searchRes/searchRes",
-    "pages/friends/friends"
+    "pages/friends/friends",
+    "pages/luntan/searchRes/searchRes"
   ],
   "window": {
     "backgroundTextStyle": "light",

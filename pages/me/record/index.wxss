@@ -162,7 +162,8 @@
 .doctor_floor .avatar{
   width: 100rpx;
   height:100rpx;
-  margin:10rpx
+  margin:30rpx;
+
 }
 
 .doctor_floor .avatar .img{

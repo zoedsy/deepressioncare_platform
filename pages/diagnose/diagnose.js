@@ -45,19 +45,26 @@ Page({
     // wx.navigateTo({
     //   url: '/pages/audio/audio'
     // })
-    wx.checkSession({
-      success: (res) => {
-        wx.navigateTo({
-          url: '/pages/diagnose/diagnose',
-        })
-      },
-      fail:(err)=>{
-        wx.showToast({
-          title: '请先登录再发帖',
-          icon:'none'
-        })
-      },
-    })
+    // wx.checkSession({
+    //   success: (res) => {
+    //     wx.navigateTo({
+    //       url: '/pages/diagnose/diagnose',
+    //     })
+    //   },
+    //   fail:(err)=>{
+    //     wx.showToast({
+    //       title: '请先登录再发帖',
+    //       icon:'none'
+    //     })
+    //   },
+    // })
+    if(!wx.getStorageSync('username')){
+      wx.showToast({
+        title: '请先填写健康档案再上传',
+        icon:'none'
+      })
+      return
+    }
 
     wx.chooseMessageFile({
       count: 1,
@@ -154,23 +161,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    wx.checkSession({
-      success: (res) => {
-        wx.navigateTo({
-          url: '/pages/diagnose/diagnose',
-        })
-      },
-      fail:(err)=>{
-        wx.showToast({
-          title: '请先登录再访问诊断界面',
-          icon:'none',
-          duration:7000
-        })
-        wx.switchTab({
-          url: '../home/home',
-        })
-      },
-    })
+    // wx.checkSession({
+    //   success: (res) => {
+    //     wx.navigateTo({
+    //       url: '/pages/diagnose/diagnose',
+    //     })
+    //   },
+    //   fail:(err)=>{
+    //     wx.showToast({
+    //       title: '请先登录再访问诊断界面',
+    //       icon:'none',
+    //       duration:9000
+    //     })
+    //     wx.switchTab({
+    //       url: '../home/home',
+    //     })
+    //   },
+    // })
     var username = wx.getStorageSync('username');
     this.Patient('张玉','精神科室','2021-11-20');
   },
@@ -186,25 +193,26 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    wx.checkSession({
-      success: (res) => {
-        wx.navigateTo({
-          url: '/pages/diagnose/diagnose',
-        })
-      },
-      fail:(err)=>{
-
-        wx.showToast({
-          title: '请先登录再访问诊断界面',
-          icon:'none',
-          duration:7000
-        })
+    
+    // wx.checkSession({
+    //   success: (res) => {
+    //     wx.navigateTo({
+    //       url: '/pages/diagnose/diagnose',
+    //     })
+    //   },
+    //   fail:(err)=>{
+    //     console.log("没有的登陆，不能诊断");
+    //     wx.showToast({
+    //       title: '请先登录再访问诊断界面',
+    //       icon:'none',
+    //       duration:9000
+    //     })
         
-        wx.switchTab({
-          url: '../home/home',
-        })
-      },
-    })
+    //     wx.switchTab({
+    //       url: '../home/home',
+    //     })
+    //   },
+    // })
   },
 
   /**

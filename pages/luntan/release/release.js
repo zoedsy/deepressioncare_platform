@@ -5,7 +5,6 @@ import Api from '../../../api/api.js';
 // import getDateTime from '../../../wxs/tool.wxs';
 const api = new Api();
 const {} = require("../../../api/config.js")
-
 Page({
   data: {
     toolList:[{"title":"添加图片","img":"/images/release/addImag.png"}],
@@ -35,7 +34,6 @@ Page({
     isChanged:false,
     imageFilePath:""
   },
-
 // @title    onLoad
 // @description  点击加载事件
 // @auth      shiyidu            
@@ -58,20 +56,13 @@ Page({
 
     // 基本上没有缓存数据，所以直接跳到onshow
     if (post_id && post_id.length > 0){
+      console.log("zero----------")
       console.log("zero----------");
       this.data.post_id = post_id;
       // 有缓存的帖子 需恢复数据
       // this.getDetailData();
     }
 
-  },
-
-  // @title    onShow
-// @description 
-// @auth      shiyidu            
-// @param     e
-// @return   无
-  onShow(){
     var postcontent=this.data.textareaText
     if(wx.getStorageSync('postcontent')){
       postcontent = wx.getStorageSync('postcontent')
@@ -99,7 +90,14 @@ Page({
     })
     
   },
-
+  // @title    onShow
+// @description 
+// @auth      shiyidu            
+// @param     e
+// @return   无
+  onShow(){
+   
+  },
   //发送
   send(){
     //检验空
@@ -142,7 +140,7 @@ Page({
     var map={
       "location":cityName,
       "content":this.data.textareaText,
-      "title":title,
+      "title":this.data.title,
       "ownerId":app.globalData.openId,
       "createTime":crateTime,
     }
@@ -160,16 +158,14 @@ Page({
       formData:{
         "location":cityName,
         "content":this.data.textareaText,
-        "title":title,
+        "title":this.data.title,
         "ownerId":ownerId,
         "createTime":crateTime,
         "image":this.data.imageFilePath,
-
       },
       success(res){
     
       console.log("上传文件大成功！！！！")
-      console.log("draft",draft)
       _this.data.canSave = true;
       app.HOMENEEDFRESH = true;
       console.log("errorCode",res.data.errorCode)
@@ -188,10 +184,7 @@ Page({
         console.log("fialllllllll")
       }
     })
-
-
   },
-
   
 // @title    textareaClick
 // @description 
@@ -212,9 +205,7 @@ Page({
       textList: list
     });
     this.data.isChanged = true;
-
   },
-
   // @title    typeClick
 // @description 
 // @auth      shiyidu            
@@ -226,7 +217,6 @@ Page({
       typeSelectIndex:index
     })
   },
-
 // @title    inputTextClick
 // @description 
 // @auth      shiyidu            
@@ -236,10 +226,8 @@ Page({
     this.setData({
       textareaHide:false,
       textareaText:this.data.inputText
-
     });
   },
-
 // @title    toolClick
 // @description 
 // @auth      shiyidu            
@@ -265,9 +253,7 @@ Page({
     //   this.goToZhongCao();
     // }
   },
-
   // 跳转到相应的页面
-
   // @title    goToTouPiao
 // @description 
 // @auth      shiyidu            
@@ -298,9 +284,7 @@ Page({
         console.log(that.data.imageList)
       }
     });
-
   },
-
   previewImg: function (e) {
     //获取当前图片的下标
     var index = e.currentTarget.dataset.index;
@@ -311,7 +295,6 @@ Page({
       urls: this.data.imageList
     })
   },
-
   deleteImg: function (e) {
     var that = this;
     var imgs = that.data.imageList;
@@ -321,7 +304,6 @@ Page({
       imageList: imgs,
     });
   },
-
 // 选择图像
 // @title    beginBack
 // @description 返回初始页面
@@ -337,7 +319,6 @@ Page({
       this.backHome();
     }
   },
-
   // 核验是否需要保存
   // @title    checkNeedSave
 // @description 
@@ -368,8 +349,6 @@ Page({
     }
     return false;
   },
-
-
 // 选择图像
 // @title    floatClick
 // @description 
@@ -381,9 +360,6 @@ Page({
       isShowSave:false
     });
   },
-
-
-
 // 选择图像
 // @title    saveClick
 // @description 
@@ -404,11 +380,8 @@ Page({
       this.backHome();
     }
   },
-
   // 保存草稿
-
   
-
 // 选择图像
 // @title   saveDraft
 // @description 
@@ -417,10 +390,16 @@ Page({
 // @return   无
   saveDraft(){
     this.data.needToHome = false;
-    this.savePostClick(-1);
+    wx.setStorageSync('postcontent', this.data.textareaText)
+    wx.setStorageSync('postimages', this.data.imageList)
+    wx.setStorageSync('posttitle', this.data.title)
+    wx.setStorageSync('postaddr', this.data.cityName)
+    wx.showToast({
+      title: '保存成功',
+    })
+    // this.savePostClick(-1);
   },
 
-  
 
 // 选择图像
 // @title    beginSave
@@ -430,6 +409,24 @@ Page({
 // @return   无
   beginSave(){
     this.data.needToHome = true;
+    //检验空
+    if(this.data.title==''||this.data.title=='添加标题'){
+      wx.showToast({
+        title: '标题不能为空',
+        icon:'none',
+      })
+      return
+    }
+    if(this.data.imageFilePath==''){
+      wx.showToast({
+        title: '图片不能为空',
+        icon:'none',
+      })
+      return
+    }
+    this.setData({
+      isShowSave:true
+    })
     this.savePostClick(-1);
   },
 
@@ -445,7 +442,6 @@ Page({
       url: '../release/selectCity/selectCity',
     })
   },
-
   // 添加标题
   goToAddTitle(){
     var title = this.data.title;
@@ -457,10 +453,10 @@ Page({
       url: '../release/title/title',
     })
   },
-
   // 开始保存post
   beginSavePost(draft){
     var _this = this;
+
     // wx.requestSubscribeMessage({
     //   tmplIds: ['tli7zssphnfa2VXZztZZB6isXR98LoihxjcFBdq_xIk', 'PTstSvtHM0WOiTrG9mAbXV_ziHNog79pBnZYsvAaIJg','zMGkiKgkOggfMU14D_Jfd_QviRhg5bJ8kXcMhSsKUrQ'],
     //   success(res) {
@@ -481,8 +477,6 @@ Page({
     } 
     this.postDidWorkSave(draft);
   },
-
-
   // 可以进行请求了，就是有了标题内容这些
   postDidWorkSave(draft){
     if (this.data.textareaText.length == 0) {
@@ -512,7 +506,6 @@ Page({
     // map.type = type;
     // map.userId = app.USER_ID();
     // var ownerId = app.globalData.openId
-
     var ownerId = wx.getStorageSync('openId');
     console.log("ownerId----获取缓存后的",ownerId);
     var token = wx.getStorageSync('token');
@@ -520,7 +513,6 @@ Page({
     // if(!map.ownerId){
     //   ownerId=wx.getStorageSync('openId')
     // }
-
     // var date =new Date();
     // console.log(date)
     // var date = api.getDateTime(date.toString());
@@ -540,10 +532,7 @@ Page({
   
     // map.crateTime = 
     // map.videoUrl = this.data.videoUrl;
-
-
     console.log(JSON.stringify(map));
-
     console.log("上传文件前ownerid是否有",ownerId);
     console.log("image_file_path路径",this.data.imageFilePath)
     wx.uploadFile({
@@ -561,7 +550,6 @@ Page({
         "ownerId":ownerId,
         "createTime":crateTime,
         "image":this.data.imageFilePath,
-
       },
       success(res){
     
@@ -585,7 +573,6 @@ Page({
         console.log("fialllllllll")
       }
     })
-
   },
   // 返回主页
   backHome(){
@@ -595,11 +582,6 @@ Page({
     // wx.switchTab({
     //   url: '/pages/index/index',
     // })
-  },
-
-  saveAndSend(){
-    this.saveDraft();
-    this.beginSave();
   },
 
   // 上传图片
@@ -625,11 +607,9 @@ Page({
         console.log(res.tempFilePath)
         var path = res.tempFilePath;
          _this.upLoadimage(path);     
-
       }
     })
   },
-
   chooseImages(){
     this.data.chooseTye = "images";
     // this.hideShareClickView();
@@ -654,14 +634,12 @@ Page({
         },
       })
   },
-
   // 上传图片
   upLoadimage(tempPath) {
     var _this = this;
     wx.showLoading({
       title: '上传中...',
     })
-
     wx.uploadFile({
       url: app.host + app.upLoadImageUrl,
       filePath: tempPath,
@@ -701,7 +679,6 @@ Page({
     })
   },
   
-
   // 预览图片
   previewImages(e) {
     var index = parseInt(e.currentTarget.dataset.key);
@@ -711,7 +688,6 @@ Page({
       urls: this.data.imageList,
     })
   },
-
   //删除图片
   deleteImage(e){
     var _this = this;
@@ -727,7 +703,6 @@ Page({
       }
     });
   },
-
   beginDelete (index) {
     var _this = this;
     var list = [];
@@ -741,13 +716,10 @@ Page({
       imageList: list
     });
   },
-
-
   onUnload: function () {
     wx.removeStorageSync('zcList');
     wx.removeStorageSync('bfList');
   },
-
   // 请求数据
   getDetailData() {
     var _this = this;
@@ -765,7 +737,6 @@ Page({
       }
     });
   },
-
   
   formatData(dataDict){
     var _this = this;
@@ -837,8 +808,6 @@ Page({
       detailData: dataDict
     });
   },
-
-
   // 获取产品参数
   getGoodDetail(productId,skuId) {
     var _this = this;
